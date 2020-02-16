@@ -1,0 +1,67 @@
+<resources>
+
+    <!--region BASE THEME-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorWhite</item>
+        <item name="colorPrimaryDark">@color/colorWhite</item>
+        <item name="colorAccent">@color/colorBlue</item>
+
+    </style>
+    <!--endregion-->
+
+    <!--region PRIMARY TEXT VIEW-->
+    <style name="PrimaryTextView14" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="PrimaryTextView20" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <!--endregion-->
+
+    <!--region PRIMARY BOLD TEXT VIEW-->
+    <style name="PrimaryBoldTextView20" parent="PrimaryTextView20">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!--endregion-->
+
+    <!--region SECONDARY TEXT VIEW-->
+    <style name="SecondaryTextView14" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorDarkGray</item>
+    </style>
+    <!--endregion-->
+
+    <!--region ACCENT TEXT VIEW-->
+    <style name="AccentTextView14" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorBlue</item>
+    </style>
+    <!--endregion-->
+
+    <!--region MATERIAL EDIT TEXT-->
+    <style name="InputTextOutlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/colorGray</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <style name="MaterialEditText14" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+    <!--endregion-->
+
+    <!--region PRIMARY BUTTON-->
+    <style name="PrimaryButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/shape_button_primary</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <!--endregion-->
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Hackathon</string>
+
+    <!--region REGISTRATION-->
+    <string name="registration_name">Регистрация</string>
+    <string name="registration_login">Логин</string>
+    <string name="registration_password">Пароль</string>
+    <string name="registration_email">Email</string>
+    <string name="registration_signup">Зарегистрироваться</string>
+    <string name="registration_has_account">Есть аккаунт?</string>
+    <string name="registration_signin">Войти</string>
+    <!--endregion-->
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    tools:context=".RegistrationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/PrimaryBoldTextView20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/registration_name" />
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/InputTextOutlined"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:textColorHint="@color/colorGray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietLogin"
+            style="@style/MaterialEditText14"
+            android:drawableStart="@drawable/ic_user"
+            android:drawablePadding="8dp"
+            android:textColor="@color/colorBlack"
+            android:hint="@string/registration_login" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/InputTextOutlined"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietEmail"
+            style="@style/MaterialEditText14"
+            android:drawableStart="@drawable/ic_mail"
+            android:drawablePadding="8dp"
+            android:hint="@string/registration_email" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/InputTextOutlined"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorGray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietPassword"
+            style="@style/MaterialEditText14"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="8dp"
+            android:textColor="@color/colorBlack"
+            android:hint="@string/registration_password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <Button
+        android:id="@+id/btnSignUp"
+        style="@style/PrimaryButton"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/registration_signup"
+        android:foreground="?android:attr/selectableItemBackground"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/SecondaryTextView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/registration_has_account" />
+
+        <TextView
+            android:id="@+id/tvSignIn"
+            style="@style/AccentTextView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registration_signin"
+            android:foreground="?android:attr/selectableItemBackground"/>
+    </LinearLayout>
+</LinearLayout>
