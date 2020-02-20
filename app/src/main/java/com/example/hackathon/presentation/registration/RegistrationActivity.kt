@@ -1,7 +1,8 @@
-package com.example.hackathon
+package com.example.hackathon.presentation.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hackathon.R
 
 class RegistrationActivity : AppCompatActivity() {
 
