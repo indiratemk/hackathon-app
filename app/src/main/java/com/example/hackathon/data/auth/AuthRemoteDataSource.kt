@@ -12,4 +12,9 @@ class AuthRemoteDataSource(private val hackathonApi: HackathonApi): BaseRemoteDa
                password: String): ApiResponse<User> {
         return getResponse { hackathonApi.signUp(login, email, password) }
     }
+
+    suspend fun signIn(email: String,
+                       password: String): ApiResponse<User> {
+        return getResponse { hackathonApi.signIn(email, password) }
+    }
 }

@@ -15,4 +15,11 @@ interface HackathonApi {
         @Field("email") email: String,
         @Field("password") password: String
     ): Response<User>
+
+    @FormUrlEncoded
+    @POST("auth/signin")
+    suspend fun signIn(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Response<User>
 }
