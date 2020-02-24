@@ -7,6 +7,6 @@ class ErrorUtils {
 
     companion object {
         fun parseError(response: Response<*>) =
-            Gson().fromJson(response.errorBody()?.string(), ApiError::class.java).error
+            Gson().fromJson(response.errorBody()?.string(), Error::class.java)
     }
 }
