@@ -9,6 +9,10 @@
     <string name="registration_sign_up">Зарегистрироваться</string>
     <string name="registration_has_account">Есть аккаунт?</string>
     <string name="registration_sign_in">Войти</string>
+    <string name="registration_empty_email_error">Пожалуйста, введите email адрес</string>
+    <string name="registration_invalid_email_error">Пожалуйста, введите валидный email адрес</string>
+    <string name="registration_empty_password">Пожалуйста, введите пароль</string>
+    <string name="registration_empty_login">Пожалуйста, введите логин</string>
     <!--endregion-->
 
     <!--region AUTHORIZATION-->
@@ -16,5 +20,8 @@
     <string name="authorization_sign_in">Войти</string>
     <string name="authorization_not_signed_up">Не зарегистрированы?</string>
     <string name="authorization_sign_up">Зарегистрироваться</string>
+    <string name="authorization_empty_email_error">Пожалуйста, введите email адрес</string>
+    <string name="authorization_invalid_email_error">Пожалуйста, введите валидный email адрес</string>
+    <string name="authorization_empty_password">Пожалуйста, введите пароль</string>
     <!--endregion-->
 </resources>
