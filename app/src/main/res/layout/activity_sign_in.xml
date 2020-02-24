@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorWhite"
-    tools:context=".presentation.authorization.AuthotizationActivity">
+    tools:context=".presentation.sign_in.SignInActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,24 +36,28 @@
         android:background="@color/colorGray"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilEmail"
         style="@style/InputTextOutlined"
         android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp">
+        android:layout_marginEnd="24dp"
+        android:paddingBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tietEmail"
             style="@style/MaterialEditText14"
             android:drawableStart="@drawable/ic_mail"
             android:drawablePadding="8dp"
-            android:hint="@string/registration_email" />
+            android:hint="@string/registration_email"
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPassword"
         style="@style/InputTextOutlined"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:paddingBottom="8dp"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorGray">
 
@@ -62,19 +66,38 @@
             style="@style/MaterialEditText14"
             android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="8dp"
-            android:textColor="@color/colorBlack"
             android:hint="@string/registration_password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/btnSignIn"
-        style="@style/PrimaryButton"
+    <LinearLayout
+        android:id="@+id/llSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/authorization_sign_in"
-        android:foreground="?android:attr/selectableItemBackground"/>
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/shape_button_primary"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <ProgressBar
+            android:id="@+id/ivButtonProgress"
+            android:theme="@style/CircularProgress"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"/>
+
+        <TextView
+            style="@style/PrimaryTextView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/authorization_sign_in"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
