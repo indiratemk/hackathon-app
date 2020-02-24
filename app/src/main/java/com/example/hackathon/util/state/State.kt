@@ -1,4 +1,4 @@
-package com.example.hackathon.util
+package com.example.hackathon.util.state
 
 sealed class State<T>(
     val data: T? = null,
