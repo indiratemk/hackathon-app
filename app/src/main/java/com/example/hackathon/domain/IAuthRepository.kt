@@ -1,7 +1,7 @@
 package com.example.hackathon.domain
 
 import com.example.hackathon.data.auth.model.User
-import com.example.hackathon.util.State
+import com.example.hackathon.util.state.State
 
 interface IAuthRepository {
 
