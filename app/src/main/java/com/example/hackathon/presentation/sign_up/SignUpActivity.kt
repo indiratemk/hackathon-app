@@ -44,6 +44,7 @@ class SignUpActivity : AppCompatActivity() {
                 signUpViewModel.signUp(tietLogin.text.toString().trim(),
                     tietEmail.text.toString().trim(),
                     tietPassword.text.toString().trim())
+                UIUtil.hideKeyboard(this)
             }
         }
 

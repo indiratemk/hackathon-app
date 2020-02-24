@@ -42,6 +42,7 @@ class SignInActivity : AppCompatActivity() {
             if (tilEmail.error == null && tilPassword.error == null) {
                 signInViewModel.signIn(tietEmail.text.toString().trim(),
                     tietPassword.text.toString().trim())
+                UIUtil.hideKeyboard(this)
             }
         }
 
