@@ -6,16 +6,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.hackathon.R
+import com.example.hackathon.base.BaseActivity
 import com.example.hackathon.presentation.sign_up.SignUpActivity
-import com.example.hackathon.util.State
+import com.example.hackathon.util.state.State
+import com.example.hackathon.util.state.StateListener
 import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class SignInActivity : AppCompatActivity() {
+class SignInActivity : BaseActivity() {
 
     companion object {
         fun startActivity(context: Context) {
@@ -25,17 +26,20 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private val signInViewModel: SignInViewModel by viewModel()
+    private lateinit var stateListener: StateListener
+
+    override fun layoutId(): Int {
+        return R.layout.activity_sign_in
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        stateListener = this
+        subscribeObservers()
         initUI()
     }
 
-//    TODO сделать нормальную обработку ошибок!!!
     private fun initUI() {
-        observeUser()
-
         llSignIn.setOnClickListener {
             validateEmail()
             validatePassword()
@@ -52,14 +56,13 @@ class SignInActivity : AppCompatActivity() {
         }
 
         ivClose.setOnClickListener { finish() }
-
     }
 
-    private fun observeUser() {
-        signInViewModel.user.observe(this, Observer {
-            when (it) {
+    private fun subscribeObservers() {
+        signInViewModel.user.observe(this, Observer { dataState ->
+            when (dataState) {
                 is State.Loading -> {
-                    if (it.isLoading) {
+                    if (dataState.isLoading) {
                         ivButtonProgress.visibility = View.VISIBLE
                         llSignIn.isEnabled = false
                     } else {
@@ -71,19 +74,13 @@ class SignInActivity : AppCompatActivity() {
                     setResult(Activity.RESULT_OK)
                     finish()
                 }
-                is State.NetworkError -> {
-                    UIUtil.showErrorMessage(this, it.message)
-                }
-                is State.BackendError -> {
-                    UIUtil.showErrorMessage(this, it.message)
-                }
             }
+            stateListener.onStateChange(dataState)
         })
     }
 
     private fun validateEmail() {
         val email = tietEmail.text.toString().trim()
-
         if (email.isEmpty()) {
             tilEmail.isErrorEnabled = true
             tilEmail.error = getString(R.string.authorization_empty_email_error)
@@ -98,7 +95,6 @@ class SignInActivity : AppCompatActivity() {
 
     private fun validatePassword() {
         val password = tietPassword.text.toString().trim()
-
         if (password.isEmpty()) {
             tilPassword.isErrorEnabled = true
             tilPassword.error = getString(R.string.authorization_empty_password)

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.hackathon.base.BaseViewModel
 import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.domain.AuthRepository
-import com.example.hackathon.util.State
+import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(private val authRepository: AuthRepository) : BaseViewModel() {
