@@ -24,4 +24,17 @@ open class AuthRepository(private val authRemoteDataSource: AuthRemoteDataSource
 
         }
     }
+
+    override suspend fun signIn(email: String, password: String): State<User> {
+        return when (val response = authRemoteDataSource.signIn(email, password)) {
+            is ApiResponse.Success ->
+                State.Success(response.data)
+            is ApiResponse.Error ->
+                when (response.exception) {
+                    is ApiException -> State.BackendError(response.exception.errorCode, response.exception.errorMessage)
+                    is NetworkException -> State.NetworkError(response.exception.errorMessage())
+                    else -> State.NetworkError(NetworkException().errorMessage())
+                }
+        }
+    }
 }
