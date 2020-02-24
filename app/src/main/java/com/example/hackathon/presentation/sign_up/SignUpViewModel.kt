@@ -1,4 +1,4 @@
-package com.example.hackathon.presentation
+package com.example.hackathon.presentation.sign_up
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,8 +19,9 @@ class SignUpViewModel(private val authRepository: AuthRepository) : BaseViewMode
                email: String,
                password: String) {
         coroutineContext.launch {
-            _user.value = State.Loading()
+            _user.value = State.Loading(true)
             _user.value = authRepository.signUp(login, email, password)
+            _user.value = State.Loading(false)
         }
     }
 }
