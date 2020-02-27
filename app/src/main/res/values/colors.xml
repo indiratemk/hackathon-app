@@ -8,7 +8,10 @@
     <color name="colorBlue">#1890FF</color>
     <color name="colorLightBlue">#90C4FF</color>
     <color name="colorBlack">#383838</color>
+    <color name="colorBlackOpacity">#CC383838</color>
     <color name="colorRed">#EC2D2C</color>
+    <color name="colorDarkBlack">#000000</color>
+    <color name="colorDarkBlackOpacity">#CC000000</color>
     <color name="colorLightRed">#FDF1EF</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/colorGray</color>
 </resources>

@@ -24,4 +24,10 @@
     <string name="authorization_invalid_email_error">Пожалуйста, введите валидный email адрес</string>
     <string name="authorization_empty_password">Пожалуйста, введите пароль</string>
     <!--endregion-->
+
+    <!--region QR Scanner-->
+    <string name="qr_scanner_name">QR Сканнер</string>
+    <string name="qr_scanner_title">Подтвердите свое участие</string>
+    <string name="qr_scanner_hint">Наведите камеру на QR код</string>
+    <!--endregion-->
 </resources>

@@ -25,6 +25,11 @@
         <item name="android:textColor">@color/colorBlack</item>
     </style>
 
+    <style name="PrimaryTextView18" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
     <style name="PrimaryTextView20" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:textSize">20sp</item>
@@ -33,6 +38,14 @@
 
     <!--region PRIMARY BOLD TEXT VIEW-->
     <style name="PrimaryBoldTextView20" parent="PrimaryTextView20">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PrimaryBoldTextView18" parent="PrimaryTextView18">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PrimaryBoldTextView16" parent="PrimaryTextView16">
         <item name="android:textStyle">bold</item>
     </style>
     <!--endregion-->
