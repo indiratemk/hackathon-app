@@ -26,8 +26,8 @@
             android:id="@+id/ivClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_close"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null"
+            app:srcCompat="@drawable/ic_close" />
     </LinearLayout>
 
     <View
