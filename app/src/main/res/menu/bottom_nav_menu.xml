@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/actionHackathons"
+        android:enabled="true"
+        android:icon="@drawable/ic_list"
+        android:title="@string/main_bottom_nav_hackathons" />
+    <item
+        android:id="@+id/actionQRScanner"
+        android:enabled="true"
+        android:icon="@drawable/ic_qr_code"
+        android:title="@string/main_bottom_nav_qr_scanner" />
+    <item
+        android:id="@+id/actionProfile"
+        android:enabled="true"
+        android:icon="@drawable/ic_user_white"
+        android:title="@string/main_bottom_nav_profile" />
+</menu>
