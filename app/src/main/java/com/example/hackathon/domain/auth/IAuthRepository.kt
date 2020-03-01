@@ -1,4 +1,4 @@
-package com.example.hackathon.domain
+package com.example.hackathon.domain.auth
 
 import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.util.state.State

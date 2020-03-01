@@ -4,10 +4,12 @@ import com.example.hackathon.data.auth.model.User
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface HackathonApi {
 
+    //region AUTH
     @FormUrlEncoded
     @POST("auth/signup")
     suspend fun signUp(
@@ -22,4 +24,10 @@ interface HackathonApi {
         @Field("email") email: String,
         @Field("password") password: String
     ): Response<User>
+    //endregion
+
+    //region USER
+    @GET("auth/user")
+    suspend fun getUser(): Response<User>
+    //endregion
 }

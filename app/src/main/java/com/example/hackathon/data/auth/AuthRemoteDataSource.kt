@@ -5,7 +5,7 @@ import com.example.hackathon.data.HackathonApi
 import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.util.ApiResponse
 
-class AuthRemoteDataSource(private val hackathonApi: HackathonApi): BaseRemoteDataSource() {
+class AuthRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRemoteDataSource() {
 
     suspend fun signUp(login: String,
                email: String,

@@ -1,4 +1,4 @@
-package com.example.hackathon.domain
+package com.example.hackathon.domain.auth
 
 import com.example.hackathon.base.BaseRepository
 import com.example.hackathon.data.auth.AuthRemoteDataSource
