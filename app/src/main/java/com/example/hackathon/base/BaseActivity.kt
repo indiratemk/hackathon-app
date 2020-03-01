@@ -2,6 +2,7 @@ package com.example.hackathon.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.example.hackathon.util.state.State
 import com.example.hackathon.util.state.StateListener
 import com.example.hackathon.util.ui.UIUtil
@@ -28,5 +29,10 @@ abstract class BaseActivity : AppCompatActivity(), StateListener {
                 UIUtil.showErrorMessage(this, dataState.message)
             }
         }
+    }
+
+    fun initToolbar(toolbar: Toolbar, title: String) {
+        toolbar.title = title
+        setSupportActionBar(toolbar)
     }
 }
