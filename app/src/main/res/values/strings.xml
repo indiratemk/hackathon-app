@@ -2,7 +2,7 @@
     <string name="app_name">Hackathon</string>
 
     <!--region REGISTRATION-->
-    <string name="registration_name">Регистрация</string>
+    <string name="registration_title">Регистрация</string>
     <string name="registration_login">Логин</string>
     <string name="registration_password">Пароль</string>
     <string name="registration_email">Email</string>
@@ -16,7 +16,7 @@
     <!--endregion-->
 
     <!--region AUTHORIZATION-->
-    <string name="authorization_name">Вход</string>
+    <string name="authorization_title">Вход</string>
     <string name="authorization_sign_in">Войти</string>
     <string name="authorization_not_signed_up">Не зарегистрированы?</string>
     <string name="authorization_sign_up">Зарегистрироваться</string>
@@ -25,9 +25,16 @@
     <string name="authorization_empty_password">Пожалуйста, введите пароль</string>
     <!--endregion-->
 
-    <!--region QR Scanner-->
-    <string name="qr_scanner_name">QR Сканнер</string>
-    <string name="qr_scanner_title">Подтвердите свое участие</string>
+    <!--region QR SCANNER-->
+    <string name="qr_scanner_title">QR Сканнер</string>
+    <string name="qr_scanner_confirm">Подтвердите свое участие</string>
     <string name="qr_scanner_hint">Наведите камеру на QR код</string>
+    <!--endregion-->
+
+    <!--region MAIN-->
+    <string name="main_title">Hackathon App</string>
+    <string name="main_bottom_nav_hackathons">Хакатоны</string>
+    <string name="main_bottom_nav_qr_scanner">QR сканнер</string>
+    <string name="main_bottom_nav_profile">Профиль</string>
     <!--endregion-->
 </resources>
