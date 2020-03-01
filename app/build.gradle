@@ -72,6 +72,10 @@ dependencies {
     implementation "com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.3"
     //endregion
 
+    //region STETHO
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    //endregion
+
     //region TEST
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
