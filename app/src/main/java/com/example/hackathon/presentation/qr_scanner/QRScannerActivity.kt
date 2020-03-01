@@ -1,6 +1,6 @@
 package com.example.hackathon.presentation.qr_scanner
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import android.graphics.PointF
 import android.os.Bundle
@@ -22,9 +22,9 @@ class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener 
     }
 
     companion object {
-        fun startActivity(context: Context) {
-            val intent = Intent(context, QRScannerActivity::class.java)
-            context.startActivity(intent)
+        fun startActivity(activity: Activity, requestCode: Int) {
+            val intent = Intent(activity, QRScannerActivity::class.java)
+            activity.startActivityForResult(intent, requestCode)
         }
     }
 
