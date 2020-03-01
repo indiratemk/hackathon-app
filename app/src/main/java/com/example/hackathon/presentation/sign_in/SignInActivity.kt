@@ -1,7 +1,6 @@
 package com.example.hackathon.presentation.sign_in
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -10,6 +9,8 @@ import androidx.lifecycle.Observer
 import com.example.hackathon.R
 import com.example.hackathon.base.BaseActivity
 import com.example.hackathon.presentation.sign_up.SignUpActivity
+import com.example.hackathon.util.Constants
+import com.example.hackathon.util.PreferenceUtils
 import com.example.hackathon.util.state.State
 import com.example.hackathon.util.state.StateListener
 import com.example.hackathon.util.ui.UIUtil
@@ -19,9 +20,9 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class SignInActivity : BaseActivity() {
 
     companion object {
-        fun startActivity(context: Context) {
-            val intent = Intent(context, SignInActivity::class.java)
-            context.startActivity(intent)
+        fun startActivity(activity: Activity, requestCode: Int) {
+            val intent = Intent(activity, SignInActivity::class.java)
+            activity.startActivityForResult(intent, requestCode)
         }
     }
 
@@ -33,6 +34,7 @@ class SignInActivity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.LightTheme)
         super.onCreate(savedInstanceState)
         stateListener = this
         subscribeObservers()
@@ -52,7 +54,7 @@ class SignInActivity : BaseActivity() {
 
         tvSignUp.setOnClickListener {
             finish()
-            SignUpActivity.startActivity(this)
+            SignUpActivity.startActivity(this, Constants.AUTH_REQUEST_CODE)
         }
 
         ivClose.setOnClickListener { finish() }
@@ -60,6 +62,8 @@ class SignInActivity : BaseActivity() {
 
     private fun subscribeObservers() {
         signInViewModel.user.observe(this, Observer { dataState ->
+            stateListener.onStateChange(dataState)
+
             when (dataState) {
                 is State.Loading -> {
                     if (dataState.isLoading) {
@@ -71,11 +75,11 @@ class SignInActivity : BaseActivity() {
                     }
                 }
                 is State.Success -> {
+                    PreferenceUtils.setAuthorized(this, true)
                     setResult(Activity.RESULT_OK)
                     finish()
                 }
             }
-            stateListener.onStateChange(dataState)
         })
     }
 

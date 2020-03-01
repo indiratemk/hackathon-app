@@ -1,7 +1,6 @@
 package com.example.hackathon.presentation.sign_up
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -10,6 +9,7 @@ import androidx.lifecycle.Observer
 import com.example.hackathon.R
 import com.example.hackathon.base.BaseActivity
 import com.example.hackathon.presentation.sign_in.SignInActivity
+import com.example.hackathon.util.Constants
 import com.example.hackathon.util.state.State
 import com.example.hackathon.util.state.StateListener
 import com.example.hackathon.util.ui.UIUtil
@@ -19,9 +19,9 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class SignUpActivity : BaseActivity(), StateListener {
 
     companion object {
-        fun startActivity(context: Context) {
-            val intent = Intent(context, SignUpActivity::class.java)
-            context.startActivity(intent)
+        fun startActivity(activity: Activity, requestCode: Int) {
+            val intent = Intent(activity, SignUpActivity::class.java)
+            activity.startActivityForResult(intent, requestCode)
         }
     }
 
@@ -34,6 +34,7 @@ class SignUpActivity : BaseActivity(), StateListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.LightTheme)
         super.onCreate(savedInstanceState)
         stateListener = this
         subscribeObservers()
@@ -55,7 +56,7 @@ class SignUpActivity : BaseActivity(), StateListener {
 
         tvSignIn.setOnClickListener {
             finish()
-            SignInActivity.startActivity(this)
+            SignInActivity.startActivity(this, Constants.AUTH_REQUEST_CODE)
         }
 
         ivClose.setOnClickListener { finish() }
@@ -74,8 +75,8 @@ class SignUpActivity : BaseActivity(), StateListener {
                     }
                 }
                 is State.Success -> {
-                    setResult(Activity.RESULT_OK)
                     finish()
+                    SignInActivity.startActivity(this, Constants.AUTH_REQUEST_CODE)
                 }
             }
             stateListener.onStateChange(dataState)
