@@ -20,7 +20,7 @@ object PreferenceUtils {
     fun getCookie(context: Context)
             = getPreferences(context).getString(PREF_COOKIE, null)
 
-    fun setCookie(context: Context, cookie: String) {
+    fun setCookie(context: Context, cookie: String?) {
         getPreferences(context).edit().putString(PREF_COOKIE, cookie).apply()
     }
 }
