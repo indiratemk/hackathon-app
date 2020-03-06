@@ -17,4 +17,8 @@ class AuthRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRemoteD
                        password: String): ApiResponse<User> {
         return getResponse { hackathonApi.signIn(email, password) }
     }
+
+    suspend fun logout(): ApiResponse<Unit> {
+        return getResponse { hackathonApi.logout() }
+    }
 }

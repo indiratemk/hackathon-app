@@ -15,4 +15,8 @@ class AuthRepository(private val authRemoteDataSource: AuthRemoteDataSource) : B
     override suspend fun signIn(email: String, password: String): State<User> {
         return handleState { authRemoteDataSource.signIn(email, password) }
     }
+
+    override suspend fun logout(): State<Unit> {
+        return handleState { authRemoteDataSource.logout() }
+    }
 }

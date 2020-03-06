@@ -24,6 +24,9 @@ interface HackathonApi {
         @Field("email") email: String,
         @Field("password") password: String
     ): Response<User>
+
+    @GET("auth/logout")
+    suspend fun logout(): Response<Unit>
     //endregion
 
     //region USER

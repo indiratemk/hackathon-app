@@ -11,4 +11,6 @@ interface IAuthRepository {
 
     suspend fun signIn(email: String,
                        password: String): State<User>
+
+    suspend fun logout(): State<Unit>
 }
