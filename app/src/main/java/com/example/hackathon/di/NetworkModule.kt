@@ -3,6 +3,8 @@ package com.example.hackathon.di
 import com.example.hackathon.data.HackathonApi
 import com.example.hackathon.data.auth.AuthRemoteDataSource
 import com.example.hackathon.data.user.UserRemoteDataStore
+import com.example.hackathon.di.interceptors.RequestInterceptor
+import com.example.hackathon.di.interceptors.ResponseInterceptor
 import com.example.hackathon.util.Constants
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidApplication
@@ -19,7 +21,8 @@ val networkModule = module {
 }
 
 fun provideOkHttpClient(responseInterceptor: ResponseInterceptor,
-                        requestInterceptor: RequestInterceptor): OkHttpClient {
+                        requestInterceptor: RequestInterceptor
+): OkHttpClient {
     return OkHttpClient().newBuilder()
         .addInterceptor(requestInterceptor)
         .addInterceptor(responseInterceptor)

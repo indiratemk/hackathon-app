@@ -1,12 +1,10 @@
-package com.example.hackathon.di
+package com.example.hackathon.di.interceptors
 
 import android.app.Application
-import android.util.Log
 import com.example.hackathon.HackathonApp
 import com.example.hackathon.util.PreferenceUtils
 import okhttp3.Interceptor
 import okhttp3.Response
-import java.net.HttpCookie
 
 class ResponseInterceptor(private val application: Application) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
