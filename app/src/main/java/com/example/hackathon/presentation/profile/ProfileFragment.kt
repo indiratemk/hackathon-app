@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.hackathon.HackathonApp
 import com.example.hackathon.R
+import com.example.hackathon.presentation.logout.LogoutViewModel
+import com.example.hackathon.util.PreferenceUtils
 import com.example.hackathon.util.state.State
 import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -24,6 +27,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private val logoutViewModel: LogoutViewModel by viewModel()
     private val userViewModel: ProfileViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -40,6 +44,8 @@ class ProfileFragment : Fragment() {
 
     private fun initUI() {
         userViewModel.getUser()
+
+        btnLogOut.setOnClickListener { logoutViewModel.logout() }
     }
 
     private fun subscribeObservers() {
@@ -48,6 +54,21 @@ class ProfileFragment : Fragment() {
                 is State.Success -> {
                     tvLogin.text = dataState.data?.login
                     tvEmail.text = dataState.data?.email
+                }
+                is State.NetworkError -> {
+                    activity?.let { UIUtil.showErrorMessage(it, dataState.message) }
+                }
+                is State.BackendError -> {
+                    activity?.let { UIUtil.showErrorMessage(it, dataState.message) }
+                }
+            }
+        })
+
+        logoutViewModel.logout.observe(viewLifecycleOwner, Observer { dataState ->
+            when (dataState) {
+                is State.Success -> {
+                    context?.let { PreferenceUtils.setAuthorized(it, false) }
+                    (activity?.application as HackathonApp).restartApp()
                 }
                 is State.NetworkError -> {
                     activity?.let { UIUtil.showErrorMessage(it, dataState.message) }
