@@ -15,7 +15,11 @@ class ProfileViewModel(private val userRepository: UserRepository) : BaseViewMod
     val user: LiveData<State<User>>
         get() = _user
 
-    fun getUser() {
+    init {
+        getUser()
+    }
+
+    private fun getUser() {
         coroutineContext.launch {
             _user.value = State.Loading(true)
             _user.value = userRepository.getUser()

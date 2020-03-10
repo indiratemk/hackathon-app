@@ -9,12 +9,10 @@ import androidx.lifecycle.Observer
 import com.example.hackathon.HackathonApp
 import com.example.hackathon.R
 import com.example.hackathon.presentation.logout.LogoutViewModel
-import com.example.hackathon.util.PreferenceUtils
 import com.example.hackathon.util.state.State
 import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.util.prefs.Preferences
 
 class ProfileFragment : Fragment() {
 
@@ -43,8 +41,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initUI() {
-        userViewModel.getUser()
-
         btnLogOut.setOnClickListener { logoutViewModel.logout() }
     }
 

@@ -1,14 +1,13 @@
 package com.example.hackathon.presentation.main
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
+import com.example.hackathon.BottomPagerAdapter
 import com.example.hackathon.R
 import com.example.hackathon.base.BaseActivity
 import com.example.hackathon.presentation.hackathons.HackathonsFragment
@@ -27,8 +26,8 @@ class MainActivity : BaseActivity() {
         val PROFILE_FRAGMENT_POSITION = 1
     }
 
-    private lateinit var bottomFragments: ArrayList<Fragment>
     private var selectedItemId = R.id.actionHackathons
+    private lateinit var bottomPagerAdapter: BottomPagerAdapter
 
     override fun layoutId(): Int {
         return R.layout.activity_main
@@ -42,26 +41,31 @@ class MainActivity : BaseActivity() {
     private fun initUI() {
         initToolbar(toolbar, getString(R.string.main_title))
         initBottomBar()
+        updateBottomBar()
         bottomNavBar.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.actionQRScanner -> {
-                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
-                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), Constants.CAMERA_REQUEST_CODE)
+                    if (PreferenceUtils.isAuthorized(this)) {
+                        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
+                            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), Constants.CAMERA_REQUEST_CODE)
+                        } else {
+                            QRScannerActivity.startActivity(this, Constants.QR_SCANNER_REQUEST_CODE)
+                        }
                     } else {
-                        QRScannerActivity.startActivity(this, Constants.QR_SCANNER_REQUEST_CODE)
+                        SignInActivity.startActivity(this, Constants.AUTH_REQUEST_CODE)
                     }
                 }
                 R.id.actionProfile -> {
                     if (PreferenceUtils.isAuthorized(this)) {
                         selectedItemId = R.id.actionProfile
-                        setFragment(PROFILE_FRAGMENT_POSITION)
+                        viewPager.currentItem = PROFILE_FRAGMENT_POSITION
                     } else {
                         SignInActivity.startActivity(this, Constants.AUTH_REQUEST_CODE)
                     }
                 }
                 R.id.actionHackathons -> {
                     selectedItemId = R.id.actionHackathons
-                    setFragment(HACKATHONS_FRAGMENT_POSITION)
+                    viewPager.currentItem = HACKATHONS_FRAGMENT_POSITION
                 }
             }
             true
@@ -69,27 +73,23 @@ class MainActivity : BaseActivity() {
         bottomNavBar.selectedItemId = selectedItemId
     }
 
-    private fun initBottomBar() {
-        bottomFragments = arrayListOf()
-        val profileFragment = ProfileFragment.newInstance()
-        val hackathonsFragment = HackathonsFragment.newInstance()
-        bottomFragments.add(hackathonsFragment)
-        bottomFragments.add(profileFragment)
+    private fun updateBottomBar() {
+        if (PreferenceUtils.isAuthorized(this)) {
+            bottomPagerAdapter.addFragment(ProfileFragment.newInstance())
+            bottomPagerAdapter.notifyDataSetChanged()
+        }
     }
 
-    private fun setFragment(position: Int) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.flMainContainer, bottomFragments.get(position))
-            .commit()
+    private fun initBottomBar() {
+        bottomPagerAdapter = BottomPagerAdapter(supportFragmentManager)
+        bottomPagerAdapter.addFragment(HackathonsFragment.newInstance())
+        viewPager.adapter = bottomPagerAdapter
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Constants.AUTH_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            selectedItemId = R.id.actionProfile
-            bottomNavBar.selectedItemId = selectedItemId
-        } else if (requestCode == Constants.QR_SCANNER_REQUEST_CODE || requestCode == Constants.AUTH_REQUEST_CODE) {
+        updateBottomBar()
+        if (requestCode == Constants.AUTH_REQUEST_CODE || requestCode == Constants.QR_SCANNER_REQUEST_CODE) {
             bottomNavBar.selectedItemId = selectedItemId
         }
     }
