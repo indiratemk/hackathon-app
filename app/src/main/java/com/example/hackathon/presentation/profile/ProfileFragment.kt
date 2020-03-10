@@ -63,8 +63,7 @@ class ProfileFragment : Fragment() {
         logoutViewModel.logout.observe(viewLifecycleOwner, Observer { dataState ->
             when (dataState) {
                 is State.Success -> {
-                    context?.let { PreferenceUtils.setAuthorized(it, false) }
-                    (activity?.application as HackathonApp).restartApp()
+                    (requireActivity().application as HackathonApp).restartApp()
                 }
                 is State.NetworkError -> {
                     activity?.let { UIUtil.showErrorMessage(it, dataState.message) }

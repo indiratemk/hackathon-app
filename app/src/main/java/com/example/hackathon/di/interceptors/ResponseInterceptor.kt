@@ -10,8 +10,6 @@ class ResponseInterceptor(private val application: Application) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val response = chain.proceed(chain.request())
         if (response.code() == 401) {
-            PreferenceUtils.setAuthorized(application, false)
-            PreferenceUtils.setCookie(application, null)
             (application as HackathonApp).restartApp()
         } else {
             if (response.headers("Set-Cookie").isNotEmpty()) {
