@@ -1,4 +1,4 @@
-package com.example.hackathon.presentation.main
+package com.example.hackathon.util.ui
 
 import android.content.Context
 import android.util.AttributeSet

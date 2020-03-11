@@ -1,4 +1,4 @@
-package com.example.hackathon
+package com.example.hackathon.presentation.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

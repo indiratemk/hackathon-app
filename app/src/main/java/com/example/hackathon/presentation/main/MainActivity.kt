@@ -7,7 +7,6 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.hackathon.BottomPagerAdapter
 import com.example.hackathon.R
 import com.example.hackathon.base.BaseActivity
 import com.example.hackathon.presentation.hackathons.HackathonsFragment
@@ -81,7 +80,8 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initBottomBar() {
-        bottomPagerAdapter = BottomPagerAdapter(supportFragmentManager)
+        bottomPagerAdapter =
+            BottomPagerAdapter(supportFragmentManager)
         bottomPagerAdapter.addFragment(HackathonsFragment.newInstance())
         viewPager.adapter = bottomPagerAdapter
     }
