@@ -1,6 +1,7 @@
 package com.example.hackathon.data
 
 import com.example.hackathon.data.auth.model.User
+import com.example.hackathon.data.hackathon.model.Hackathon
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -32,5 +33,10 @@ interface HackathonApi {
     //region USER
     @GET("auth/user")
     suspend fun getUser(): Response<User>
+    //endregion
+
+    //region HACKATHON
+    @GET("hackathons")
+    suspend fun getHackathons(): Response<Paging<Hackathon>>
     //endregion
 }
