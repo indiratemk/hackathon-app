@@ -37,4 +37,8 @@
     <string name="main_bottom_nav_qr_scanner">QR сканнер</string>
     <string name="main_bottom_nav_profile">Профиль</string>
     <!--endregion-->
+
+    <!--region HACKATHONS-->
+    <string name="hackathons_search">Поиск</string>
+    <!--endregion-->
 </resources>
