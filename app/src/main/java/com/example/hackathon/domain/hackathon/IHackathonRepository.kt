@@ -7,4 +7,6 @@ import com.example.hackathon.util.state.State
 interface IHackathonRepository {
 
     suspend fun getHackathons(): State<Paging<Hackathon>>
+
+    suspend fun searchHackathons(query: String): State<Paging<Hackathon>>
 }

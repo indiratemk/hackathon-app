@@ -11,4 +11,8 @@ class HackathonRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRe
     suspend fun getHackathons(): ApiResponse<Paging<Hackathon>> {
         return getResponse { hackathonApi.getHackathons() }
     }
+
+    suspend fun searchHackathons(query: String): ApiResponse<Paging<Hackathon>> {
+        return getResponse { hackathonApi.searchHackathons(query) }
+    }
 }
