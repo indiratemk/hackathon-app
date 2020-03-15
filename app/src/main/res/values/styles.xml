@@ -43,7 +43,7 @@
     <!--endregion-->
 
     <!--region PRIMARY BOLD TEXT VIEW-->
-    <style name="PrimaryBoldTextView20" parent="PrimaryTextView20">
+    <style name="PrimaryBoldTextView16" parent="PrimaryTextView16">
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -51,7 +51,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="PrimaryBoldTextView16" parent="PrimaryTextView16">
+    <style name="PrimaryBoldTextView20" parent="PrimaryTextView20">
         <item name="android:textStyle">bold</item>
     </style>
     <!--endregion-->
