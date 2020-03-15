@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="16dp"
+    android:background="@color/colorWhite"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivHackathonImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            tools:ignore="contentDescription" />
+
+        <TextView
+            style="@style/PrimaryBoldTextView16"
+            android:id="@+id/tvHackathonTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            tools:text="Название хакатона" />
+
+        <TextView
+            style="@style/SecondaryTextView14"
+            android:id="@+id/tvHackathonAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            tools:text="Адрес хакатона" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
