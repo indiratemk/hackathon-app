@@ -16,6 +16,10 @@ class HackathonsViewModel(private val hackathonRepository: HackathonRepository) 
     val hackathons: LiveData<State<Paging<Hackathon>>>
         get() = _hackathons
 
+    init {
+        getHackathons()
+    }
+
     fun getHackathons() {
         coroutineContext.launch {
             _hackathons.value = State.Loading(true)
