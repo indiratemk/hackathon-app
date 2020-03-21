@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon.R
 import com.example.hackathon.base.BaseFragment
 import com.example.hackathon.util.state.State
+import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.fragment_hackathons.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -81,13 +82,26 @@ class HackathonsFragment : BaseFragment() {
             }
         })
         hackathonsViewModel.search.observe(viewLifecycleOwner, Observer { dataState ->
-            onStateChange(dataState)
             when (dataState) {
                 is State.Loading -> {
                     refreshLayout.isRefreshing = dataState.isLoading
                 }
                 is State.Success -> {
+                    rvHackathons.visibility = View.VISIBLE
+                    tvSearchError.visibility = View.GONE
                     hackathonsAdapter.setHackathons(dataState.data!!.results)
+                }
+                is State.BackendError -> {
+                    if (dataState.errorCode == 404) {
+                        rvHackathons.visibility = View.GONE
+                        tvSearchError.visibility = View.VISIBLE
+                        tvSearchError.text = dataState.message
+                    } else {
+                        UIUtil.showErrorMessage(requireActivity(), dataState.message)
+                    }
+                }
+                is State.NetworkError -> {
+                    UIUtil.showErrorMessage(requireActivity(), dataState.message)
                 }
             }
         })
