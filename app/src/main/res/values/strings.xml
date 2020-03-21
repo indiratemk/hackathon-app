@@ -40,5 +40,6 @@
 
     <!--region HACKATHONS-->
     <string name="hackathons_search">Поиск</string>
+    <string name="vh_hackathon_date">%1$s - %2$s</string>
     <!--endregion-->
 </resources>
