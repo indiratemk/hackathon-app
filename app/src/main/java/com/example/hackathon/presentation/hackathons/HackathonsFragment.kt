@@ -51,12 +51,11 @@ class HackathonsFragment : BaseFragment() {
                 return false
             }
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                hackathonsViewModel.searchHackathons(newText)
+            override fun onQueryTextChange(searchText: String): Boolean {
+                hackathonsViewModel.searchHackathons(searchText)
                 return true
             }
         })
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun initUI() {
@@ -84,6 +83,9 @@ class HackathonsFragment : BaseFragment() {
         hackathonsViewModel.search.observe(viewLifecycleOwner, Observer { dataState ->
             onStateChange(dataState)
             when (dataState) {
+                is State.Loading -> {
+                    refreshLayout.isRefreshing = dataState.isLoading
+                }
                 is State.Success -> {
                     hackathonsAdapter.setHackathons(dataState.data!!.results)
                 }
