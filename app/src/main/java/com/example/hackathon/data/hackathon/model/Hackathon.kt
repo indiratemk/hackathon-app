@@ -60,5 +60,9 @@ data class Hackathon (
 
     @SerializedName("thumbnail_url")
     @Expose
-    val thumbnailUrl: String
+    val thumbnailUrl: String,
+
+    @SerializedName("number_of_participants")
+    @Expose
+    val numberOfParticipants: String
 )
