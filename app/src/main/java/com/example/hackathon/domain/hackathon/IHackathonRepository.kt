@@ -9,4 +9,6 @@ interface IHackathonRepository {
     suspend fun getHackathons(): State<Paging<Hackathon>>
 
     suspend fun searchHackathons(query: String): State<Paging<Hackathon>>
+
+    suspend fun getHackathon(id: Int): State<Hackathon>
 }

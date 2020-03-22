@@ -38,5 +38,8 @@ interface HackathonApi {
 
     @GET("hackathons/search")
     suspend fun searchHackathons(@Query("q") query: String): Response<Paging<Hackathon>>
+
+    @GET("hackathons/{id}")
+    suspend fun getHackathon(@Path("id") id: Int): Response<Hackathon>
     //endregion
 }

@@ -16,4 +16,8 @@ class HackathonRepository(private val hackathonRemoteDataSource: HackathonRemote
     override suspend fun searchHackathons(query: String): State<Paging<Hackathon>> {
         return handleState { hackathonRemoteDataSource.searchHackathons(query) }
     }
+
+    override suspend fun getHackathon(id: Int): State<Hackathon> {
+        return handleState { hackathonRemoteDataSource.getHackathon(id) }
+    }
 }
