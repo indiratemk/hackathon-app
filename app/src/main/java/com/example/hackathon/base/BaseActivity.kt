@@ -31,8 +31,16 @@ abstract class BaseActivity : AppCompatActivity(), StateListener {
         }
     }
 
-    fun initToolbar(toolbar: Toolbar, title: String) {
-        toolbar.title = title
+    fun initToolbar(toolbar: Toolbar, title: String, isHomeScreen: Boolean) {
         setSupportActionBar(toolbar)
+        supportActionBar?.title = title
+        if (!isHomeScreen) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

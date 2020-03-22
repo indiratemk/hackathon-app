@@ -28,9 +28,7 @@ class MainActivity : BaseActivity() {
     private var selectedItemId = R.id.actionHackathons
     private lateinit var bottomPagerAdapter: BottomPagerAdapter
 
-    override fun layoutId(): Int {
-        return R.layout.activity_main
-    }
+    override fun layoutId() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +36,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initUI() {
-        initToolbar(toolbar, getString(R.string.main_title))
+        initToolbar(toolbar, getString(R.string.main_title), true)
         initBottomBar()
         updateBottomBar()
         bottomNavBar.setOnNavigationItemSelectedListener { menuItem ->

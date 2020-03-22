@@ -10,12 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon.R
 import com.example.hackathon.base.BaseFragment
+import com.example.hackathon.presentation.hackathon_detail.HackathonDetailActivity
+import com.example.hackathon.util.Constants
 import com.example.hackathon.util.state.State
 import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.fragment_hackathons.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HackathonsFragment : BaseFragment() {
+class HackathonsFragment : BaseFragment(), HackathonListener {
 
     companion object {
         fun newInstance(): HackathonsFragment {
@@ -28,7 +30,7 @@ class HackathonsFragment : BaseFragment() {
 
     private lateinit var searchView: SearchView
     private val hackathonsViewModel: HackathonsViewModel by viewModel()
-    private val hackathonsAdapter = HackathonsAdapter()
+    private val hackathonsAdapter = HackathonsAdapter(this)
 
     override fun layoutId() = R.layout.fragment_hackathons
 
@@ -105,5 +107,9 @@ class HackathonsFragment : BaseFragment() {
                 }
             }
         })
+    }
+
+    override fun onHackathonClick(id: Int) {
+        HackathonDetailActivity.startActivity(requireActivity(), id, Constants.HACKATHON_DETAIL_REQUEST_CODE)
     }
 }
