@@ -42,4 +42,11 @@
     <string name="hackathons_search">Поиск</string>
     <string name="vh_hackathon_date">%1$s - %2$s</string>
     <!--endregion-->
+
+    <!--region HACKATHON DETAILS-->
+    <string name="hackathon_detail_start_title">Начало</string>
+    <string name="hackathon_detail_end_title">Конец</string>
+    <string name="hackathon_detail_location_title">Местоположение</string>
+    <string name="hackathon_detail_participants_title">Участники</string>
+    <!--endregion-->
 </resources>

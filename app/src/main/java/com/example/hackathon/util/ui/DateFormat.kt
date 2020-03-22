@@ -6,6 +6,8 @@ import java.util.*
 object DateFormat {
 
     val DATE_FORMAT_1 = "dd MMM"
+    val DATE_FORMAT_2 = "dd MMMM"
+    val TIME_FORMAT_1 = "HH:mm"
 
     fun getFormattedDate(time: Long, format: String): String {
         val simpleDateFormat = SimpleDateFormat(format, Locale.getDefault())
