@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.R
 import com.example.hackathon.data.hackathon.model.Hackathon
 
-class HackathonsAdapter :
+class HackathonsAdapter(private val listener: HackathonListener) :
     RecyclerView.Adapter<HackathonVH>() {
 
     private var hackathons: List<Hackathon> = emptyList()
@@ -18,7 +18,7 @@ class HackathonsAdapter :
     }
 
     override fun onBindViewHolder(holder: HackathonVH, position: Int) {
-        holder.onBind(hackathons.get(position))
+        holder.onBind(hackathons.get(position), listener)
     }
 
     override fun getItemCount(): Int {

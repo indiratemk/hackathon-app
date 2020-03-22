@@ -16,7 +16,7 @@ class HackathonVH(view: View) : RecyclerView.ViewHolder(view) {
     private val tvHackathonParticipants = view.tvHackathonParticipants
     private val tvHackathonDate = view.tvHackathonDate
 
-    fun onBind(hackathon: Hackathon) {
+    fun onBind(hackathon: Hackathon, listener: HackathonListener) {
         Glide.with(itemView.context)
             .load(hackathon.thumbnailUrl)
             .placeholder(R.drawable.img_hackathon_no_image)
@@ -28,5 +28,6 @@ class HackathonVH(view: View) : RecyclerView.ViewHolder(view) {
         tvHackathonDate.text = itemView.resources.getString(R.string.vh_hackathon_date,
             DateFormat.getFormattedDate(hackathon.startDate.time, DateFormat.DATE_FORMAT_1),
             DateFormat.getFormattedDate(hackathon.endDate.time, DateFormat.DATE_FORMAT_1))
+        itemView.setOnClickListener { listener.onHackathonClick(hackathon.id) }
     }
 }
