@@ -42,9 +42,9 @@ data class Hackathon (
     @Expose
     val headerImage: String?,
 
-    @SerializedName("full_description")
+    @SerializedName("desc")
     @Expose
-    val fullDescription: String,
+    val description: String?,
 
     @SerializedName("website")
     @Expose
@@ -64,5 +64,17 @@ data class Hackathon (
 
     @SerializedName("number_of_participants")
     @Expose
-    val numberOfParticipants: String
+    val numberOfParticipants: String,
+
+    @SerializedName("criteria")
+    @Expose
+    val criteria: String?,
+
+    @SerializedName("rules")
+    @Expose
+    val rules: String?,
+
+    @SerializedName("tags")
+    @Expose
+    val tags: String?
 )

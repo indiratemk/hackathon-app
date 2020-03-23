@@ -48,5 +48,9 @@
     <string name="hackathon_detail_end_title">Конец</string>
     <string name="hackathon_detail_location_title">Местоположение</string>
     <string name="hackathon_detail_participants_title">Участники</string>
+    <string name="hackathon_detail_description">Описание</string>
+    <string name="hackathon_detail_criteria">Критерии</string>
+    <string name="hackathon_detail_rules">Правила</string>
+    <string name="hackathon_detail_participate">Участвовать!</string>
     <!--endregion-->
 </resources>
