@@ -262,7 +262,8 @@
                     android:id="@+id/clDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:foreground="?android:attr/selectableItemBackground">
 
                     <TextView
                         android:id="@+id/tvDescription"
@@ -291,7 +292,8 @@
                     android:id="@+id/clCriteria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:foreground="?android:attr/selectableItemBackground">
 
                     <TextView
                         android:id="@+id/tvCriteria"
@@ -320,7 +322,8 @@
                     android:id="@+id/clRules"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:foreground="?android:attr/selectableItemBackground">
 
                     <TextView
                         android:id="@+id/tvRules"
