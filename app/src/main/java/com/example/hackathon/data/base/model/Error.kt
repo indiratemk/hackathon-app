@@ -1,4 +1,4 @@
-package com.example.hackathon.util.error
+package com.example.hackathon.data.base.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
