@@ -104,7 +104,7 @@
 
         <ProgressBar
             android:id="@+id/ivButtonProgress"
-            android:theme="@style/CircularProgress"
+            android:theme="@style/WhiteCircularProgress"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="8dp"

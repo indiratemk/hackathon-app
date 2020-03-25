@@ -105,8 +105,12 @@
     <!--endregion-->
 
     <!--region PROGRESS BAR-->
-    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+    <style name="WhiteCircularProgress" parent="Theme.AppCompat.Light">
         <item name="colorAccent">@color/colorWhite</item>
+    </style>
+
+    <style name="BlueCircularProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/colorBlue</item>
     </style>
     <!--endregion-->
 

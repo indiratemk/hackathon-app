@@ -1,7 +1,7 @@
 package com.example.hackathon.util.state
 
 sealed class State<T>(
-    val data: T? = null,
+    val result: T? = null,
     val message: String? = null,
     val errorCode: Int? = 200,
     val isLoading: Boolean = false

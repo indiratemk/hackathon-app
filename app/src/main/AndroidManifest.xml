@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.hackathon_detail.HackathonDetailActivity"
+        <activity android:name=".presentation.hackathon.registration.HackathonRegistrationActivity"></activity>
+        <activity
+            android:name=".presentation.hackathon.detail.HackathonDetailActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.qr_scanner.QRScannerActivity"

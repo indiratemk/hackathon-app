@@ -3,7 +3,8 @@ package com.example.hackathon.di
 import com.example.hackathon.domain.auth.AuthRepository
 import com.example.hackathon.domain.hackathon.HackathonRepository
 import com.example.hackathon.domain.user.UserRepository
-import com.example.hackathon.presentation.hackathon_detail.HackathonDetailViewModel
+import com.example.hackathon.presentation.hackathon.detail.HackathonDetailViewModel
+import com.example.hackathon.presentation.hackathon.registration.HackathonRegistrationViewModel
 import com.example.hackathon.presentation.hackathons.HackathonsViewModel
 import com.example.hackathon.presentation.logout.LogoutViewModel
 import com.example.hackathon.presentation.profile.ProfileViewModel
@@ -19,4 +20,5 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get() as UserRepository) }
     viewModel { HackathonsViewModel(get() as HackathonRepository) }
     viewModel { HackathonDetailViewModel(get() as HackathonRepository) }
+    viewModel { HackathonRegistrationViewModel(get() as HackathonRepository) }
 }

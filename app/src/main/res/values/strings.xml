@@ -13,6 +13,7 @@
     <string name="registration_invalid_email_error">Пожалуйста, введите валидный email адрес</string>
     <string name="registration_empty_password">Пожалуйста, введите пароль</string>
     <string name="registration_empty_login">Пожалуйста, введите логин</string>
+    <string name="registration_success_signup">Вы успешно зарегестрированы</string>
     <!--endregion-->
 
     <!--region AUTHORIZATION-->
@@ -52,5 +53,13 @@
     <string name="hackathon_detail_criteria">Критерии</string>
     <string name="hackathon_detail_rules">Правила</string>
     <string name="hackathon_detail_participate">Участвовать!</string>
+    <string name="hackathon_detail_refuse_participation">Отказаться от участия</string>
+    <string name="hackathon_detail_success_unregister">Регистрация успешно отменена</string>
+    <!--endregion-->
+
+    <!--region HACKATHON REGISTRATION-->
+    <string name="hackathon_registration_title">Регистрация на хакатон</string>
+    <string name="hackathon_registration_participate">Принять участие</string>
+    <string name="hackathon_registration_success_registration">Вы успешно зарегестрированы</string>
     <!--endregion-->
 </resources>
