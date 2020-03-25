@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView
 import com.example.hackathon.R
-import com.example.hackathon.base.BaseActivity
+import com.example.hackathon.presentation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_qr_scanner.*
 
 // TODO может сделать расширение для QRCodeReaderView чтобы не тащить весь класс
@@ -38,7 +38,10 @@ class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener 
         qrScannerView.setOnQRCodeReadListener(this)
         qrScannerView.setAutofocusInterval(1000L)
 
-        ivClose.setOnClickListener { finish() }
+        ivClose.setOnClickListener {
+            setResult(Activity.RESULT_OK)
+            finish()
+        }
         ivFlash.setOnClickListener {
             isFlashEnabled = !isFlashEnabled
             ivFlash.setImageResource(if (isFlashEnabled) R.drawable.ic_flash else R.drawable.ic_flash_off)

@@ -1,6 +1,7 @@
 package com.example.hackathon.presentation.main
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
@@ -8,7 +9,7 @@ import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.hackathon.R
-import com.example.hackathon.base.BaseActivity
+import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.hackathons.HackathonsFragment
 import com.example.hackathon.presentation.profile.ProfileFragment
 import com.example.hackathon.presentation.qr_scanner.QRScannerActivity
@@ -87,8 +88,10 @@ class MainActivity : BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         updateBottomBar()
-        if (requestCode == Constants.AUTH_REQUEST_CODE || requestCode == Constants.QR_SCANNER_REQUEST_CODE) {
-            bottomNavBar.selectedItemId = selectedItemId
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == Constants.AUTH_REQUEST_CODE || requestCode == Constants.QR_SCANNER_REQUEST_CODE) {
+                bottomNavBar.selectedItemId = selectedItemId
+            }
         }
     }
 

@@ -7,7 +7,7 @@ import android.util.Patterns
 import android.view.View
 import androidx.lifecycle.Observer
 import com.example.hackathon.R
-import com.example.hackathon.base.BaseActivity
+import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.sign_in.SignInActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.state.State
@@ -55,6 +55,7 @@ class SignUpActivity : BaseActivity(), StateListener {
         }
 
         tvSignIn.setOnClickListener {
+            UIUtil.showSuccessMessage(this, getString(R.string.registration_success_signup))
             finish()
             SignInActivity.startActivity(this, Constants.AUTH_REQUEST_CODE)
         }

@@ -2,16 +2,17 @@ package com.example.hackathon.presentation.logout
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.hackathon.base.BaseViewModel
+import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.domain.auth.AuthRepository
+import com.example.hackathon.data.base.model.SuccessResult
 import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 
 class LogoutViewModel(private val authRepository: AuthRepository) : BaseViewModel() {
 
-    private val _logout = MutableLiveData<State<Unit>>()
+    private val _logout = MutableLiveData<State<SuccessResult<Boolean, Unit>>>()
 
-    val logout: LiveData<State<Unit>>
+    val logout: LiveData<State<SuccessResult<Boolean, Unit>>>
         get() = _logout
 
     fun logout() {

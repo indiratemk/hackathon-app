@@ -7,7 +7,7 @@ import android.util.Patterns
 import android.view.View
 import androidx.lifecycle.Observer
 import com.example.hackathon.R
-import com.example.hackathon.base.BaseActivity
+import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.sign_up.SignUpActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.PreferenceUtils

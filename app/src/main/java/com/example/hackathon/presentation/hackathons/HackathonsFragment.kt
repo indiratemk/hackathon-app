@@ -9,8 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon.R
-import com.example.hackathon.base.BaseFragment
-import com.example.hackathon.presentation.hackathon_detail.HackathonDetailActivity
+import com.example.hackathon.presentation.base.BaseFragment
+import com.example.hackathon.presentation.hackathon.detail.HackathonDetailActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.state.State
 import com.example.hackathon.util.ui.UIUtil
@@ -79,10 +79,11 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
                     refreshLayout.isRefreshing = dataState.isLoading
                 }
                 is State.Success -> {
-                    hackathonsAdapter.setHackathons(dataState.data!!.results)
+                    hackathonsAdapter.setHackathons(dataState.result!!.data)
                 }
             }
         })
+
         hackathonsViewModel.search.observe(viewLifecycleOwner, Observer { dataState ->
             when (dataState) {
                 is State.Loading -> {
@@ -91,7 +92,7 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
                 is State.Success -> {
                     rvHackathons.visibility = View.VISIBLE
                     tvSearchError.visibility = View.GONE
-                    hackathonsAdapter.setHackathons(dataState.data!!.results)
+                    hackathonsAdapter.setHackathons(dataState.result!!.data)
                 }
                 is State.BackendError -> {
                     if (dataState.errorCode == 404) {

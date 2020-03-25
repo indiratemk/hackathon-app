@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.example.hackathon.HackathonApp
 import com.example.hackathon.R
-import com.example.hackathon.base.BaseFragment
+import com.example.hackathon.presentation.base.BaseFragment
 import com.example.hackathon.presentation.logout.LogoutViewModel
 import com.example.hackathon.util.state.State
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -42,8 +42,8 @@ class ProfileFragment : BaseFragment() {
             onStateChange(dataState)
             when (dataState) {
                 is State.Success -> {
-                    tvLogin.text = dataState.data?.login
-                    tvEmail.text = dataState.data?.email
+                    tvLogin.text = dataState.result?.data?.login
+                    tvEmail.text = dataState.result?.data?.email
                 }
             }
         })
