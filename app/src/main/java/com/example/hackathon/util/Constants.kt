@@ -10,6 +10,7 @@ class Constants {
         const val AUTH_REQUEST_CODE = 1012
         const val QR_SCANNER_REQUEST_CODE = 1013
         const val HACKATHON_DETAIL_REQUEST_CODE = 1014
+        const val HACKATHON_REGISTRATION_REQUEST_CODE = 1015
         //endregion
 
         //region EXTRAS
