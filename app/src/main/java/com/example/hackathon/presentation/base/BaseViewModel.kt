@@ -1,4 +1,4 @@
-package com.example.hackathon.base
+package com.example.hackathon.presentation.base
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope

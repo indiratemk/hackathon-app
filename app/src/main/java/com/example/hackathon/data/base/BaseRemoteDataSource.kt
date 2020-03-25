@@ -1,7 +1,7 @@
-package com.example.hackathon.base
+package com.example.hackathon.data.base
 
-import com.example.hackathon.util.ApiResponse
-import com.example.hackathon.util.error.ErrorUtils
+import com.example.hackathon.util.response.ApiResponse
+import com.example.hackathon.util.response.error.ErrorUtils
 import com.example.hackathon.util.exception.ApiException
 import com.example.hackathon.util.exception.NetworkException
 import retrofit2.Response

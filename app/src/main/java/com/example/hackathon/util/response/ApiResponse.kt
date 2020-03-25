@@ -1,4 +1,4 @@
-package com.example.hackathon.util
+package com.example.hackathon.util.response
 
 import java.lang.Exception
 

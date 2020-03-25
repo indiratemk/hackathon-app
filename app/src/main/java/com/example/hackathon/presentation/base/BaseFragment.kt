@@ -1,4 +1,4 @@
-package com.example.hackathon.base
+package com.example.hackathon.presentation.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
