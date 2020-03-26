@@ -3,7 +3,7 @@ package com.example.hackathon.data.base.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class SuccessResult<D, M>(
+data class Result<D, M>(
 
     @SerializedName("meta")
     @Expose

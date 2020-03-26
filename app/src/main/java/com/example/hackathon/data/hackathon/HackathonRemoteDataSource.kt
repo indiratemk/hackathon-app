@@ -5,31 +5,31 @@ import com.example.hackathon.data.HackathonApi
 import com.example.hackathon.data.base.model.Paging
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.util.response.ApiResponse
-import com.example.hackathon.data.base.model.SuccessResult
+import com.example.hackathon.data.base.model.Result
 
 class HackathonRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRemoteDataSource() {
 
-    suspend fun getHackathons(): ApiResponse<SuccessResult<List<Hackathon>, Paging>> {
+    suspend fun getHackathons(): ApiResponse<Result<List<Hackathon>, Paging>> {
         return getResponse { hackathonApi.getHackathons() }
     }
 
-    suspend fun searchHackathons(query: String): ApiResponse<SuccessResult<List<Hackathon>, Paging>> {
+    suspend fun searchHackathons(query: String): ApiResponse<Result<List<Hackathon>, Paging>> {
         return getResponse { hackathonApi.searchHackathons(query) }
     }
 
-    suspend fun getHackathon(id: Int): ApiResponse<SuccessResult<Hackathon, Unit>> {
+    suspend fun getHackathon(id: Int): ApiResponse<Result<Hackathon, Unit>> {
         return getResponse { hackathonApi.getHackathon(id) }
     }
 
-    suspend fun checkParticipation(id: Int): ApiResponse<SuccessResult<Boolean, Unit>> {
+    suspend fun checkParticipation(id: Int): ApiResponse<Result<Boolean, Unit>> {
         return getResponse { hackathonApi.checkParticipation(id) }
     }
 
-    suspend fun register(id: Int): ApiResponse<SuccessResult<Boolean, Unit>> {
+    suspend fun register(id: Int): ApiResponse<Result<Boolean, Unit>> {
         return getResponse { hackathonApi.register(id) }
     }
 
-    suspend fun unregister(id: Int): ApiResponse<SuccessResult<Boolean, Unit>> {
+    suspend fun unregister(id: Int): ApiResponse<Result<Boolean, Unit>> {
         return getResponse { hackathonApi.unregister(id) }
     }
 }

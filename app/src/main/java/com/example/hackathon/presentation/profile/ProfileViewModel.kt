@@ -5,15 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.domain.user.UserRepository
-import com.example.hackathon.data.base.model.SuccessResult
+import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(private val userRepository: UserRepository) : BaseViewModel() {
 
-    private val _user = MutableLiveData<State<SuccessResult<User, Unit>>>()
+    private val _user = MutableLiveData<State<Result<User, Unit>>>()
 
-    val user: LiveData<State<SuccessResult<User, Unit>>>
+    val user: LiveData<State<Result<User, Unit>>>
         get() = _user
 
     init {

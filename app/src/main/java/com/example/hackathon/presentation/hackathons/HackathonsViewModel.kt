@@ -6,19 +6,19 @@ import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.data.base.model.Paging
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.domain.hackathon.HackathonRepository
-import com.example.hackathon.data.base.model.SuccessResult
+import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 
 class HackathonsViewModel(private val hackathonRepository: HackathonRepository) : BaseViewModel() {
 
-    private val _hackathons = MutableLiveData<State<SuccessResult<List<Hackathon>, Paging>>>()
-    private val _search = MutableLiveData<State<SuccessResult<List<Hackathon>, Paging>>>()
+    private val _hackathons = MutableLiveData<State<Result<List<Hackathon>, Paging>>>()
+    private val _search = MutableLiveData<State<Result<List<Hackathon>, Paging>>>()
 
-    val hackathons: LiveData<State<SuccessResult<List<Hackathon>, Paging>>>
+    val hackathons: LiveData<State<Result<List<Hackathon>, Paging>>>
         get() = _hackathons
 
-    val search: LiveData<State<SuccessResult<List<Hackathon>, Paging>>>
+    val search: LiveData<State<Result<List<Hackathon>, Paging>>>
         get() = _search
 
     init {
