@@ -76,5 +76,5 @@ data class Hackathon (
 
     @SerializedName("tags")
     @Expose
-    val tags: String?
+    val tags: List<Tag>
 )
