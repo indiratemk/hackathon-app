@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.hackathon.registration.HackathonRegistrationActivity"></activity>
+        <activity android:name=".presentation.qr_scanner.ParticipationConfirmedActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".presentation.hackathon.registration.HackathonRegistrationActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.hackathon.detail.HackathonDetailActivity"
             android:screenOrientation="portrait" />
