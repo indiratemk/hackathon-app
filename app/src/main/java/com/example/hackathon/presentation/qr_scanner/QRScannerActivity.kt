@@ -31,6 +31,7 @@ class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener,
     private var isFlashEnabled = false
     private var isFrontCamera = false
     private var isProcessing = false
+    private var hackathonId: Int? = null
     private lateinit var progressDialog: ProgressDialog
 
     override fun layoutId(): Int {
@@ -79,7 +80,8 @@ class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener,
                     if (dataState.isLoading) showProgressDialog() else hideProgressDialog()
                 }
                 is State.Success -> {
-                    ParticipationConfirmedActivity.startActivity(this, Constants.PARTICIPATION_CONFIRMED_REQUEST_CODE)
+                    ParticipationConfirmedActivity.startActivity(this, hackathonId!!,
+                        Constants.PARTICIPATION_CONFIRMED_REQUEST_CODE)
                     setResult(Activity.RESULT_OK)
                     finish()
                 }
@@ -107,7 +109,7 @@ class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener,
     }
     
     private fun showProgressDialog() {
-        progressDialog.setMessage("Пожалуйста подождите...")
+        progressDialog.setMessage(getString(R.string.qr_scanner_loading))
         progressDialog.show()
     }
 
@@ -123,6 +125,7 @@ class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener,
             if (!isProcessing) {
                 isProcessing = true
                 tvQRError.visibility = View.GONE
+                hackathonId = qrParams.hackathonId
                 qrScannerViewModel.confirmParticipation(qrParams.hackathonId, qrParams.userId)
             }
         } catch (e: JsonSyntaxException) {
