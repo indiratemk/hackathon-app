@@ -25,12 +25,4 @@ class HackathonRepository(private val hackathonRemoteDataSource: HackathonRemote
     override suspend fun checkParticipation(id: Int): State<Result<Boolean, Unit>> {
         return handleState { hackathonRemoteDataSource.checkParticipation(id) }
     }
-
-    override suspend fun register(id: Int): State<Result<Boolean, Unit>> {
-        return handleState { hackathonRemoteDataSource.register(id) }
-    }
-
-    override suspend fun unregister(id: Int): State<Result<Boolean, Unit>> {
-        return handleState { hackathonRemoteDataSource.unregister(id) }
-    }
 }

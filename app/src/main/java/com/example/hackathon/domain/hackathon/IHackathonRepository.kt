@@ -14,8 +14,4 @@ interface IHackathonRepository {
     suspend fun getHackathon(id: Int): State<Result<Hackathon, Unit>>
 
     suspend fun checkParticipation(id: Int): State<Result<Boolean, Unit>>
-
-    suspend fun register(id: Int): State<Result<Boolean, Unit>>
-
-    suspend fun unregister(id: Int): State<Result<Boolean, Unit>>
 }

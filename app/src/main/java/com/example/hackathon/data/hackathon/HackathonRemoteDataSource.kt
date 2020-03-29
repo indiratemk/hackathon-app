@@ -24,12 +24,4 @@ class HackathonRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRe
     suspend fun checkParticipation(id: Int): ApiResponse<Result<Boolean, Unit>> {
         return getResponse { hackathonApi.checkParticipation(id) }
     }
-
-    suspend fun register(id: Int): ApiResponse<Result<Boolean, Unit>> {
-        return getResponse { hackathonApi.register(id) }
-    }
-
-    suspend fun unregister(id: Int): ApiResponse<Result<Boolean, Unit>> {
-        return getResponse { hackathonApi.unregister(id) }
-    }
 }

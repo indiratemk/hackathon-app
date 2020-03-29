@@ -3,6 +3,7 @@ package com.example.hackathon.di
 import com.example.hackathon.data.HackathonApi
 import com.example.hackathon.data.auth.AuthRemoteDataSource
 import com.example.hackathon.data.hackathon.HackathonRemoteDataSource
+import com.example.hackathon.data.participants.ParticipantsRemoteDataSource
 import com.example.hackathon.data.user.UserRemoteDataStore
 import com.example.hackathon.di.interceptors.RequestInterceptor
 import com.example.hackathon.di.interceptors.ResponseInterceptor
@@ -20,6 +21,7 @@ val networkModule = module {
     single { AuthRemoteDataSource(get()) }
     single { UserRemoteDataStore(get()) }
     single { HackathonRemoteDataSource(get()) }
+    single { ParticipantsRemoteDataSource(get()) }
 }
 
 fun provideOkHttpClient(responseInterceptor: ResponseInterceptor,

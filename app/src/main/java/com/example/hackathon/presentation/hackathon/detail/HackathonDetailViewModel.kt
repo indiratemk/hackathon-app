@@ -6,10 +6,12 @@ import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.domain.hackathon.HackathonRepository
 import com.example.hackathon.data.base.model.Result
+import com.example.hackathon.domain.participants.ParticipantsRepository
 import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 
-class HackathonDetailViewModel(private val hackathonRepository: HackathonRepository) : BaseViewModel() {
+class HackathonDetailViewModel(private val hackathonRepository: HackathonRepository,
+                               private val participantsRepository: ParticipantsRepository) : BaseViewModel() {
 
     private val _hackathon = MutableLiveData<State<Result<Hackathon, Unit>>>()
     private val _isParticipate = MutableLiveData<State<Result<Boolean, Unit>>>()
@@ -40,7 +42,7 @@ class HackathonDetailViewModel(private val hackathonRepository: HackathonReposit
 
     fun unregister(id: Int) {
         coroutineContext.launch {
-            _unregister.value = hackathonRepository.unregister(id)
+            _unregister.value = participantsRepository.unregister(id)
         }
     }
 }
