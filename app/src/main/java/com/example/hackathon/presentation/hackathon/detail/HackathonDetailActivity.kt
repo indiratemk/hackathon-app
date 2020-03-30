@@ -3,14 +3,13 @@ package com.example.hackathon.presentation.hackathon.detail
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.hackathon.R
-import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.data.hackathon.model.Hackathon
+import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.hackathon.registration.HackathonRegistrationActivity
 import com.example.hackathon.presentation.sign_in.SignInActivity
 import com.example.hackathon.util.Constants
@@ -44,7 +43,6 @@ class HackathonDetailActivity : BaseActivity() {
     override fun layoutId() = R.layout.activity_hackathon_detail
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.TransparentTheme)
         super.onCreate(savedInstanceState)
         hackathonId = intent.getIntExtra(Constants.HACKATHON_ID_EXTRA, -1)
         subscribeObservers()
@@ -102,10 +100,12 @@ class HackathonDetailActivity : BaseActivity() {
                     setVisibilities(dataState.isLoading)
                 }
                 is State.Success -> {
-                    Log.d("taaaaaaag", "hackathon")
                     val hackathon = dataState.result!!.data
-                    initToolbar(collapsedToolbar, hackathon.title, false)
-                    collapseBehavior()
+                    initToolbar(collapsedToolbar,
+                                ContextCompat.getDrawable(this, R.drawable.ic_arrow_left)!!,
+                                hackathon.title,
+                                false)
+                    collapseBehavior(hackathon.title)
                     setVisibilities(false)
                     setDetailInfo(hackathon)
                 }
@@ -167,7 +167,7 @@ class HackathonDetailActivity : BaseActivity() {
         if (hackathon.rules != null) mvRules.setMarkDownText(hackathon.rules) else clRules.visibility = View.GONE
     }
 
-    private fun collapseBehavior() {
+    private fun collapseBehavior(title: String) {
         var isShow = true
         var scrollRange = -1
         appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { barLayout, verticalOffset ->
@@ -176,9 +176,11 @@ class HackathonDetailActivity : BaseActivity() {
             }
             if (scrollRange + verticalOffset == 0){
                 tvTitle.visibility = View.GONE
+                collapsingToolbar.title = title
                 isShow = true
             } else if (isShow){
                 tvTitle.visibility = View.VISIBLE
+                collapsingToolbar.title = " "
                 isShow = false
             }
         })
@@ -188,8 +190,7 @@ class HackathonDetailActivity : BaseActivity() {
         btnParticipate.setBackgroundColor(ContextCompat.getColor(this,
             if (isParticipate) R.color.colorDullRed else R.color.colorBlue))
 
-        btnParticipate.text = if (isParticipate) getString(R.string.hackathon_detail_refuse_participation)
-        else getString(R.string.hackathon_detail_participate)
+        btnParticipate.text = if (isParticipate) getString(R.string.hackathon_detail_refuse_participation) else getString(R.string.hackathon_detail_participate)
     }
 
     private fun setVisibilities(isLoading: Boolean) {
