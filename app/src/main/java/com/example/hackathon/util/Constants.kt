@@ -3,7 +3,7 @@ package com.example.hackathon.util
 class Constants {
 
     companion object {
-        const val BASE_URL = "http://207.154.220.124/api/"
+        const val BASE_URL = "https://hackathon-platform.space/api/"
 
         //region REQUEST CODE
         const val CAMERA_REQUEST_CODE = 1011
