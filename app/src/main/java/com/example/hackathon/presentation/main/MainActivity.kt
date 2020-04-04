@@ -36,7 +36,6 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initUI() {
-        initToolbar(toolbar, getString(R.string.main_title), true)
         initBottomBar()
         updateBottomBar()
         bottomNavBar.setOnNavigationItemSelectedListener { menuItem ->

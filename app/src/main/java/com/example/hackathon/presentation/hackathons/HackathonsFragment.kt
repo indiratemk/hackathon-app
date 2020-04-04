@@ -9,12 +9,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hackathon.R
+import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.base.BaseFragment
 import com.example.hackathon.presentation.hackathon.detail.HackathonDetailActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.state.State
 import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.fragment_hackathons.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HackathonsFragment : BaseFragment(), HackathonListener {
@@ -62,6 +64,8 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
     }
 
     private fun initUI() {
+        (requireActivity() as BaseActivity).initToolbar(toolbar,
+            getString(R.string.hackathons_title), true)
         refreshLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorBlue))
         refreshLayout.setOnRefreshListener { hackathonsViewModel.getHackathons() }
         rvHackathons.apply {

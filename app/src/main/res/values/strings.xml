@@ -35,13 +35,13 @@
     <!--endregion-->
 
     <!--region MAIN-->
-    <string name="main_title">Hackathon App</string>
     <string name="main_bottom_nav_hackathons">Хакатоны</string>
     <string name="main_bottom_nav_qr_scanner">QR сканнер</string>
     <string name="main_bottom_nav_profile">Профиль</string>
     <!--endregion-->
 
     <!--region HACKATHONS-->
+    <string name="hackathons_title">Hackathon App</string>
     <string name="hackathons_search">Поиск</string>
     <string name="vh_hackathon_date">%1$s - %2$s</string>
     <!--endregion-->
