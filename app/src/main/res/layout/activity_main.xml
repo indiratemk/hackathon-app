@@ -32,6 +32,8 @@
         app:itemIconTint="@drawable/bottom_bar_text_color"
         app:itemTextColor="@drawable/bottom_bar_text_color"
         app:itemBackground="@color/colorBlue"
+        app:itemTextAppearanceActive="@style/PrimaryTextView14"
+        app:itemTextAppearanceInactive="@style/PrimaryTextView14"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorBlue</item>
         <item name="colorPrimaryDark">@color/colorDarkBlue</item>
         <item name="colorAccent">@color/colorWhite</item>
+        <item name="android:navigationBarColor">@color/colorDarkBlack</item>
     </style>
 
     <style name="LightTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -17,6 +18,7 @@
         <item name="colorPrimary">@color/colorWhite</item>
         <item name="colorPrimaryDark">@color/colorDarkBlack</item>
         <item name="colorAccent">@color/colorBlue</item>
+        <item name="android:navigationBarColor">@color/colorDarkBlack</item>
     </style>
 
     <style name="TransparentTheme" parent="AppTheme">

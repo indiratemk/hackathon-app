@@ -104,10 +104,6 @@ class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener,
         qrScannerView.stopCamera()
     }
 
-    private fun initLoadingDialog() {
-
-    }
-    
     private fun showProgressDialog() {
         progressDialog.setMessage(getString(R.string.qr_scanner_loading))
         progressDialog.show()
