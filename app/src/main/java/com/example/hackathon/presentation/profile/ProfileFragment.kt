@@ -42,7 +42,7 @@ class ProfileFragment : BaseFragment() {
             onStateChange(dataState)
             when (dataState) {
                 is State.Success -> {
-                    tvLogin.text = dataState.result?.data?.login
+                    tvFullName.text = dataState.result?.data?.name + " " + dataState.result?.data?.surname
                     tvEmail.text = dataState.result?.data?.email
                 }
             }
