@@ -27,8 +27,9 @@
                 android:id="@+id/ivBackdrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
+                android:background="@color/colorGray200"
                 app:layout_collapseMode="parallax"
                 tools:ignore="contentDescription"/>
 
@@ -46,14 +47,13 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorGray200"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <include layout="@layout/layout_divider" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -68,6 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <include layout="@layout/layout_divider" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -263,7 +265,6 @@
                     android:id="@+id/clDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:foreground="?android:attr/selectableItemBackground">
 
                     <TextView
@@ -271,8 +272,9 @@
                         style="@style/PrimaryBoldTextView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
                         android:text="@string/hackathon_detail_description"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/viewDescription"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -280,20 +282,28 @@
                         android:id="@+id/ivDescriptionArrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
                         app:layout_constraintBottom_toBottomOf="@+id/tvDescription"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvDescription"
                         app:srcCompat="@drawable/ic_arrow_right"
                         tools:ignore="contentDescription" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <include layout="@layout/layout_divider" />
+                    <View
+                        android:id="@+id/viewDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorGray300"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clCriteria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:foreground="?android:attr/selectableItemBackground">
 
                     <TextView
@@ -301,8 +311,9 @@
                         style="@style/PrimaryBoldTextView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
                         android:text="@string/hackathon_detail_criteria"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/viewCriteria"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -310,20 +321,28 @@
                         android:id="@+id/ivCriteriaArrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
                         app:layout_constraintBottom_toBottomOf="@+id/tvCriteria"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvCriteria"
                         app:srcCompat="@drawable/ic_arrow_right"
                         tools:ignore="contentDescription" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <include layout="@layout/layout_divider" />
+                    <View
+                        android:id="@+id/viewCriteria"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorGray300"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCriteria" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clRules"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:foreground="?android:attr/selectableItemBackground">
 
                     <TextView
@@ -331,8 +350,9 @@
                         style="@style/PrimaryBoldTextView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
                         android:text="@string/hackathon_detail_rules"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/viewRules"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -340,24 +360,34 @@
                         android:id="@+id/ivRulesArrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
                         app:layout_constraintBottom_toBottomOf="@+id/tvRules"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvRules"
                         app:srcCompat="@drawable/ic_arrow_right"
                         tools:ignore="contentDescription" />
+
+                    <View
+                        android:id="@+id/viewRules"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorGray300"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvRules" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <include layout="@layout/layout_divider" />
-
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/btnParticipate"
-        style="@style/PrimaryButton"
+        style="@style/RoundedPrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="8dp"
         android:text="@string/hackathon_detail_participate"
-        android:layout_gravity="bottom" />
+        android:elevation="1dp" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
