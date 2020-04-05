@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorWhite"
+    android:background="@color/colorWhite100"
     tools:context=".presentation.sign_in.SignInActivity">
 
     <LinearLayout
@@ -34,7 +34,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorGray"/>
+        android:background="@color/colorGray400"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
@@ -60,7 +60,7 @@
         android:layout_marginEnd="24dp"
         android:paddingBottom="8dp"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/colorGray">
+        app:passwordToggleTint="@color/colorGray400">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tietPassword"
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/authorization_sign_in"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite100"/>
     </LinearLayout>
 
     <LinearLayout

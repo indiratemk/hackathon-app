@@ -2,23 +2,23 @@
 
     <!--region BASE THEME-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorBlue</item>
-        <item name="colorPrimaryDark">@color/colorDarkBlue</item>
-        <item name="colorAccent">@color/colorWhite</item>
-        <item name="android:navigationBarColor">@color/colorDarkBlack</item>
+        <item name="colorPrimary">@color/colorIndigo500</item>
+        <item name="colorPrimaryDark">@color/colorIndigo500</item>
+        <item name="colorAccent">@color/colorWhite100</item>
+        <item name="android:navigationBarColor">@color/colorBlack200</item>
     </style>
 
     <style name="LightTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorWhite</item>
-        <item name="colorPrimaryDark">@color/colorWhite</item>
-        <item name="colorAccent">@color/colorBlue</item>
+        <item name="colorPrimary">@color/colorWhite100</item>
+        <item name="colorPrimaryDark">@color/colorWhite100</item>
+        <item name="colorAccent">@color/colorIndigo500</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorWhite</item>
-        <item name="colorPrimaryDark">@color/colorDarkBlack</item>
-        <item name="colorAccent">@color/colorBlue</item>
-        <item name="android:navigationBarColor">@color/colorDarkBlack</item>
+        <item name="colorPrimary">@color/colorWhite100</item>
+        <item name="colorPrimaryDark">@color/colorBlack200</item>
+        <item name="colorAccent">@color/colorBlue200</item>
+        <item name="android:navigationBarColor">@color/colorBlack200</item>
     </style>
 
     <style name="TransparentTheme" parent="AppTheme">
@@ -29,21 +29,21 @@
     <!--region PRIMARY TEXT VIEW-->
     <style name="PrimaryTextView14" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorBlack100</item>
     </style>
 
     <style name="PrimaryTextView16" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorBlack100</item>
     </style>
 
     <style name="PrimaryTextView18" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorBlack100</item>
     </style>
 
     <style name="PrimaryTextView20" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorBlack100</item>
         <item name="android:textSize">20sp</item>
     </style>
     <!--endregion-->
@@ -68,13 +68,13 @@
 
     <!--region SECONDARY TEXT VIEW-->
     <style name="SecondaryTextView14" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/colorDarkGray</item>
+        <item name="android:textColor">@color/colorGray500</item>
     </style>
     <!--endregion-->
 
     <!--region ACCENT TEXT VIEW-->
     <style name="AccentTextView14" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textColor">@color/colorIndigo500</item>
     </style>
     <!--endregion-->
 
@@ -82,21 +82,21 @@
     <style name="InputTextOutlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColorHint">@color/colorGray</item>
+        <item name="android:textColorHint">@color/colorGray400</item>
         <item name="android:focusableInTouchMode">true</item>
     </style>
 
     <style name="MaterialEditText14" parent="Widget.AppCompat.EditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorBlack100</item>
     </style>
     <!--endregion-->
 
     <!--region PRIMARY BUTTON-->
     <style name="PrimaryButton" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:background">@color/colorBlue</item>
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@color/colorIndigo500</item>
+        <item name="android:textColor">@color/colorWhite100</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textAllCaps">false</item>
     </style>
@@ -104,15 +104,19 @@
     <style name="RoundedPrimaryButton" parent="PrimaryButton">
         <item name="android:background">@drawable/shape_button_primary</item>
     </style>
+
+    <style name="RoundedErrorButton" parent="PrimaryButton">
+        <item name="android:background">@drawable/shape_button_error</item>
+    </style>
     <!--endregion-->
 
     <!--region PROGRESS BAR-->
     <style name="WhiteCircularProgress" parent="Theme.AppCompat.Light">
-        <item name="colorAccent">@color/colorWhite</item>
+        <item name="colorAccent">@color/colorWhite100</item>
     </style>
 
     <style name="BlueCircularProgress" parent="Theme.AppCompat.Light">
-        <item name="colorAccent">@color/colorBlue</item>
+        <item name="colorAccent">@color/colorIndigo500</item>
     </style>
     <!--endregion-->
 

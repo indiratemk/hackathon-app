@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorBlue</item>
-        <item name="colorPrimaryDark">@color/colorDarkBlue</item>
-        <item name="colorAccent">@color/colorWhite</item>
+        <item name="colorPrimary">@color/colorIndigo500</item>
+        <item name="colorPrimaryDark">@color/colorIndigo500</item>
+        <item name="colorAccent">@color/colorWhite100</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">@color/colorDarkBlack</item>
+        <item name="android:navigationBarColor">@color/colorBlack200</item>
     </style>
 
     <style name="LightTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorWhite</item>
-        <item name="colorPrimaryDark">@color/colorWhite</item>
-        <item name="colorAccent">@color/colorBlue</item>
+        <item name="colorPrimary">@color/colorWhite100</item>
+        <item name="colorPrimaryDark">@color/colorWhite100</item>
+        <item name="colorAccent">@color/colorIndigo500</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorWhite</item>
-        <item name="colorPrimaryDark">@color/colorDarkBlack</item>
-        <item name="colorAccent">@color/colorBlue</item>
+        <item name="colorPrimary">@color/colorWhite100</item>
+        <item name="colorPrimaryDark">@color/colorBlack200</item>
+        <item name="colorAccent">@color/colorBlue200</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">@color/colorDarkBlack</item>
+        <item name="android:navigationBarColor">@color/colorBlack200</item>
     </style>
 </resources>

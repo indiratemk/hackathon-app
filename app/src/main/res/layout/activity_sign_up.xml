@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorWhite"
+    android:background="@color/colorWhite100"
     tools:context=".presentation.sign_up.SignUpActivity">
 
     <LinearLayout
@@ -34,7 +34,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorGray"/>
+        android:background="@color/colorGray400"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilLogin"
@@ -43,14 +43,14 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:paddingBottom="8dp"
-        android:textColorHint="@color/colorGray">
+        android:textColorHint="@color/colorGray400">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tietLogin"
             style="@style/MaterialEditText14"
             android:drawableStart="@drawable/ic_user"
             android:drawablePadding="8dp"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorBlack100"
             android:hint="@string/registration_login" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,14 +77,14 @@
         android:layout_marginEnd="24dp"
         android:paddingBottom="8dp"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/colorGray">
+        app:passwordToggleTint="@color/colorGray400">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tietPassword"
             style="@style/MaterialEditText14"
             android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="8dp"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorBlack100"
             android:hint="@string/registration_password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/registration_sign_up"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite100"/>
     </LinearLayout>
 
     <LinearLayout

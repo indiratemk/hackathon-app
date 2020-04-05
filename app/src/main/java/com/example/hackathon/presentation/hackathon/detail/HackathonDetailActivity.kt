@@ -187,9 +187,7 @@ class HackathonDetailActivity : BaseActivity() {
     }
 
     private fun updateParticipateButton() {
-        btnParticipate.setBackgroundColor(ContextCompat.getColor(this,
-            if (isParticipate) R.color.colorDullRed else R.color.colorBlue))
-
+        btnParticipate.setBackgroundResource( if (isParticipate) R.drawable.shape_button_error else R.drawable.shape_button_primary_active)
         btnParticipate.text = if (isParticipate) getString(R.string.hackathon_detail_refuse_participation) else getString(R.string.hackathon_detail_participate)
     }
 

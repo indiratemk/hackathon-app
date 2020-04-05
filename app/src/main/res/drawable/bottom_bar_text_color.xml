@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true"
-        android:color="@color/colorWhite" />
+        android:color="@color/colorIndigo500" />
     <item android:state_selected="false"
-        android:color="@color/colorWhiteOpacity" />
+        android:color="@color/colorBlack100_Opacity80" />
 </selector>

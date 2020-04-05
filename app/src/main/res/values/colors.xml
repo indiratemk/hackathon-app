@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorWhiteOpacity">#99FFFFFF</color>
-    <color name="colorDarkWhite">#F5F5F5</color>
-    <color name="colorLightGray">#EBEDF0</color>
-    <color name="colorGray">#D9D9D9</color>
-    <color name="colorDarkGray">#595959</color>
-    <color name="colorLightGreen">#F5FDED</color>
-    <color name="colorGreen">#5CC531</color>
-    <color name="colorDarkBlue">#1479D6</color>
-    <color name="colorBlue">#1890FF</color>
-    <color name="colorSolitudeBlue">#F0F2F5</color>
-    <color name="colorLightBlue">#90C4FF</color>
-    <color name="colorBlack">#383838</color>
-    <color name="colorBlackOpacity">#CC383838</color>
-    <color name="colorRed">#EC2D2C</color>
-    <color name="colorDullRed">#EE6466</color>
-    <color name="colorLightRed">#FDF1EF</color>
-    <color name="colorDarkBlack">#000000</color>
-    <color name="colorDarkBlackOpacity">#CC000000</color>
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/colorGray</color>
+    <!--region WHITE-->
+    <color name="colorWhite100">#FFFFFF</color>
+    <color name="colorWhite100_Opacity60">#99FFFFFF</color>
+    <color name="colorWhite200">#F5F5F5</color>
+    <!--endregion-->
+    <!--region GRAY-->
+    <color name="colorGray100">#F7FAFC</color>
+    <color name="colorGray200">#F0F2F5</color>
+    <color name="colorGray300">#E2E8F0</color>
+    <color name="colorGray400">#D9D9D9</color>
+    <color name="colorGray500">#595959</color>
+    <!--endregion-->
+    <!--region GREEN-->
+    <color name="colorGreen100">#F5FDED</color>
+    <color name="colorGreen200">#5CC531</color>
+    <!--endregion-->
+    <!--region BLUE-->
+    <color name="colorBlue200">#1890FF</color>
+    <!--endregion-->
+    <!--region RED-->
+    <color name="colorRed100">#FDF1EF</color>
+    <color name="colorRed200">#EE6466</color>
+    <color name="colorRed300">#EC2D2C</color>
+    <!--endregion-->
+    <!--region INDIGO-->
+    <color name="colorIndigo400">#7F9CF5</color>
+    <color name="colorIndigo500">#667EE9</color>
+    <!--endregion-->
+    <!--region BLACK-->
+    <color name="colorBlack100">#383838</color>
+    <color name="colorBlack100_Opacity80">#CC383838</color>
+    <color name="colorBlack200">#000000</color>
+    <color name="colorBlack200_Opacity80">#CC000000</color>
+    <!--endregion-->
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/colorGray400</color>
 </resources>
