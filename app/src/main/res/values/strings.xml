@@ -70,4 +70,8 @@
     <string name="hackathon_confirmation_confirmed">Участие успешно подтверждено</string>
     <string name="hackathon_confirmation_go_to_hackathon">Перейти к хакатону</string>
     <!--endregion-->
+
+    <!--region PROFILE-->
+    <string name="profile_full_name">%1$s %2$s</string>
+    <!--endregion-->
 </resources>

@@ -3,6 +3,7 @@ package com.example.hackathon.presentation.profile
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.example.hackathon.HackathonApp
 import com.example.hackathon.R
 import com.example.hackathon.presentation.base.BaseFragment
@@ -34,7 +35,7 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initUI() {
-        btnLogOut.setOnClickListener { logoutViewModel.logout() }
+        ivLogout.setOnClickListener { logoutViewModel.logout() }
     }
 
     private fun subscribeObservers() {
@@ -42,7 +43,13 @@ class ProfileFragment : BaseFragment() {
             onStateChange(dataState)
             when (dataState) {
                 is State.Success -> {
-                    tvFullName.text = dataState.result?.data?.name + " " + dataState.result?.data?.surname
+                    Glide.with(this)
+                        .load(dataState.result?.data?.avatarUrl)
+                        .placeholder(R.drawable.img_hackathon_no_image)
+                        .error(R.drawable.img_hackathon_no_image)
+                        .into(civAvatar)
+                    tvFullName.text = getString(R.string.profile_full_name,
+                        dataState.result?.data?.name, dataState.result?.data?.surname)
                     tvEmail.text = dataState.result?.data?.email
                 }
             }

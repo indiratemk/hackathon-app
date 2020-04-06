@@ -51,5 +51,9 @@ data class User(
 
     @SerializedName("avatar")
     @Expose
-    val avatar: String?
+    val avatar: String?,
+
+    @SerializedName("avatar_url")
+    @Expose
+    val avatarUrl: String?
 )
