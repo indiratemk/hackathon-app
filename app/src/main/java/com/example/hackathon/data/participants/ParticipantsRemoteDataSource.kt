@@ -3,6 +3,7 @@ package com.example.hackathon.data.participants
 import com.example.hackathon.data.HackathonApi
 import com.example.hackathon.data.base.BaseRemoteDataSource
 import com.example.hackathon.data.base.model.Result
+import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.util.response.ApiResponse
 
 class ParticipantsRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRemoteDataSource() {
@@ -18,5 +19,9 @@ class ParticipantsRemoteDataSource(private val hackathonApi: HackathonApi) : Bas
     suspend fun confirmParticipation(hackathonId: Int,
                                      userId: Int): ApiResponse<Result<Boolean, Unit>> {
         return getResponse { hackathonApi.confirmParticipation(hackathonId, userId) }
+    }
+
+    suspend fun getParticipatesInHackathons(userId: Int): ApiResponse<Result<List<Hackathon>, Unit>> {
+        return getResponse { hackathonApi.getParticipatesInHackathons(userId) }
     }
 }

@@ -3,11 +3,14 @@ package com.example.hackathon.presentation.profile
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.hackathon.HackathonApp
 import com.example.hackathon.R
+import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.presentation.base.BaseFragment
 import com.example.hackathon.presentation.logout.LogoutViewModel
+import com.example.hackathon.presentation.profile.selection.HackathonSelectionAdapter
 import com.example.hackathon.util.state.State
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -25,6 +28,7 @@ class ProfileFragment : BaseFragment() {
 
     private val logoutViewModel: LogoutViewModel by viewModel()
     private val userViewModel: ProfileViewModel by viewModel()
+    private val myHackathonsAdapter = HackathonSelectionAdapter()
 
     override fun layoutId() = R.layout.fragment_profile
 
@@ -35,22 +39,26 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initUI() {
+        refreshLayout.setOnRefreshListener { userViewModel.getUser() }
         ivLogout.setOnClickListener { logoutViewModel.logout() }
+        rvParticipatesInHackathons.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = myHackathonsAdapter
+        }
     }
 
     private fun subscribeObservers() {
         userViewModel.user.observe(viewLifecycleOwner, Observer { dataState ->
             onStateChange(dataState)
             when (dataState) {
+                is State.Loading -> {
+                    refreshLayout.isRefreshing = dataState.isLoading
+                }
                 is State.Success -> {
-                    Glide.with(this)
-                        .load(dataState.result?.data?.avatarUrl)
-                        .placeholder(R.drawable.img_hackathon_no_image)
-                        .error(R.drawable.img_hackathon_no_image)
-                        .into(civAvatar)
-                    tvFullName.text = getString(R.string.profile_full_name,
-                        dataState.result?.data?.name, dataState.result?.data?.surname)
-                    tvEmail.text = dataState.result?.data?.email
+                    val user = dataState.result!!.data
+                    userViewModel.getParticipatesInHackathons(user.id)
+                    setUserDetails(user)
                 }
             }
         })
@@ -63,5 +71,25 @@ class ProfileFragment : BaseFragment() {
                 }
             }
         })
+
+        userViewModel.participatesInHackathons.observe(viewLifecycleOwner, Observer { dataState ->
+            onStateChange(dataState)
+            when (dataState) {
+                is State.Success -> {
+                    myHackathonsAdapter.setHackathons(dataState.result!!.data)
+                }
+            }
+        })
+    }
+
+    private fun setUserDetails(user: User) {
+        Glide.with(this)
+            .load(user.avatarUrl)
+            .placeholder(R.drawable.img_hackathon_no_image)
+            .error(R.drawable.img_hackathon_no_image)
+            .into(civAvatar)
+        tvFullName.text = getString(R.string.profile_full_name,
+            user.name, user.surname)
+        tvEmail.text = user.email
     }
 }

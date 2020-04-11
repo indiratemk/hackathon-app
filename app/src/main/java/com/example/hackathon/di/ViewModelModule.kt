@@ -19,7 +19,7 @@ val viewModelModule = module {
     viewModel { SignUpViewModel(get() as AuthRepository) }
     viewModel { SignInViewModel(get() as AuthRepository) }
     viewModel { LogoutViewModel(get() as AuthRepository) }
-    viewModel { ProfileViewModel(get() as UserRepository) }
+    viewModel { ProfileViewModel(get() as UserRepository, get() as ParticipantsRepository) }
     viewModel { HackathonsViewModel(get() as HackathonRepository) }
     viewModel { HackathonDetailViewModel(get() as HackathonRepository, get() as ParticipantsRepository) }
     viewModel { HackathonRegistrationViewModel(get() as ParticipantsRepository) }

@@ -58,5 +58,8 @@ interface HackathonApi {
     @POST("participants/{hid}/{uid}/confirm")
     suspend fun confirmParticipation(@Path("hid") hackathonId: Int,
                                      @Path("uid") userId: Int): Response<Result<Boolean, Unit>>
+
+    @GET("participants/{id}/hackathons")
+    suspend fun getParticipatesInHackathons(@Path("id") userId: Int): Response<Result<List<Hackathon>, Unit>>
     //endregion
 }

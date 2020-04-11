@@ -27,6 +27,11 @@
     <!--endregion-->
 
     <!--region PRIMARY TEXT VIEW-->
+    <style name="PrimaryTextView12" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorBlack100</item>
+    </style>
+
     <style name="PrimaryTextView14" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorBlack100</item>
@@ -67,13 +72,17 @@
     <!--endregion-->
 
     <!--region SECONDARY TEXT VIEW-->
-    <style name="SecondaryTextView14" parent="Widget.AppCompat.TextView">
+    <style name="SecondaryTextView12" parent="PrimaryTextView12">
+        <item name="android:textColor">@color/colorGray500</item>
+    </style>
+
+    <style name="SecondaryTextView14" parent="PrimaryTextView14">
         <item name="android:textColor">@color/colorGray500</item>
     </style>
     <!--endregion-->
 
     <!--region ACCENT TEXT VIEW-->
-    <style name="AccentTextView14" parent="Widget.AppCompat.TextView">
+    <style name="AccentTextView14" parent="PrimaryTextView14">
         <item name="android:textColor">@color/colorIndigo500</item>
     </style>
     <!--endregion-->

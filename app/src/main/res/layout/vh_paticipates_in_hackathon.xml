@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
+    app:cardElevation="1dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/ivHackathonImage"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/colorIndigo500"
+            android:scaleType="centerCrop"
+            tools:ignore="contentDescription" />
+
+        <include
+            layout="@layout/layout_divider" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/PrimaryTextView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            tools:text="Hackathon title" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            style="@style/SecondaryTextView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            tools:text="Hackathon description" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
