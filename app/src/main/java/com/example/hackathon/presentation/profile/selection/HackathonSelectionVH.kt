@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hackathon.R
 import com.example.hackathon.data.hackathon.model.Hackathon
-import kotlinx.android.synthetic.main.vh_paticipates_in_hackathon.view.*
+import kotlinx.android.synthetic.main.vh_hackathon_selection.view.*
 
 class HackathonSelectionVH(view: View) : RecyclerView.ViewHolder(view) {
 

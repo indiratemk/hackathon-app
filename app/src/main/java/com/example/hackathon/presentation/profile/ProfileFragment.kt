@@ -41,6 +41,10 @@ class ProfileFragment : BaseFragment() {
     private fun initUI() {
         refreshLayout.setOnRefreshListener { userViewModel.getUser() }
         ivLogout.setOnClickListener { logoutViewModel.logout() }
+        initRV()
+    }
+
+    private fun initRV() {
         rvParticipatesInHackathons.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -50,35 +54,26 @@ class ProfileFragment : BaseFragment() {
 
     private fun subscribeObservers() {
         userViewModel.user.observe(viewLifecycleOwner, Observer { dataState ->
-            onStateChange(dataState)
-            when (dataState) {
-                is State.Loading -> {
-                    refreshLayout.isRefreshing = dataState.isLoading
-                }
-                is State.Success -> {
-                    val user = dataState.result!!.data
-                    userViewModel.getParticipatesInHackathons(user.id)
-                    setUserDetails(user)
-                }
+            refreshLayout.isRefreshing = dataState.isLoading
+            dataState.result?.let { result ->
+                val user = result.data
+                userViewModel.getParticipatesInHackathons(user.id)
+                setUserDetails(user)
             }
         })
 
         logoutViewModel.logout.observe(viewLifecycleOwner, Observer { dataState ->
-            onStateChange(dataState)
-            when (dataState) {
-                is State.Success -> {
-                    (requireActivity().application as HackathonApp).restartApp()
-                }
+            dataState.result?.let {
+                (requireActivity().application as HackathonApp).restartApp()
             }
+            onStateChange(dataState)
         })
 
         userViewModel.participatesInHackathons.observe(viewLifecycleOwner, Observer { dataState ->
-            onStateChange(dataState)
-            when (dataState) {
-                is State.Success -> {
-                    myHackathonsAdapter.setHackathons(dataState.result!!.data)
-                }
+            dataState.result?.let { result ->
+                myHackathonsAdapter.setHackathons(result.data)
             }
+            onStateChange(dataState)
         })
     }
 

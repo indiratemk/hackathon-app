@@ -12,7 +12,7 @@ class HackathonSelectionAdapter : RecyclerView.Adapter<HackathonSelectionVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HackathonSelectionVH {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.vh_paticipates_in_hackathon, parent, false)
+            .inflate(R.layout.vh_hackathon_selection, parent, false)
         return HackathonSelectionVH(view)
     }
 

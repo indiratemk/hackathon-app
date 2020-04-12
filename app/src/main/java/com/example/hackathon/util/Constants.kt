@@ -17,5 +17,9 @@ class Constants {
         //region EXTRAS
         const val HACKATHON_ID_EXTRA = "HACKATHON_ID_EXTRA"
         //endregion
+
+        //region ERROR CODES
+        const val NOT_FOUND_ERROR_CODE = 404
+        //endregion
     }
 }

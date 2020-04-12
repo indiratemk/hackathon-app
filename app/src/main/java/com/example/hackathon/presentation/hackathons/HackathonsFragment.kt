@@ -64,10 +64,13 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
     }
 
     private fun initUI() {
-        (requireActivity() as BaseActivity).initToolbar(toolbar,
-            getString(R.string.hackathons_title), true)
+        (requireActivity() as BaseActivity).initToolbar(toolbar, getString(R.string.hackathons_title), true)
         refreshLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorBlue200))
         refreshLayout.setOnRefreshListener { hackathonsViewModel.getHackathons() }
+        initRV()
+    }
+
+    private fun initRV() {
         rvHackathons.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext())
@@ -78,40 +81,37 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
     private fun subscribeObservers() {
         hackathonsViewModel.hackathons.observe(viewLifecycleOwner, Observer { dataState ->
             onStateChange(dataState)
-            when (dataState) {
-                is State.Loading -> {
-                    refreshLayout.isRefreshing = dataState.isLoading
-                }
-                is State.Success -> {
-                    hackathonsAdapter.setHackathons(dataState.result!!.data)
-                }
+            refreshLayout.isRefreshing = dataState.isLoading
+            dataState.result?.let { result ->
+                hackathonsAdapter.setHackathons(result.data)
             }
         })
 
         hackathonsViewModel.search.observe(viewLifecycleOwner, Observer { dataState ->
-            when (dataState) {
-                is State.Loading -> {
-                    refreshLayout.isRefreshing = dataState.isLoading
-                }
-                is State.Success -> {
-                    rvHackathons.visibility = View.VISIBLE
-                    tvSearchError.visibility = View.GONE
-                    hackathonsAdapter.setHackathons(dataState.result!!.data)
-                }
-                is State.BackendError -> {
-                    if (dataState.errorCode == 404) {
-                        rvHackathons.visibility = View.GONE
-                        tvSearchError.visibility = View.VISIBLE
-                        tvSearchError.text = dataState.message
-                    } else {
-                        UIUtil.showErrorMessage(requireActivity(), dataState.message)
-                    }
-                }
-                is State.NetworkError -> {
-                    UIUtil.showErrorMessage(requireActivity(), dataState.message)
+            refreshLayout.isRefreshing = dataState.isLoading
+            dataState.result?.let { result ->
+                hideSearchingError()
+                hackathonsAdapter.setHackathons(result.data)
+            }
+            dataState.message?.let { message ->
+                if (dataState.errorCode == Constants.NOT_FOUND_ERROR_CODE) {
+                    showSearchingError()
+                    tvSearchError.text = message
+                } else {
+                    UIUtil.showErrorMessage(requireActivity(), message)
                 }
             }
         })
+    }
+
+    fun showSearchingError() {
+        rvHackathons.visibility = View.GONE
+        tvSearchError.visibility = View.VISIBLE
+    }
+
+    fun hideSearchingError() {
+        rvHackathons.visibility = View.VISIBLE
+        tvSearchError.visibility = View.GONE
     }
 
     override fun onHackathonClick(id: Int) {

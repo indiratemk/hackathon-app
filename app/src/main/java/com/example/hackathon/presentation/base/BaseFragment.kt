@@ -26,13 +26,8 @@ abstract class BaseFragment : Fragment(), StateListener {
     }
 
     private fun handleStateChange(dataState: State<*>) {
-        when (dataState) {
-            is State.NetworkError -> {
-                UIUtil.showErrorMessage(requireActivity(), dataState.message)
-            }
-            is State.BackendError -> {
-                UIUtil.showErrorMessage(requireActivity(), dataState.message)
-            }
+        dataState.message?.let {
+            UIUtil.showErrorMessage(requireActivity(), dataState.message)
         }
     }
 }
