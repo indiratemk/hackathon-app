@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer
 import com.example.hackathon.R
 import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.util.Constants
-import com.example.hackathon.util.state.State
 import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.activity_hackathon_registration.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -42,15 +41,12 @@ class HackathonRegistrationActivity : BaseActivity() {
 
     private fun subscribeObservers() {
         hackathonRegistrationViewModel.isRegistered.observe(this, Observer { dataState ->
-            onStateChange(dataState)
-            when (dataState) {
-                is State.Success -> {
-                    UIUtil.showSuccessMessage(this,
-                        getString(R.string.hackathon_registration_success_registration))
-                    setResult(Activity.RESULT_OK)
-                    finish()
-                }
+            dataState.result?.let {
+                UIUtil.showSuccessMessage(this, getString(R.string.hackathon_registration_success_registration))
+                setResult(Activity.RESULT_OK)
+                finish()
             }
+            onStateChange(dataState)
         })
     }
 }

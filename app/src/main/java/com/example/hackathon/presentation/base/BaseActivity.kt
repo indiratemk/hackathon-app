@@ -22,13 +22,8 @@ abstract class BaseActivity : AppCompatActivity(), StateListener {
     }
 
     private fun handleStateChange(dataState: State<*>) {
-        when (dataState) {
-            is State.NetworkError -> {
-                UIUtil.showErrorMessage(this, dataState.message)
-            }
-            is State.BackendError -> {
-                UIUtil.showErrorMessage(this, dataState.message)
-            }
+        dataState.message?.let { message ->
+            UIUtil.showErrorMessage(this, dataState.message)
         }
     }
 

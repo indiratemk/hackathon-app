@@ -26,8 +26,8 @@ abstract class BaseFragment : Fragment(), StateListener {
     }
 
     private fun handleStateChange(dataState: State<*>) {
-        dataState.message?.let {
-            UIUtil.showErrorMessage(requireActivity(), dataState.message)
+        dataState.message?.let { message ->
+            UIUtil.showErrorMessage(requireActivity(), message)
         }
     }
 }

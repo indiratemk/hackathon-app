@@ -11,7 +11,6 @@ import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.presentation.base.BaseFragment
 import com.example.hackathon.presentation.logout.LogoutViewModel
 import com.example.hackathon.presentation.profile.selection.HackathonSelectionAdapter
-import com.example.hackathon.util.state.State
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.android.viewmodel.ext.android.viewModel
 

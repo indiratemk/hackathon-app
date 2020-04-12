@@ -10,7 +10,6 @@ import com.example.hackathon.R
 import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.sign_in.SignInActivity
 import com.example.hackathon.util.Constants
-import com.example.hackathon.util.state.State
 import com.example.hackathon.util.state.StateListener
 import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -26,7 +25,6 @@ class SignUpActivity : BaseActivity(), StateListener {
     }
 
     private val signUpViewModel: SignUpViewModel by viewModel()
-    private lateinit var stateListener: StateListener
 
     override fun layoutId(): Int {
         return R.layout.activity_sign_up
@@ -36,7 +34,6 @@ class SignUpActivity : BaseActivity(), StateListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.LightTheme)
         super.onCreate(savedInstanceState)
-        stateListener = this
         subscribeObservers()
         initUI()
     }
@@ -55,7 +52,6 @@ class SignUpActivity : BaseActivity(), StateListener {
         }
 
         tvSignIn.setOnClickListener {
-            UIUtil.showSuccessMessage(this, getString(R.string.registration_success_signup))
             finish()
             SignInActivity.startActivity(this, Constants.AUTH_REQUEST_CODE)
         }
@@ -65,23 +61,24 @@ class SignUpActivity : BaseActivity(), StateListener {
 
     private fun subscribeObservers() {
         signUpViewModel.user.observe(this, Observer { dataState ->
-            when (dataState) {
-                is State.Loading -> {
-                    if (dataState.isLoading) {
-                        ivButtonProgress.visibility = View.VISIBLE
-                        llSignUp.isEnabled = false
-                    } else {
-                        ivButtonProgress.visibility = View.GONE
-                        llSignUp.isEnabled = true
-                    }
-                }
-                is State.Success -> {
-                    finish()
-                    SignInActivity.startActivity(this, Constants.AUTH_REQUEST_CODE)
-                }
+            showProgress(dataState.isLoading)
+            dataState.result?.let {
+                UIUtil.showSuccessMessage(this, getString(R.string.registration_success_signup))
+                finish()
+                SignInActivity.startActivity(this, Constants.AUTH_REQUEST_CODE)
             }
-            stateListener.onStateChange(dataState)
+            onStateChange(dataState)
         })
+    }
+
+    private fun showProgress(isLoading: Boolean) {
+        if (isLoading) {
+            ivButtonProgress.visibility = View.VISIBLE
+            llSignUp.isEnabled = false
+        } else {
+            ivButtonProgress.visibility = View.GONE
+            llSignUp.isEnabled = true
+        }
     }
 
     private fun validateLogin() {

@@ -2,10 +2,10 @@ package com.example.hackathon.presentation.sign_up
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.data.auth.model.User
-import com.example.hackathon.domain.auth.AuthRepository
 import com.example.hackathon.data.base.model.Result
+import com.example.hackathon.domain.auth.AuthRepository
+import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 

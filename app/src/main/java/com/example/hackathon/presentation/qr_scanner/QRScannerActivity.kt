@@ -12,20 +12,20 @@ import com.example.hackathon.R
 import com.example.hackathon.data.hackathon.model.QRParams
 import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.util.Constants
-import com.example.hackathon.util.state.State
 import com.example.hackathon.util.ui.UIUtil
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import kotlinx.android.synthetic.main.activity_qr_scanner.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import org.koin.android.viewmodel.ext.android.viewModel
-import kotlin.coroutines.CoroutineContext
 
-// TODO может сделать расширение для QRCodeReaderView чтобы не тащить весь класс
-class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener, CoroutineScope {
+class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener {
 
-    override val coroutineContext: CoroutineContext = Dispatchers.Main
+    companion object {
+        fun startActivity(activity: Activity, requestCode: Int) {
+            val intent = Intent(activity, QRScannerActivity::class.java)
+            activity.startActivityForResult(intent, requestCode)
+        }
+    }
 
     private val qrScannerViewModel: QRScannerViewModel by viewModel()
     private var isFlashEnabled = false
@@ -36,13 +36,6 @@ class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener,
 
     override fun layoutId(): Int {
         return R.layout.activity_qr_scanner
-    }
-
-    companion object {
-        fun startActivity(activity: Activity, requestCode: Int) {
-            val intent = Intent(activity, QRScannerActivity::class.java)
-            activity.startActivityForResult(intent, requestCode)
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,21 +68,17 @@ class QRScannerActivity : BaseActivity(), QRCodeReaderView.OnQRCodeReadListener,
 
     private fun subscribeObservers() {
         qrScannerViewModel.qrParams.observe(this, Observer { dataState ->
-            when (dataState) {
-                is State.Loading -> {
-                    if (dataState.isLoading) showProgressDialog() else hideProgressDialog()
-                }
-                is State.Success -> {
-                    ParticipationConfirmedActivity.startActivity(this, hackathonId!!,
-                        Constants.PARTICIPATION_CONFIRMED_REQUEST_CODE)
-                    setResult(Activity.RESULT_OK)
-                    finish()
-                }
-                else -> {
-                    UIUtil.showErrorMessage(this, dataState.message)
-                    isProcessing = true
-                    qrScannerView.startCamera()
-                }
+            if (dataState.isLoading) showProgressDialog() else hideProgressDialog()
+            dataState.result?.let {
+                ParticipationConfirmedActivity.startActivity(this, hackathonId!!,
+                    Constants.PARTICIPATION_CONFIRMED_REQUEST_CODE)
+                setResult(Activity.RESULT_OK)
+                finish()
+            }
+            dataState.message?.let { message ->
+                UIUtil.showErrorMessage(this, message)
+                isProcessing = true
+                qrScannerView.startCamera()
             }
         })
     }

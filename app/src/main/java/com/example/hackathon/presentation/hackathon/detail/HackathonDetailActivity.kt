@@ -14,7 +14,6 @@ import com.example.hackathon.presentation.hackathon.registration.HackathonRegist
 import com.example.hackathon.presentation.sign_in.SignInActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.PreferenceUtils
-import com.example.hackathon.util.state.State
 import com.example.hackathon.util.ui.DateFormat
 import com.example.hackathon.util.ui.UIUtil
 import com.google.android.material.appbar.AppBarLayout
@@ -85,43 +84,34 @@ class HackathonDetailActivity : BaseActivity() {
 
     private fun subscribeObservers() {
         hackathonDetailViewModel.isParticipate.observe(this, Observer { dataState ->
-            when(dataState) {
-                is State.Success -> {
-                    isParticipate = dataState.result!!.data
-                    updateParticipateButton()
-                }
+            dataState.result?.let { result ->
+                isParticipate = result.data
+                updateParticipateButton()
             }
         })
 
         hackathonDetailViewModel.hackathon.observe(this, Observer { dataState ->
-            onStateChange(dataState)
-            when(dataState) {
-                is State.Loading -> {
-                    setVisibilities(dataState.isLoading)
-                }
-                is State.Success -> {
-                    val hackathon = dataState.result!!.data
-                    initToolbar(collapsedToolbar,
-                                ContextCompat.getDrawable(this, R.drawable.ic_arrow_left)!!,
-                                hackathon.title,
-                                false)
-                    collapseBehavior(hackathon.title)
-                    setVisibilities(false)
-                    setDetailInfo(hackathon)
-                }
+            setVisibilities(dataState.isLoading)
+            dataState.result?.let { result ->
+                val hackathon = result.data
+                initToolbar(collapsedToolbar,
+                    ContextCompat.getDrawable(this, R.drawable.ic_arrow_left)!!,
+                    hackathon.title,
+                    false)
+                collapseBehavior(hackathon.title)
+                setDetailInfo(hackathon)
             }
+            onStateChange(dataState)
         })
 
         hackathonDetailViewModel.unregister.observe(this, Observer { dataState ->
-            onStateChange(dataState)
-            when(dataState) {
-                is State.Success -> {
-                    UIUtil.showSuccessMessage(this,
-                        getString(R.string.hackathon_detail_success_unregister))
-                    isParticipate = false
-                    updateParticipateButton()
-                }
+            dataState.result?.let { result ->
+                UIUtil.showSuccessMessage(this,
+                    getString(R.string.hackathon_detail_success_unregister))
+                isParticipate = false
+                updateParticipateButton()
             }
+            onStateChange(dataState)
         })
     }
 

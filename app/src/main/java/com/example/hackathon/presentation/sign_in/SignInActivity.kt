@@ -12,7 +12,6 @@ import com.example.hackathon.presentation.sign_up.SignUpActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.PreferenceUtils
 import com.example.hackathon.util.state.State
-import com.example.hackathon.util.state.StateListener
 import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -27,7 +26,6 @@ class SignInActivity : BaseActivity() {
     }
 
     private val signInViewModel: SignInViewModel by viewModel()
-    private lateinit var stateListener: StateListener
 
     override fun layoutId(): Int {
         return R.layout.activity_sign_in
@@ -36,7 +34,6 @@ class SignInActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.LightTheme)
         super.onCreate(savedInstanceState)
-        stateListener = this
         subscribeObservers()
         initUI()
     }
@@ -62,25 +59,24 @@ class SignInActivity : BaseActivity() {
 
     private fun subscribeObservers() {
         signInViewModel.user.observe(this, Observer { dataState ->
-            stateListener.onStateChange(dataState)
-
-            when (dataState) {
-                is State.Loading -> {
-                    if (dataState.isLoading) {
-                        ivButtonProgress.visibility = View.VISIBLE
-                        llSignIn.isEnabled = false
-                    } else {
-                        ivButtonProgress.visibility = View.GONE
-                        llSignIn.isEnabled = true
-                    }
-                }
-                is State.Success -> {
-                    PreferenceUtils.setAuthorized(this, true)
-                    setResult(Activity.RESULT_OK)
-                    finish()
-                }
+            showProgress(dataState.isLoading)
+            dataState.result?.let {
+                PreferenceUtils.setAuthorized(this, true)
+                setResult(Activity.RESULT_OK)
+                finish()
             }
+            onStateChange(dataState)
         })
+    }
+
+    private fun showProgress(isLoading: Boolean) {
+        if (isLoading) {
+            ivButtonProgress.visibility = View.VISIBLE
+            llSignIn.isEnabled = false
+        } else {
+            ivButtonProgress.visibility = View.GONE
+            llSignIn.isEnabled = true
+        }
     }
 
     private fun validateEmail() {

@@ -16,7 +16,6 @@ import com.example.hackathon.presentation.sign_in.SignInActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.PreferenceUtils
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class MainActivity : BaseActivity() {
 

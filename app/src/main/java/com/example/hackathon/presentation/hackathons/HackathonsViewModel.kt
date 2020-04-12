@@ -2,11 +2,11 @@ package com.example.hackathon.presentation.hackathons
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.data.base.model.Paging
+import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.domain.hackathon.HackathonRepository
-import com.example.hackathon.data.base.model.Result
+import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 

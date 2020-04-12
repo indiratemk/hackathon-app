@@ -13,7 +13,6 @@ import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.base.BaseFragment
 import com.example.hackathon.presentation.hackathon.detail.HackathonDetailActivity
 import com.example.hackathon.util.Constants
-import com.example.hackathon.util.state.State
 import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.fragment_hackathons.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
