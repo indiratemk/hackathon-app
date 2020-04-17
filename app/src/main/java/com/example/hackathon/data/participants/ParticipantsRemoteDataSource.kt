@@ -21,7 +21,7 @@ class ParticipantsRemoteDataSource(private val hackathonApi: HackathonApi) : Bas
         return getResponse { hackathonApi.confirmParticipation(hackathonId, userId) }
     }
 
-    suspend fun getParticipatesInHackathons(userId: Int): ApiResponse<Result<List<Hackathon>, Unit>> {
-        return getResponse { hackathonApi.getParticipatesInHackathons(userId) }
+    suspend fun getCurrentHackathons(userId: Int): ApiResponse<Result<List<Hackathon>, Unit>> {
+        return getResponse { hackathonApi.getCurrentHackathons(userId) }
     }
 }

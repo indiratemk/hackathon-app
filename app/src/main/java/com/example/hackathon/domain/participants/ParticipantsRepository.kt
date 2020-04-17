@@ -1,6 +1,5 @@
 package com.example.hackathon.domain.participants
 
-import com.example.hackathon.data.base.model.Paging
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.data.participants.ParticipantsRemoteDataSource
@@ -24,7 +23,7 @@ class ParticipantsRepository(private val participantsRemoteDataSource: Participa
         return handleState { participantsRemoteDataSource.confirmParticipation(hackathonId, userId) }
     }
 
-    override suspend fun getParticipatesInHackathons(userId: Int): State<Result<List<Hackathon>, Unit>> {
-        return handleState { participantsRemoteDataSource.getParticipatesInHackathons(userId) }
+    override suspend fun getCurrentHackathons(userId: Int): State<Result<List<Hackathon>, Unit>> {
+        return handleState { participantsRemoteDataSource.getCurrentHackathons(userId) }
     }
 }

@@ -32,6 +32,9 @@ interface HackathonApi {
     //region USER
     @GET("auth/user")
     suspend fun getUser(): Response<Result<User, Unit>>
+
+    @GET("users/{id}/hackathons")
+    suspend fun getPastHackathons(@Path("id") userId: Int): Response<Result<List<Hackathon>, Unit>>
     //endregion
 
     //region HACKATHON
@@ -60,6 +63,6 @@ interface HackathonApi {
                                      @Path("uid") userId: Int): Response<Result<Boolean, Unit>>
 
     @GET("participants/{id}/hackathons")
-    suspend fun getParticipatesInHackathons(@Path("id") userId: Int): Response<Result<List<Hackathon>, Unit>>
+    suspend fun getCurrentHackathons(@Path("id") userId: Int): Response<Result<List<Hackathon>, Unit>>
     //endregion
 }
