@@ -27,7 +27,8 @@ class ProfileFragment : BaseFragment() {
 
     private val logoutViewModel: LogoutViewModel by viewModel()
     private val userViewModel: ProfileViewModel by viewModel()
-    private val myHackathonsAdapter = HackathonSelectionAdapter()
+    private val pastHackathonsAdapter = HackathonSelectionAdapter()
+    private val currentHackathonsAdapter = HackathonSelectionAdapter()
 
     override fun layoutId() = R.layout.fragment_profile
 
@@ -44,10 +45,16 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initRV() {
-        rvParticipatesInHackathons.apply {
+        rvPastHackathons.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = myHackathonsAdapter
+            adapter = pastHackathonsAdapter
+        }
+
+        rvCurrentHackathons.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = currentHackathonsAdapter
         }
     }
 
@@ -56,7 +63,8 @@ class ProfileFragment : BaseFragment() {
             refreshLayout.isRefreshing = dataState.isLoading
             dataState.result?.let { result ->
                 val user = result.data
-                userViewModel.getParticipatesInHackathons(user.id)
+                userViewModel.getCurrentHackathons(user.id)
+                userViewModel.getPastHackathons(user.id)
                 setUserDetails(user)
             }
         })
@@ -68,11 +76,17 @@ class ProfileFragment : BaseFragment() {
             onStateChange(dataState)
         })
 
-        userViewModel.participatesInHackathons.observe(viewLifecycleOwner, Observer { dataState ->
+        userViewModel.currentHackathons.observe(viewLifecycleOwner, Observer { dataState ->
             dataState.result?.let { result ->
-                myHackathonsAdapter.setHackathons(result.data)
+                currentHackathonsAdapter.setHackathons(result.data)
             }
             onStateChange(dataState)
+        })
+
+        userViewModel.pastHackathons.observe(viewLifecycleOwner, Observer { dataState ->
+            dataState.result?.let { result ->
+                pastHackathonsAdapter.setHackathons(result.data)
+            }
         })
     }
 
