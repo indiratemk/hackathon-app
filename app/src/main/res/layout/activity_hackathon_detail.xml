@@ -225,27 +225,26 @@
                         app:layout_constraintStart_toEndOf="@+id/ivLocation"
                         app:layout_constraintTop_toTopOf="@+id/ivLocation"
                         tools:text="г. Алматы, гостиница Казахстан" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <ImageView
-                        android:id="@+id/ivParticipants"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivLocation"
-                        app:srcCompat="@drawable/ic_group"
-                        tools:ignore="contentDescription" />
+                <include layout="@layout/layout_divider" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clParticipants"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground">
 
                     <TextView
                         android:id="@+id/tvPaticipants"
                         style="@style/PrimaryBoldTextView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
+                        android:layout_margin="16dp"
                         android:text="@string/hackathon_detail_participants_title"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivParticipants"
-                        app:layout_constraintStart_toEndOf="@+id/ivParticipants"
-                        app:layout_constraintTop_toTopOf="@+id/ivParticipants" />
+                        app:layout_constraintBottom_toTopOf="@+id/viewParticipants"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tvParticipantsCount"
@@ -257,9 +256,30 @@
                         app:layout_constraintStart_toEndOf="@+id/tvPaticipants"
                         app:layout_constraintTop_toTopOf="@+id/tvPaticipants"
                         tools:text="3" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <include layout="@layout/layout_divider" />
+                    <ImageView
+                        android:id="@+id/ivParticipantsArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        app:srcCompat="@drawable/ic_arrow_right"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvPaticipants"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvPaticipants"
+                        tools:ignore="contentDescription"
+                        tools:layout_editor_absoluteX="230dp"
+                        tools:layout_editor_absoluteY="14dp" />
+
+                    <View
+                        android:id="@+id/viewParticipants"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorGray300"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPaticipants" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clDescription"

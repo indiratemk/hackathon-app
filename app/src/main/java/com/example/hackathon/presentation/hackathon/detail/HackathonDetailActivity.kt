@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.hackathon.R
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.presentation.base.BaseActivity
+import com.example.hackathon.presentation.hackathon.participants.ParticipantsActivity
 import com.example.hackathon.presentation.hackathon.registration.HackathonRegistrationActivity
 import com.example.hackathon.presentation.sign_in.SignInActivity
 import com.example.hackathon.util.Constants
@@ -152,6 +153,9 @@ class HackathonDetailActivity : BaseActivity() {
         tvEndDate.text = DateFormat.getFormattedDate(hackathon.endDate.time, DateFormat.DATE_FORMAT_2)
         tvAddress.text = hackathon.address
         tvParticipantsCount.text = hackathon.numberOfParticipants
+        clParticipants.setOnClickListener {
+            ParticipantsActivity.startActivity(this, hackathonId)
+        }
         if (hackathon.description != null) mvDescription.setMarkDownText(hackathon.description) else clDescription.visibility = View.GONE
         if (hackathon.criteria != null) mvCriteria.setMarkDownText(hackathon.criteria) else clCriteria.visibility = View.GONE
         if (hackathon.rules != null) mvRules.setMarkDownText(hackathon.rules) else clRules.visibility = View.GONE
