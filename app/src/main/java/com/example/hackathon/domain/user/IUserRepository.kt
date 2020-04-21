@@ -10,4 +10,6 @@ interface IUserRepository {
     suspend fun getUser(): State<Result<User, Unit>>
 
     suspend fun getPastHackathons(userId: Int): State<Result<List<Hackathon>, Unit>>
+
+    fun getCurrentUserId(): Int
 }

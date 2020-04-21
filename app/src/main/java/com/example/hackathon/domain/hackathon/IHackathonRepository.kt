@@ -1,5 +1,6 @@
 package com.example.hackathon.domain.hackathon
 
+import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.data.base.model.Paging
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.data.base.model.Result
@@ -14,4 +15,6 @@ interface IHackathonRepository {
     suspend fun getHackathon(id: Int): State<Result<Hackathon, Unit>>
 
     suspend fun checkParticipation(id: Int): State<Result<Boolean, Unit>>
+
+    suspend fun getParticipants(id: Int): State<Result<List<User>, Unit>>
 }

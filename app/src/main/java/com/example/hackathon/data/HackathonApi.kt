@@ -49,6 +49,9 @@ interface HackathonApi {
 
     @GET("hackathons/{id}/check-participation")
     suspend fun checkParticipation(@Path("id") id: Int): Response<Result<Boolean, Unit>>
+
+    @GET("hackathons/{id}/participants")
+    suspend fun getParticipants(@Path("id") id: Int): Response<Result<List<User>, Unit>>
     //endregion
 
     //region PARTICIPANTS
