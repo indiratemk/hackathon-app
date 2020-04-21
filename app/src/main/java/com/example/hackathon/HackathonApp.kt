@@ -5,6 +5,7 @@ import android.app.Application
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import com.example.hackathon.di.localStorageModule
 import com.example.hackathon.di.networkModule
 import com.example.hackathon.di.repositoryModule
 import com.example.hackathon.di.viewModelModule
@@ -13,6 +14,7 @@ import com.example.hackathon.util.PreferenceUtils
 import com.facebook.stetho.Stetho
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import kotlin.system.exitProcess
 
 class HackathonApp : Application() {
 
@@ -23,18 +25,20 @@ class HackathonApp : Application() {
 
         startKoin {
             androidContext(applicationContext)
-            modules(listOf(networkModule, repositoryModule, viewModelModule))
+            modules(listOf(networkModule,
+                localStorageModule, repositoryModule, viewModelModule))
         }
     }
 
     fun restartApp() {
         PreferenceUtils.setAuthorized(this, false)
         PreferenceUtils.clearCookie(this)
-        val intent = Intent(getApplicationContext(), MainActivity::class.java)
+        PreferenceUtils.clearUserId(this)
+        val intent = Intent(applicationContext, MainActivity::class.java)
         val mPendingIntentId = 123456
         val mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, intent, PendingIntent.FLAG_CANCEL_CURRENT)
-        val mgr: AlarmManager = getApplicationContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val mgr: AlarmManager = applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent)
-        System.exit(0)
+        exitProcess(0)
     }
 }

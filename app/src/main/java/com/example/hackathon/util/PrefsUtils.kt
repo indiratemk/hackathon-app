@@ -5,6 +5,7 @@ import android.content.Context
 object PreferenceUtils {
     private const val PREF_IS_AUTHORIZED = "pref_authorized"
     private const val PREF_COOKIE = "pref_cookie"
+    private const val PREF_USER_ID = "pref_user_id"
 
     private fun getPreferences(context: Context)
             = context.getSharedPreferences("hackathon_app",Context.MODE_PRIVATE)
@@ -27,5 +28,15 @@ object PreferenceUtils {
 
     fun clearCookie(context: Context) {
         getPreferences(context).edit().remove(PREF_COOKIE).commit()
+    }
+
+    fun setUserId(context: Context, userId: Int) {
+        getPreferences(context).edit().putInt(PREF_USER_ID, userId).apply()
+    }
+
+    fun getUserId(context: Context) = getPreferences(context).getInt(PREF_USER_ID, -1)
+
+    fun clearUserId(context: Context) {
+        getPreferences(context).edit().remove(PREF_USER_ID).apply()
     }
 }
