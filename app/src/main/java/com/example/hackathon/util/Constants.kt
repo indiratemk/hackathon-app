@@ -21,5 +21,11 @@ class Constants {
         //region ERROR CODES
         const val NOT_FOUND_ERROR_CODE = 404
         //endregion
+
+        //region PARTICIPATION TYPES
+        const val STANDALONE = 0
+        const val SEARCHING_FOR_TEAM = 1
+        const val WITH_TEAM = 2
+        //endregion
     }
 }

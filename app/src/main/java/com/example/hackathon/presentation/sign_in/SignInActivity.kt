@@ -60,8 +60,9 @@ class SignInActivity : BaseActivity() {
     private fun subscribeObservers() {
         signInViewModel.user.observe(this, Observer { dataState ->
             showProgress(dataState.isLoading)
-            dataState.result?.let {
+            dataState.result?.let { result ->
                 PreferenceUtils.setAuthorized(this, true)
+                PreferenceUtils.setUserId(this, result.data.id)
                 setResult(Activity.RESULT_OK)
                 finish()
             }
