@@ -75,5 +75,14 @@
     <string name="profile_full_name">%1$s %2$s</string>
     <string name="profile_current_hackathons">Текущие хакатоны</string>
     <string name="profile_past_hackathons">Прошедшие хакатоны</string>
+    <string name="profile_name_undefined">Имя не указано</string>
     <!--endregion-->
+
+    <!--region PARTICIPANTS-->
+    <string name="participants_title">Участники</string>
+    <string name="participants_full_name">%1s %2s</string>
+    <string name="participants_name_undefined">Имя не указано</string>
+    <string name="participants_login">\@%1$s</string>
+    <string name="participants_identification">Это вы :)</string>
+    <string name="participants_invite_to_team">Пригласить в команду</string>
 </resources>
