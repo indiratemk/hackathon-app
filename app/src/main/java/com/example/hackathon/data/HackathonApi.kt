@@ -31,7 +31,10 @@ interface HackathonApi {
 
     //region USER
     @GET("auth/user")
-    suspend fun getUser(): Response<Result<User, Unit>>
+    suspend fun getCurrentUser(): Response<Result<User, Unit>>
+
+    @GET("users/email/{email}")
+    suspend fun getUserByEmail(@Path("email") email: String): Response<Result<User, Unit>>
 
     @GET("users/{id}/hackathons")
     suspend fun getPastHackathons(@Path("id") userId: Int): Response<Result<List<Hackathon>, Unit>>

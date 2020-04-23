@@ -16,6 +16,7 @@ class Constants {
 
         //region EXTRAS
         const val HACKATHON_ID_EXTRA = "HACKATHON_ID_EXTRA"
+        const val USER_EMAIL_EXTRA = "USER_EMAIL_EXTRA"
         //endregion
 
         //region ERROR CODES

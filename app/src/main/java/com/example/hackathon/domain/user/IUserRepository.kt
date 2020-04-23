@@ -7,7 +7,9 @@ import com.example.hackathon.util.state.State
 
 interface IUserRepository {
 
-    suspend fun getUser(): State<Result<User, Unit>>
+    suspend fun getCurrentUser(): State<Result<User, Unit>>
+
+    suspend fun getUserByEmail(email: String): State<Result<User, Unit>>
 
     suspend fun getPastHackathons(userId: Int): State<Result<List<Hackathon>, Unit>>
 

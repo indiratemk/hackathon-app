@@ -16,7 +16,7 @@ class ParticipantVH(view: View): RecyclerView.ViewHolder(view) {
     private val tvIdentification = view.tvIdentification
     private val btnInvite = view.btnInvite
 
-    fun onBind(participant: User, currentUser: User?) {
+    fun onBind(participant: User, currentUser: User?, listener: ParticipantListener) {
         Glide.with(itemView.context)
             .load(participant.avatarUrl)
             .placeholder(R.drawable.img_hackathon_no_image)
@@ -37,6 +37,8 @@ class ParticipantVH(view: View): RecyclerView.ViewHolder(view) {
             tvIdentification.visibility = if (it.id == participant.id) View.VISIBLE else View.GONE
             btnInvite.visibility = if (canInvite(participant, it)) View.VISIBLE else View.GONE
         }
+
+        itemView.setOnClickListener { listener.onParticipantClick(participant.email) }
     }
 
     private fun canInvite(participant: User, currentUser: User) = currentUser.teamId != null &&

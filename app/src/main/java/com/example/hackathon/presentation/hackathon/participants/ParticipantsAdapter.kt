@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.R
 import com.example.hackathon.data.auth.model.User
 
-class ParticipantsAdapter: RecyclerView.Adapter<ParticipantVH>() {
+class ParticipantsAdapter(private val listener: ParticipantListener) :
+    RecyclerView.Adapter<ParticipantVH>() {
 
     private var participants: List<User> = emptyList()
     private var currentUser: User? = null
@@ -18,7 +19,7 @@ class ParticipantsAdapter: RecyclerView.Adapter<ParticipantVH>() {
     }
 
     override fun onBindViewHolder(holder: ParticipantVH, position: Int) {
-        holder.onBind(participants.get(position), currentUser)
+        holder.onBind(participants.get(position), currentUser, listener)
     }
 
     override fun getItemCount(): Int {

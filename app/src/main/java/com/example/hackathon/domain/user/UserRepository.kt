@@ -11,8 +11,12 @@ import com.example.hackathon.util.state.State
 class UserRepository(private val userRemoteDataStore: UserRemoteDataStore,
                      private val userLocalDataSource: UserLocalDataSource) : BaseRepository(), IUserRepository {
 
-    override suspend fun getUser(): State<Result<User, Unit>> {
-        return handleState { userRemoteDataStore.getUser() }
+    override suspend fun getCurrentUser(): State<Result<User, Unit>> {
+        return handleState { userRemoteDataStore.getCurrentUser() }
+    }
+
+    override suspend fun getUserByEmail(email: String): State<Result<User, Unit>> {
+        return handleState { userRemoteDataStore.getUserByEmail(email) }
     }
 
     override suspend fun getPastHackathons(userId: Int): State<Result<List<Hackathon>, Unit>> {

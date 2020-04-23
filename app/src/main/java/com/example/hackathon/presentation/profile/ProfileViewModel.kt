@@ -27,14 +27,18 @@ class ProfileViewModel(private val userRepository: UserRepository,
     val pastHackathons: LiveData<State<Result<List<Hackathon>, Unit>>>
         get() = _pastHackathons
 
-    init {
-        getUser()
-    }
-
-    fun getUser() {
+    fun getCurrentUser() {
         coroutineContext.launch {
             _user.value = State.Loading(true)
-            _user.value = userRepository.getUser()
+            _user.value = userRepository.getCurrentUser()
+            _user.value = State.Loading(false)
+        }
+    }
+
+    fun getUserByEmail(email: String) {
+        coroutineContext.launch {
+            _user.value = State.Loading(true)
+            _user.value = userRepository.getUserByEmail(email)
             _user.value = State.Loading(false)
         }
     }
