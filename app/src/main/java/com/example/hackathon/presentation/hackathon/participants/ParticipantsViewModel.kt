@@ -11,7 +11,7 @@ import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 
 class ParticipantsViewModel(private val hackathonRepository: HackathonRepository,
-                            private val userRepository: UserRepository): BaseViewModel() {
+                            private val userRepository: UserRepository) : BaseViewModel() {
 
     private val _participants = MutableLiveData<State<Result<List<User>, Unit>>>()
     private val _currentUser = MutableLiveData<User?>()

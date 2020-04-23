@@ -1,7 +1,6 @@
 package com.example.hackathon.presentation.hackathon.participants
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_participants_list.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ParticipantsListFragment: BaseFragment(), ParticipantListener {
+class ParticipantsListFragment : BaseFragment(), ParticipantListener {
 
     companion object {
         fun newInstance(id: Int): ParticipantsListFragment {
@@ -32,7 +31,6 @@ class ParticipantsListFragment: BaseFragment(), ParticipantListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("taaaaaag", "participants fragment on view created")
         arguments?.let {
             val hackathonId = it.getInt(Constants.HACKATHON_ID_EXTRA)
             participantsViewModel.getParticipants(hackathonId)
@@ -42,7 +40,7 @@ class ParticipantsListFragment: BaseFragment(), ParticipantListener {
     }
 
     private fun initUI() {
-        (requireActivity() as BaseActivity).initToolbar(toolbar, "Участники", false)
+        (requireActivity() as BaseActivity).initToolbar(toolbar, getString(R.string.participants_title), false)
         initRV()
     }
 

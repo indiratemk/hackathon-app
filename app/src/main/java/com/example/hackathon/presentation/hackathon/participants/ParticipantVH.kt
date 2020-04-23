@@ -8,7 +8,7 @@ import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.util.Constants
 import kotlinx.android.synthetic.main.vh_participant.view.*
 
-class ParticipantVH(view: View): RecyclerView.ViewHolder(view) {
+class ParticipantVH(view: View) : RecyclerView.ViewHolder(view) {
 
     private val civAvatar = view.civAvatar
     private val tvFullName = view.tvFullName

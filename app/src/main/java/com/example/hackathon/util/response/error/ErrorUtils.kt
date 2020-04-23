@@ -7,7 +7,7 @@ import retrofit2.Response
 class ErrorUtils {
 
     companion object {
-        fun parseError(response: Response<*>) =
+        fun parseError(response: Response<*>): Error =
             Gson().fromJson(response.errorBody()?.string(), Error::class.java)
     }
 }
