@@ -79,6 +79,14 @@
     <style name="SecondaryTextView14" parent="PrimaryTextView14">
         <item name="android:textColor">@color/colorGray500</item>
     </style>
+
+    <style name="SecondaryTextView16" parent="PrimaryTextView16">
+        <item name="android:textColor">@color/colorGray500</item>
+    </style>
+
+    <style name="SecondaryTextView20" parent="PrimaryTextView20">
+        <item name="android:textColor">@color/colorGray500</item>
+    </style>
     <!--endregion-->
 
     <!--region ACCENT TEXT VIEW-->

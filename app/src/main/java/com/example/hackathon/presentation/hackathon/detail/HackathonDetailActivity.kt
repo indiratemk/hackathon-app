@@ -58,6 +58,7 @@ class HackathonDetailActivity : BaseActivity() {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == Constants.HACKATHON_REGISTRATION_REQUEST_CODE) {
                 isParticipate = true
+                hackathonDetailViewModel.getHackathon(hackathonId!!)
                 updateParticipateButton()
             } else if (requestCode == Constants.AUTH_REQUEST_CODE) {
                 hackathonDetailViewModel.checkParticipation(hackathonId!!)
@@ -114,6 +115,7 @@ class HackathonDetailActivity : BaseActivity() {
                 UIUtil.showSuccessMessage(this,
                     getString(R.string.hackathon_detail_success_unregister))
                 isParticipate = false
+                hackathonDetailViewModel.getHackathon(hackathonId!!)
                 updateParticipateButton()
             }
             onStateChange(dataState)

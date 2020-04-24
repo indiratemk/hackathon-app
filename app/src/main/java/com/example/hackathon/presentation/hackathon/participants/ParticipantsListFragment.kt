@@ -9,6 +9,7 @@ import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.base.BaseFragment
 import com.example.hackathon.util.Constants
 import kotlinx.android.synthetic.main.fragment_participants_list.*
+import kotlinx.android.synthetic.main.layout_empty_list.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -57,7 +58,13 @@ class ParticipantsListFragment : BaseFragment(), ParticipantListener {
             progressBar.visibility = if (dataState.isLoading) View.VISIBLE else View.GONE
             onStateChange(dataState)
             dataState.result?.let { result ->
-                participantsAdapter.setParticipants(result.data)
+                if (result.data.isEmpty()) {
+                    llEmptyList.visibility = View.VISIBLE
+                    tvEmptyListMessage.text = getString(R.string.participants_no_participants)
+                    rvParticipants.visibility = View.GONE
+                } else {
+                    participantsAdapter.setParticipants(result.data)
+                }
             }
         })
 
