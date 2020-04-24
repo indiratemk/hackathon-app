@@ -9,13 +9,15 @@ import com.example.hackathon.HackathonApp
 import com.example.hackathon.R
 import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.presentation.base.BaseFragment
+import com.example.hackathon.presentation.hackathon.detail.HackathonDetailActivity
 import com.example.hackathon.presentation.logout.LogoutViewModel
 import com.example.hackathon.presentation.profile.selection.HackathonSelectionAdapter
+import com.example.hackathon.presentation.profile.selection.HackathonSelectionClickListener
 import com.example.hackathon.util.Constants
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ProfileFragment : BaseFragment() {
+class ProfileFragment : BaseFragment(), HackathonSelectionClickListener {
 
     companion object {
         fun newInstance(): ProfileFragment {
@@ -37,8 +39,8 @@ class ProfileFragment : BaseFragment() {
     private var email: String? = null
     private val logoutViewModel: LogoutViewModel by viewModel()
     private val userViewModel: ProfileViewModel by viewModel()
-    private val pastHackathonsAdapter = HackathonSelectionAdapter()
-    private val currentHackathonsAdapter = HackathonSelectionAdapter()
+    private val participatedHackathonsAdapter = HackathonSelectionAdapter()
+    private val ownHackathonsAdapter = HackathonSelectionAdapter()
 
     override fun layoutId() = R.layout.fragment_profile
 
@@ -72,16 +74,18 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initRV() {
-        rvPastHackathons.apply {
+        participatedHackathonsAdapter.setHackathonListener(this)
+        rvParticipatedHackathons.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = pastHackathonsAdapter
+            adapter = participatedHackathonsAdapter
         }
 
-        rvCurrentHackathons.apply {
+        ownHackathonsAdapter.setHackathonListener(this)
+        rvOwnHackathons.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = currentHackathonsAdapter
+            adapter = ownHackathonsAdapter
         }
     }
 
@@ -90,8 +94,8 @@ class ProfileFragment : BaseFragment() {
             refreshLayout.isRefreshing = dataState.isLoading
             dataState.result?.let { result ->
                 val user = result.data
-                userViewModel.getCurrentHackathons(user.id)
-                userViewModel.getPastHackathons(user.id)
+                userViewModel.getParticipatedHackathons(user.id)
+                userViewModel.getOwnHackathons(user.id)
                 setUserDetails(user)
             }
         })
@@ -103,16 +107,18 @@ class ProfileFragment : BaseFragment() {
             onStateChange(dataState)
         })
 
-        userViewModel.currentHackathons.observe(viewLifecycleOwner, Observer { dataState ->
+        userViewModel.participatedHackathons.observe(viewLifecycleOwner, Observer { dataState ->
             dataState.result?.let { result ->
-                currentHackathonsAdapter.setHackathons(result.data)
+                tvParticipatedHackathons.visibility = if (result.data.isEmpty()) View.GONE else View.VISIBLE
+                participatedHackathonsAdapter.setHackathons(result.data)
             }
             onStateChange(dataState)
         })
 
-        userViewModel.pastHackathons.observe(viewLifecycleOwner, Observer { dataState ->
+        userViewModel.ownHackathons.observe(viewLifecycleOwner, Observer { dataState ->
             dataState.result?.let { result ->
-                pastHackathonsAdapter.setHackathons(result.data)
+                tvOwnHackathons.visibility = if (result.data.isEmpty()) View.GONE else View.VISIBLE
+                ownHackathonsAdapter.setHackathons(result.data)
             }
         })
     }
@@ -126,5 +132,10 @@ class ProfileFragment : BaseFragment() {
         tvFullName.text = getString(R.string.profile_full_name,
             user.name, user.surname)
         tvEmail.text = user.email
+    }
+
+    override fun onHackathonClick(hackathonId: Int) {
+        HackathonDetailActivity.startActivity(requireActivity(),
+            hackathonId, Constants.HACKATHON_DETAIL_REQUEST_CODE)
     }
 }

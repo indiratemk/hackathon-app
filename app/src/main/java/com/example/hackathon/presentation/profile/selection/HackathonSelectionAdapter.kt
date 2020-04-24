@@ -9,6 +9,7 @@ import com.example.hackathon.data.hackathon.model.Hackathon
 class HackathonSelectionAdapter : RecyclerView.Adapter<HackathonSelectionVH>() {
 
     private var hackathons: List<Hackathon> = emptyList()
+    private var listener: HackathonSelectionClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HackathonSelectionVH {
         val view = LayoutInflater.from(parent.context)
@@ -17,7 +18,7 @@ class HackathonSelectionAdapter : RecyclerView.Adapter<HackathonSelectionVH>() {
     }
 
     override fun onBindViewHolder(holder: HackathonSelectionVH, position: Int) {
-        holder.onBind(hackathons.get(position))
+        holder.onBind(hackathons.get(position), listener)
     }
 
     override fun getItemCount() = hackathons.size
@@ -25,5 +26,9 @@ class HackathonSelectionAdapter : RecyclerView.Adapter<HackathonSelectionVH>() {
     fun setHackathons(hackathons: List<Hackathon>) {
         this.hackathons = hackathons
         notifyDataSetChanged()
+    }
+
+    fun setHackathonListener(listener: HackathonSelectionClickListener) {
+        this.listener = listener
     }
 }

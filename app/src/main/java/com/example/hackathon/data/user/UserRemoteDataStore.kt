@@ -13,8 +13,8 @@ class UserRemoteDataStore(private val hackathonApi: HackathonApi) : BaseRemoteDa
         return getResponse { hackathonApi.getCurrentUser() }
     }
 
-    suspend fun getPastHackathons(userId: Int): ApiResponse<Result<List<Hackathon>, Unit>> {
-        return getResponse { hackathonApi.getPastHackathons(userId) }
+    suspend fun getOwnHackathons(userId: Int): ApiResponse<Result<List<Hackathon>, Unit>> {
+        return getResponse { hackathonApi.getOwnHackathons(userId) }
     }
 
     suspend fun getUserByEmail(email: String): ApiResponse<Result<User, Unit>> {

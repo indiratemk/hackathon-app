@@ -19,8 +19,8 @@ class UserRepository(private val userRemoteDataStore: UserRemoteDataStore,
         return handleState { userRemoteDataStore.getUserByEmail(email) }
     }
 
-    override suspend fun getPastHackathons(userId: Int): State<Result<List<Hackathon>, Unit>> {
-        return handleState { userRemoteDataStore.getPastHackathons(userId) }
+    override suspend fun getOwnHackathons(userId: Int): State<Result<List<Hackathon>, Unit>> {
+        return handleState { userRemoteDataStore.getOwnHackathons(userId) }
     }
 
     override fun getCurrentUserId(): Int {

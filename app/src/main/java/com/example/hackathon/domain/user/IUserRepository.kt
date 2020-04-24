@@ -11,7 +11,7 @@ interface IUserRepository {
 
     suspend fun getUserByEmail(email: String): State<Result<User, Unit>>
 
-    suspend fun getPastHackathons(userId: Int): State<Result<List<Hackathon>, Unit>>
+    suspend fun getOwnHackathons(userId: Int): State<Result<List<Hackathon>, Unit>>
 
     fun getCurrentUserId(): Int
 }

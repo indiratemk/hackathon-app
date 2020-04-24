@@ -15,17 +15,17 @@ class ProfileViewModel(private val userRepository: UserRepository,
                        private val participantsRepository: ParticipantsRepository) : BaseViewModel() {
 
     private val _user = MutableLiveData<State<Result<User, Unit>>>()
-    private val _currentHackathons = MutableLiveData<State<Result<List<Hackathon>, Unit>>>()
-    private val _pastHackathons = MutableLiveData<State<Result<List<Hackathon>, Unit>>>()
+    private val _participatedHackathons = MutableLiveData<State<Result<List<Hackathon>, Unit>>>()
+    private val _ownHackathons = MutableLiveData<State<Result<List<Hackathon>, Unit>>>()
 
     val user: LiveData<State<Result<User, Unit>>>
         get() = _user
 
-    val currentHackathons: LiveData<State<Result<List<Hackathon>, Unit>>>
-        get() = _currentHackathons
+    val participatedHackathons: LiveData<State<Result<List<Hackathon>, Unit>>>
+        get() = _participatedHackathons
 
-    val pastHackathons: LiveData<State<Result<List<Hackathon>, Unit>>>
-        get() = _pastHackathons
+    val ownHackathons: LiveData<State<Result<List<Hackathon>, Unit>>>
+        get() = _ownHackathons
 
     fun getCurrentUser() {
         coroutineContext.launch {
@@ -43,15 +43,15 @@ class ProfileViewModel(private val userRepository: UserRepository,
         }
     }
 
-    fun getCurrentHackathons(userId: Int) {
+    fun getParticipatedHackathons(userId: Int) {
         coroutineContext.launch {
-            _currentHackathons.value = participantsRepository.getCurrentHackathons(userId)
+            _participatedHackathons.value = participantsRepository.getParticipatedHackathons(userId)
         }
     }
 
-    fun getPastHackathons(userId: Int) {
+    fun getOwnHackathons(userId: Int) {
         coroutineContext.launch {
-            _pastHackathons.value = userRepository.getPastHackathons(userId)
+            _ownHackathons.value = userRepository.getOwnHackathons(userId)
         }
     }
 }

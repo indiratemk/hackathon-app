@@ -15,7 +15,7 @@ class HackathonSelectionVH(view: View) : RecyclerView.ViewHolder(view) {
     private val tvAddress = view.tvAddress
     private val tvDate = view.tvDate
 
-    fun onBind(hackathon: Hackathon) {
+    fun onBind(hackathon: Hackathon, listener: HackathonSelectionClickListener?) {
         Glide.with(itemView.context)
             .load(hackathon.thumbnailUrl)
             .placeholder(R.drawable.img_hackathon_no_image)
@@ -24,5 +24,6 @@ class HackathonSelectionVH(view: View) : RecyclerView.ViewHolder(view) {
         tvTitle.text = hackathon.title
         tvAddress.text = hackathon.address
         tvDate.text = DateFormat.getFormattedDate(hackathon.startDate.time, DateFormat.DATE_FORMAT_3)
+        itemView.setOnClickListener { listener?.onHackathonClick(hackathon.id) }
     }
 }
