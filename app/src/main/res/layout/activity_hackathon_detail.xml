@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -75,8 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp">
+                    android:paddingEnd="16dp">
 
                     <TextView
                         android:id="@+id/tvTitle"
@@ -225,6 +225,17 @@
                         app:layout_constraintStart_toEndOf="@+id/ivLocation"
                         app:layout_constraintTop_toTopOf="@+id/ivLocation"
                         tools:text="г. Алматы, гостиница Казахстан" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvTags"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <include layout="@layout/layout_divider" />
@@ -279,6 +290,58 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvPaticipants" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clTeams"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:id="@+id/tvTeams"
+                        style="@style/PrimaryBoldTextView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/hackathon_detail_teams_title"
+                        app:layout_constraintBottom_toTopOf="@+id/viewTeams"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTeamsCount"
+                        style="@style/PrimaryTextView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvTeams"
+                        app:layout_constraintStart_toEndOf="@+id/tvTeams"
+                        app:layout_constraintTop_toTopOf="@+id/tvTeams"
+                        tools:text="3" />
+
+                    <ImageView
+                        android:id="@+id/ivTeamsArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        app:srcCompat="@drawable/ic_arrow_right"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvTeams"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvTeams"
+                        tools:ignore="contentDescription"
+                        tools:layout_editor_absoluteX="230dp"
+                        tools:layout_editor_absoluteY="14dp" />
+
+                    <View
+                        android:id="@+id/viewTeams"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorGray300"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTeams" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

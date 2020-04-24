@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.hackathon.R
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.presentation.base.BaseActivity
+import com.example.hackathon.presentation.hackathon.detail.tags.TagsAdapter
 import com.example.hackathon.presentation.hackathon.participants.ParticipantsActivity
 import com.example.hackathon.presentation.hackathon.registration.HackathonRegistrationActivity
 import com.example.hackathon.presentation.sign_in.SignInActivity
@@ -17,6 +18,9 @@ import com.example.hackathon.util.Constants
 import com.example.hackathon.util.PreferenceUtils
 import com.example.hackathon.util.ui.DateFormat
 import com.example.hackathon.util.ui.UIUtil
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexWrap
+import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mukesh.MarkdownView
@@ -117,7 +121,7 @@ class HackathonDetailActivity : BaseActivity() {
     }
 
     private fun initDescriptionDialog() {
-        val view = layoutInflater.inflate(R.layout.bottom_sheet_description, null)
+        val view = View.inflate(this, R.layout.bottom_sheet_description, null)
         val descriptionBottomDialog = BottomSheetDialog(this, R.style.RoundedBottomSheetDialogTheme)
         descriptionBottomDialog.setContentView(view)
         mvDescription = view.findViewById(R.id.mvDescription)
@@ -125,7 +129,7 @@ class HackathonDetailActivity : BaseActivity() {
     }
 
     private fun initCriteriaDialog() {
-        val view = layoutInflater.inflate(R.layout.bottom_sheet_criteria, null)
+        val view = View.inflate(this, R.layout.bottom_sheet_criteria, null)
         val criteriaBottomDialog = BottomSheetDialog(this, R.style.RoundedBottomSheetDialogTheme)
         criteriaBottomDialog.setContentView(view)
         mvCriteria = view.findViewById(R.id.mvCriteria)
@@ -133,7 +137,7 @@ class HackathonDetailActivity : BaseActivity() {
     }
 
     private fun initRulesDialog() {
-        val view = layoutInflater.inflate(R.layout.bottom_sheet_rules, null)
+        val view = View.inflate(this, R.layout.bottom_sheet_rules, null)
         val rulesBottomDialog = BottomSheetDialog(this, R.style.RoundedBottomSheetDialogTheme)
         rulesBottomDialog.setContentView(view)
         mvRules = view.findViewById(R.id.mvRules)
@@ -153,12 +157,21 @@ class HackathonDetailActivity : BaseActivity() {
         tvEndDate.text = DateFormat.getFormattedDate(hackathon.endDate.time, DateFormat.DATE_FORMAT_2)
         tvAddress.text = hackathon.address
         tvParticipantsCount.text = hackathon.numberOfParticipants
-        clParticipants.setOnClickListener {
-            ParticipantsActivity.startActivity(this, hackathonId)
+
+        val tagsAdapter = TagsAdapter(hackathon.tags)
+        rvTags.apply {
+            setHasFixedSize(true)
+            layoutManager = FlexboxLayoutManager(context, FlexDirection.ROW, FlexWrap.WRAP)
+            adapter = tagsAdapter
         }
+
         if (hackathon.description != null) mvDescription.setMarkDownText(hackathon.description) else clDescription.visibility = View.GONE
         if (hackathon.criteria != null) mvCriteria.setMarkDownText(hackathon.criteria) else clCriteria.visibility = View.GONE
         if (hackathon.rules != null) mvRules.setMarkDownText(hackathon.rules) else clRules.visibility = View.GONE
+
+        clParticipants.setOnClickListener {
+            ParticipantsActivity.startActivity(this, hackathonId)
+        }
     }
 
     private fun collapseBehavior(title: String) {

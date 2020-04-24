@@ -17,7 +17,9 @@
     <color name="colorGreen200">#5CC531</color>
     <!--endregion-->
     <!--region BLUE-->
-    <color name="colorBlue200">#1890FF</color>
+    <color name="colorBlue100">#E6F7FF</color>
+    <color name="colorBlue200">#91D5FF</color>
+    <color name="colorBlue300">#1890FF</color>
     <!--endregion-->
     <!--region RED-->
     <color name="colorRed100">#FDF1EF</color>

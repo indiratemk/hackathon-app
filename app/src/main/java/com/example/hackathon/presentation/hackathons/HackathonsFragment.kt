@@ -64,7 +64,7 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
 
     private fun initUI() {
         (requireActivity() as BaseActivity).initToolbar(toolbar, getString(R.string.hackathons_title), true)
-        refreshLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorBlue200))
+        refreshLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorBlue300))
         refreshLayout.setOnRefreshListener { hackathonsViewModel.getHackathons() }
         initRV()
     }

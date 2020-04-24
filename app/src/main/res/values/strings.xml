@@ -50,7 +50,9 @@
     <string name="hackathon_detail_start_title">Начало</string>
     <string name="hackathon_detail_end_title">Конец</string>
     <string name="hackathon_detail_location_title">Местоположение</string>
+    <string name="hackathon_detail_tag_title">#%s</string>
     <string name="hackathon_detail_participants_title">Участники</string>
+    <string name="hackathon_detail_teams_title">Команды</string>
     <string name="hackathon_detail_description">Описание</string>
     <string name="hackathon_detail_criteria">Критерии</string>
     <string name="hackathon_detail_rules">Правила</string>
