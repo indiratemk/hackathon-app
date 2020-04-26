@@ -8,6 +8,7 @@ import com.example.hackathon.R
 import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.ui.UIUtil
+import kotlinx.android.synthetic.main.activity_hackathon_detail.*
 import kotlinx.android.synthetic.main.activity_hackathon_registration.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -16,6 +17,7 @@ class HackathonRegistrationActivity : BaseActivity() {
 
     private val hackathonRegistrationViewModel: HackathonRegistrationViewModel by viewModel()
     private var hackathonId: Int? = null
+    private var type: Int = Constants.STANDALONE
 
     override fun layoutId() = R.layout.activity_hackathon_registration
 
@@ -36,7 +38,14 @@ class HackathonRegistrationActivity : BaseActivity() {
 
     fun initUI() {
         initToolbar(toolbar, getString(R.string.hackathon_registration_title), false)
-        btnParticipate.setOnClickListener { hackathonRegistrationViewModel.register(hackathonId!!) }
+        rgParticipateMethods.setOnCheckedChangeListener{group, checkedId -> run {
+                when (checkedId) {
+                    R.id.rbStandalone -> type = Constants.STANDALONE
+                    R.id.rbSearchingForTeam -> type = Constants.SEARCHING_FOR_TEAM
+                    R.id.rbWithTeam -> type = Constants.WITH_TEAM
+                }
+            } }
+        btnConfirmParticipation.setOnClickListener { hackathonRegistrationViewModel.register(hackathonId!!, type) }
     }
 
     private fun subscribeObservers() {

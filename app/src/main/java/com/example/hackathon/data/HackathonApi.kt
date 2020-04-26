@@ -58,8 +58,10 @@ interface HackathonApi {
     //endregion
 
     //region PARTICIPANTS
+    @FormUrlEncoded
     @POST("participants/{id}/register")
-    suspend fun register(@Path("id") id: Int): Response<Result<Boolean, Unit>>
+    suspend fun register(@Path("id") id: Int,
+                         @Field("type") type: Int): Response<Result<Boolean, Unit>>
 
     @POST("participants/{id}/unregister")
     suspend fun unregister(@Path("id") id: Int): Response<Result<Boolean, Unit>>

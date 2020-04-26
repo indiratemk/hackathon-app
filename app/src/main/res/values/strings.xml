@@ -63,7 +63,11 @@
 
     <!--region HACKATHON REGISTRATION-->
     <string name="hackathon_registration_title">Регистрация на хакатон</string>
-    <string name="hackathon_registration_participate">Принять участие</string>
+    <string name="hackathon_registration_participation_methods">Пожалуйста, выберите способ участия в хакатоне</string>
+    <string name="hackathon_registration_confirm_participation">Подтвердить участие</string>
+    <string name="hackathon_registration_standalone">Я буду участвовать один</string>
+    <string name="hackathon_registration_searching_for_team">Я ищу команду</string>
+    <string name="hackathon_registration_with_team">У меня есть команда</string>
     <string name="hackathon_registration_success_registration">Вы успешно зарегестрированы</string>
     <!--endregion-->
 

@@ -9,8 +9,8 @@ import com.example.hackathon.util.state.State
 class ParticipantsRepository(private val participantsRemoteDataSource: ParticipantsRemoteDataSource) : BaseRepository(),
     IParticipantsRepository {
 
-    override suspend fun register(id: Int): State<Result<Boolean, Unit>> {
-        return handleState { participantsRemoteDataSource.register(id) }
+    override suspend fun register(id: Int, type: Int): State<Result<Boolean, Unit>> {
+        return handleState { participantsRemoteDataSource.register(id, type) }
     }
 
     override suspend fun unregister(id: Int): State<Result<Boolean, Unit>> {

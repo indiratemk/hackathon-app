@@ -15,10 +15,10 @@ class HackathonRegistrationViewModel(private val participantsRepository: Partici
     val isRegistered: LiveData<State<Result<Boolean, Unit>>>
         get() = _isRegistered
 
-    fun register(id: Int) {
+    fun register(id: Int, type: Int) {
         coroutineContext.launch {
             _isRegistered.value = State.Loading(true)
-            _isRegistered.value = participantsRepository.register(id)
+            _isRegistered.value = participantsRepository.register(id, type)
             _isRegistered.value = State.Loading(false)
         }
     }

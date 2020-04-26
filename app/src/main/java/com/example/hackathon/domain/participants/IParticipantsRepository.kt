@@ -6,7 +6,7 @@ import com.example.hackathon.util.state.State
 
 interface IParticipantsRepository {
 
-    suspend fun register(id: Int): State<Result<Boolean, Unit>>
+    suspend fun register(id: Int, type: Int): State<Result<Boolean, Unit>>
 
     suspend fun unregister(id: Int): State<Result<Boolean, Unit>>
 

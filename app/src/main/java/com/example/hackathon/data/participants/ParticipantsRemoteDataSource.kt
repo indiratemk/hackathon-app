@@ -8,8 +8,8 @@ import com.example.hackathon.util.response.ApiResponse
 
 class ParticipantsRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRemoteDataSource() {
 
-    suspend fun register(id: Int): ApiResponse<Result<Boolean, Unit>> {
-        return getResponse { hackathonApi.register(id) }
+    suspend fun register(id: Int, type: Int): ApiResponse<Result<Boolean, Unit>> {
+        return getResponse { hackathonApi.register(id, type) }
     }
 
     suspend fun unregister(id: Int): ApiResponse<Result<Boolean, Unit>> {
