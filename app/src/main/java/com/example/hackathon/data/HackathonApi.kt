@@ -2,8 +2,8 @@ package com.example.hackathon.data
 
 import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.data.base.model.Paging
-import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.data.base.model.Result
+import com.example.hackathon.data.hackathon.model.Hackathon
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -42,7 +42,7 @@ interface HackathonApi {
 
     //region HACKATHON
     @GET("hackathons")
-    suspend fun getHackathons(): Response<Result<List<Hackathon>, Paging>>
+    suspend fun getHackathons(@Query("page") page: Int): Response<Result<List<Hackathon>, Paging>>
 
     @GET("hackathons/search")
     suspend fun searchHackathons(@Query("q") query: String): Response<Result<List<Hackathon>, Paging>>

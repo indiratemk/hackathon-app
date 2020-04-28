@@ -9,11 +9,14 @@ import com.example.hackathon.domain.hackathon.HackathonRepository
 import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 class HackathonsViewModel(private val hackathonRepository: HackathonRepository) : BaseViewModel() {
 
     private val _hackathons = MutableLiveData<State<Result<List<Hackathon>, Paging>>>()
     private val _search = MutableLiveData<State<Result<List<Hackathon>, Paging>>>()
+    private var pageToLoad = 1
+    private var totalPages = 1
 
     val hackathons: LiveData<State<Result<List<Hackathon>, Paging>>>
         get() = _hackathons
@@ -22,13 +25,26 @@ class HackathonsViewModel(private val hackathonRepository: HackathonRepository) 
         get() = _search
 
     init {
-        getHackathons()
+        getHackathons(true)
     }
 
-    fun getHackathons() {
+    fun getHackathons(isRefreshed: Boolean) {
+        if (isRefreshed) {
+            pageToLoad = 1
+        } else {
+            if (pageToLoad < totalPages) {
+                pageToLoad += 1
+            } else {
+                return
+            }
+        }
         coroutineContext.launch {
             _hackathons.value = State.Loading(true)
-            _hackathons.value = hackathonRepository.getHackathons()
+            val hackathonsState: State<Result<List<Hackathon>, Paging>> = hackathonRepository.getHackathons(pageToLoad)
+            hackathonsState.result?.let { result ->
+                totalPages = (result.meta.total / result.meta.size.toDouble()).roundToInt()
+            }
+            _hackathons.value = hackathonsState
             _hackathons.value = State.Loading(false)
         }
     }

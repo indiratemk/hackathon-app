@@ -9,7 +9,8 @@ import com.example.hackathon.data.hackathon.model.Hackathon
 class HackathonsAdapter(private val listener: HackathonListener) :
     RecyclerView.Adapter<HackathonVH>() {
 
-    private var hackathons: List<Hackathon> = emptyList()
+    private var hackathons: MutableList<Hackathon> = emptyList<Hackathon>().toMutableList()
+    private var isRefreshed = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HackathonVH {
         val view = LayoutInflater.from(parent.context)
@@ -25,8 +26,19 @@ class HackathonsAdapter(private val listener: HackathonListener) :
         return hackathons.size
     }
 
-    fun setHackathons(hackathons: List<Hackathon>) {
-        this.hackathons = hackathons
-        notifyDataSetChanged()
+    fun addHackathons(hackathons: List<Hackathon>) {
+        if (isRefreshed) {
+            this.hackathons.clear()
+            this.hackathons.addAll(hackathons)
+            notifyDataSetChanged()
+        } else {
+            val beforeSize = this.hackathons.size
+            this.hackathons.addAll(hackathons)
+            notifyItemRangeInserted(beforeSize, hackathons.size)
+        }
+    }
+
+    fun setRefreshed(isRefreshed: Boolean) {
+        this.isRefreshed = isRefreshed
     }
 }

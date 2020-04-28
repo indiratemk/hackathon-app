@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.R
 import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.base.BaseFragment
@@ -65,7 +66,10 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
     private fun initUI() {
         (requireActivity() as BaseActivity).initToolbar(toolbar, getString(R.string.hackathons_title), true)
         refreshLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorBlue300))
-        refreshLayout.setOnRefreshListener { hackathonsViewModel.getHackathons() }
+        refreshLayout.setOnRefreshListener {
+            hackathonsAdapter.setRefreshed(true)
+            hackathonsViewModel.getHackathons(true)
+        }
         initRV()
     }
 
@@ -75,6 +79,13 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = hackathonsAdapter
         }
+
+        rvHackathons.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                hackathonsAdapter.setRefreshed(false)
+                hackathonsViewModel.getHackathons(false)
+            }
+        })
     }
 
     private fun subscribeObservers() {
@@ -82,7 +93,7 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
             onStateChange(dataState)
             refreshLayout.isRefreshing = dataState.isLoading
             dataState.result?.let { result ->
-                hackathonsAdapter.setHackathons(result.data)
+                hackathonsAdapter.addHackathons(result.data)
             }
         })
 
@@ -90,7 +101,8 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
             refreshLayout.isRefreshing = dataState.isLoading
             dataState.result?.let { result ->
                 hideSearchingError()
-                hackathonsAdapter.setHackathons(result.data)
+                hackathonsAdapter.setRefreshed(true)
+                hackathonsAdapter.addHackathons(result.data)
             }
             dataState.message?.let { message ->
                 if (dataState.errorCode == Constants.NOT_FOUND_ERROR_CODE) {
@@ -103,12 +115,12 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
         })
     }
 
-    fun showSearchingError() {
+    private fun showSearchingError() {
         rvHackathons.visibility = View.GONE
         tvSearchError.visibility = View.VISIBLE
     }
 
-    fun hideSearchingError() {
+    private fun hideSearchingError() {
         rvHackathons.visibility = View.VISIBLE
         tvSearchError.visibility = View.GONE
     }
