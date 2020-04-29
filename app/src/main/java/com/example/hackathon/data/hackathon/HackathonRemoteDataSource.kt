@@ -6,6 +6,7 @@ import com.example.hackathon.data.base.BaseRemoteDataSource
 import com.example.hackathon.data.base.model.Paging
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
+import com.example.hackathon.data.participants.model.Participant
 import com.example.hackathon.util.response.ApiResponse
 
 class HackathonRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRemoteDataSource() {
@@ -26,7 +27,7 @@ class HackathonRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRe
         return getResponse { hackathonApi.checkParticipation(id) }
     }
 
-    suspend fun getParticipants(id: Int): ApiResponse<Result<List<User>, Unit>> {
+    suspend fun getParticipants(id: Int): ApiResponse<Result<List<Participant>, Unit>> {
         return getResponse { hackathonApi.getParticipants(id) }
     }
 }

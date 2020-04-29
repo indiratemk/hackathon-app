@@ -55,13 +55,5 @@ data class User(
 
     @SerializedName("avatar_url")
     @Expose
-    val avatarUrl: String?,
-
-    @SerializedName("team_id")
-    @Expose
-    val teamId: Int?,
-
-    @SerializedName("participant_type")
-    @Expose
-    val participantType: Int
+    val avatarUrl: String?
 )

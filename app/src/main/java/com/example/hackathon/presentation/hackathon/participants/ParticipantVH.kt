@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hackathon.R
-import com.example.hackathon.data.auth.model.User
+import com.example.hackathon.data.participants.model.Participant
 import com.example.hackathon.util.Constants
 import kotlinx.android.synthetic.main.vh_participant.view.*
 
@@ -16,33 +16,33 @@ class ParticipantVH(view: View) : RecyclerView.ViewHolder(view) {
     private val tvIdentification = view.tvIdentification
     private val btnInvite = view.btnInvite
 
-    fun onBind(participant: User, currentUser: User?, listener: ParticipantListener) {
+    fun onBind(participant: Participant, currentUser: Participant?, listener: ParticipantListener) {
         Glide.with(itemView.context)
-            .load(participant.avatarUrl)
+            .load(participant.user.avatarUrl)
             .placeholder(R.drawable.img_hackathon_no_image)
             .error(R.drawable.img_hackathon_no_image)
             .into(civAvatar)
-        if (participant.name == null && participant.surname == null) {
+        if (participant.user.name == null && participant.user.surname == null) {
             tvFullName.text = itemView.resources.getString(R.string.participants_name_undefined)
         } else {
             tvFullName.text = itemView.resources.getString(
                 R.string.participants_full_name,
-                participant.name,
-                participant.surname
+                participant.user.name,
+                participant.user.surname
             )
         }
-        tvLogin.text = itemView.resources.getString(R.string.participants_login, participant.login)
+        tvLogin.text = itemView.resources.getString(R.string.participants_login, participant.user.login)
 
         currentUser?.let {
-            tvIdentification.visibility = if (it.id == participant.id) View.VISIBLE else View.GONE
+            tvIdentification.visibility = if (it.userId == participant.userId) View.VISIBLE else View.GONE
             btnInvite.visibility = if (canInvite(participant, it)) View.VISIBLE else View.GONE
         }
 
-        itemView.setOnClickListener { listener.onParticipantClick(participant.email) }
+        itemView.setOnClickListener { listener.onParticipantClick(participant.user.email) }
     }
 
-    private fun canInvite(participant: User, currentUser: User) = currentUser.teamId != null &&
+    private fun canInvite(participant: Participant, currentUser: Participant) = currentUser.teamId != null &&
             participant.teamId == null &&
-            currentUser.participantType == Constants.WITH_TEAM &&
-            participant.participantType == Constants.SEARCHING_FOR_TEAM
+            currentUser.type == Constants.WITH_TEAM &&
+            participant.type == Constants.SEARCHING_FOR_TEAM
 }

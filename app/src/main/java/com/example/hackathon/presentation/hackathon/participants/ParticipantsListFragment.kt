@@ -68,8 +68,8 @@ class ParticipantsListFragment : BaseFragment(), ParticipantListener {
             }
         })
 
-        participantsViewModel.currentUser.observe(viewLifecycleOwner, Observer { user ->
-            participantsAdapter.setCurrentUser(user)
+        participantsViewModel.currentUser.observe(viewLifecycleOwner, Observer { participant ->
+            participantsAdapter.setCurrentUser(participant)
         })
     }
 

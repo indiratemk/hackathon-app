@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.R
-import com.example.hackathon.data.auth.model.User
+import com.example.hackathon.data.participants.model.Participant
 
 class ParticipantsAdapter(private val listener: ParticipantListener) :
     RecyclerView.Adapter<ParticipantVH>() {
 
-    private var participants: List<User> = emptyList()
-    private var currentUser: User? = null
+    private var participants: List<Participant> = emptyList()
+    private var currentUser: Participant? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParticipantVH {
         val view = LayoutInflater.from(parent.context)
@@ -26,12 +26,12 @@ class ParticipantsAdapter(private val listener: ParticipantListener) :
         return participants.size
     }
 
-    fun setParticipants(participants: List<User>) {
+    fun setParticipants(participants: List<Participant>) {
         this.participants = participants
         notifyDataSetChanged()
     }
 
-    fun setCurrentUser(currentUser: User?) {
+    fun setCurrentUser(currentUser: Participant?) {
         this.currentUser = currentUser
     }
 }

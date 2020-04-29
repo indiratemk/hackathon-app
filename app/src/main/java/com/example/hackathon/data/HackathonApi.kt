@@ -4,6 +4,7 @@ import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.data.base.model.Paging
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
+import com.example.hackathon.data.participants.model.Participant
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -54,7 +55,7 @@ interface HackathonApi {
     suspend fun checkParticipation(@Path("id") id: Int): Response<Result<Boolean, Unit>>
 
     @GET("hackathons/{id}/participants")
-    suspend fun getParticipants(@Path("id") id: Int): Response<Result<List<User>, Unit>>
+    suspend fun getParticipants(@Path("id") id: Int): Response<Result<List<Participant>, Unit>>
     //endregion
 
     //region PARTICIPANTS
