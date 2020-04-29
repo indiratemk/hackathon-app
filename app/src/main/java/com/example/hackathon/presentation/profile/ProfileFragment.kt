@@ -50,10 +50,13 @@ class ProfileFragment : BaseFragment(), HackathonSelectionClickListener {
             email = bundle.getString(Constants.USER_EMAIL_EXTRA)
             if (email != null) {
                 ivBack.visibility = View.VISIBLE
+                ivNotification.visibility = View.GONE
                 userViewModel.getUserByEmail(email!!)
             } else {
                 ivBack.visibility = View.GONE
+                ivNotification.visibility = View.VISIBLE
                 userViewModel.getCurrentUser()
+                userViewModel.getNotificationsCount()
             }
         }
         subscribeObservers()
@@ -63,6 +66,7 @@ class ProfileFragment : BaseFragment(), HackathonSelectionClickListener {
     private fun initUI() {
         refreshLayout.setOnRefreshListener {
             if (email == null) {
+                userViewModel.getNotificationsCount()
                 userViewModel.getCurrentUser()
             } else {
                 userViewModel.getUserByEmail(email!!)
@@ -97,6 +101,17 @@ class ProfileFragment : BaseFragment(), HackathonSelectionClickListener {
                 userViewModel.getParticipatedHackathons(user.id)
                 userViewModel.getOwnHackathons(user.id)
                 setUserDetails(user)
+            }
+        })
+
+        userViewModel.notificationsCount.observe(viewLifecycleOwner, Observer { dataState ->
+            dataState.result?.let { result ->
+                result.data["count"]?.let { count ->
+                    if (count > 0) {
+                        tvNotificationCount.text = count.toString()
+                        tvNotificationCount.visibility = View.VISIBLE
+                    }
+                }
             }
         })
 

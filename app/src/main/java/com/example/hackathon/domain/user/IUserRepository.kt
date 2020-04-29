@@ -14,4 +14,6 @@ interface IUserRepository {
     suspend fun getOwnHackathons(userId: Int): State<Result<List<Hackathon>, Unit>>
 
     fun getCurrentUserId(): Int
+
+    suspend fun getNotificationsCount(): State<Result<HashMap<String, Int>, Unit>>
 }

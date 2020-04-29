@@ -1,6 +1,7 @@
 package com.example.hackathon.data.participants.model
 
 import com.example.hackathon.data.auth.model.User
+import com.example.hackathon.data.hackathon.model.Team
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.util.*
@@ -37,7 +38,7 @@ data class Participant(
 
     @SerializedName("team")
     @Expose
-    val team: String?,
+    val team: Team?,
 
     @SerializedName("user")
     @Expose

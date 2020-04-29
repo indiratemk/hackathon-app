@@ -27,6 +27,11 @@
     <!--endregion-->
 
     <!--region PRIMARY TEXT VIEW-->
+    <style name="PrimaryTextView10" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/colorBlack100</item>
+    </style>
+
     <style name="PrimaryTextView12" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorBlack100</item>

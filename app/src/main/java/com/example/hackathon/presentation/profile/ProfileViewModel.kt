@@ -17,6 +17,7 @@ class ProfileViewModel(private val userRepository: UserRepository,
     private val _user = MutableLiveData<State<Result<User, Unit>>>()
     private val _participatedHackathons = MutableLiveData<State<Result<List<Hackathon>, Unit>>>()
     private val _ownHackathons = MutableLiveData<State<Result<List<Hackathon>, Unit>>>()
+    private val _notificationsCount = MutableLiveData<State<Result<HashMap<String, Int>, Unit>>>()
 
     val user: LiveData<State<Result<User, Unit>>>
         get() = _user
@@ -26,6 +27,9 @@ class ProfileViewModel(private val userRepository: UserRepository,
 
     val ownHackathons: LiveData<State<Result<List<Hackathon>, Unit>>>
         get() = _ownHackathons
+
+    val notificationsCount: LiveData<State<Result<HashMap<String, Int>, Unit>>>
+        get() = _notificationsCount
 
     fun getCurrentUser() {
         coroutineContext.launch {
@@ -52,6 +56,12 @@ class ProfileViewModel(private val userRepository: UserRepository,
     fun getOwnHackathons(userId: Int) {
         coroutineContext.launch {
             _ownHackathons.value = userRepository.getOwnHackathons(userId)
+        }
+    }
+
+    fun getNotificationsCount() {
+        coroutineContext.launch {
+            _notificationsCount.value = userRepository.getNotificationsCount()
         }
     }
 }

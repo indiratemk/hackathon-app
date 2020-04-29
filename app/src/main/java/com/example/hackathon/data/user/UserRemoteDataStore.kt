@@ -20,4 +20,8 @@ class UserRemoteDataStore(private val hackathonApi: HackathonApi) : BaseRemoteDa
     suspend fun getUserByEmail(email: String): ApiResponse<Result<User, Unit>> {
         return getResponse { hackathonApi.getUserByEmail(email) }
     }
+
+    suspend fun getNotificationsCount(): ApiResponse<Result<HashMap<String, Int>, Unit>> {
+        return getResponse { hackathonApi.getNotificationsCount() }
+    }
 }

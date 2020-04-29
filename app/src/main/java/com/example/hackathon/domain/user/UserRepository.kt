@@ -26,4 +26,8 @@ class UserRepository(private val userRemoteDataStore: UserRemoteDataStore,
     override fun getCurrentUserId(): Int {
         return userLocalDataSource.getAuthorizedUserId()
     }
+
+    override suspend fun getNotificationsCount(): State<Result<HashMap<String, Int>, Unit>> {
+        return handleState { userRemoteDataStore.getNotificationsCount() }
+    }
 }

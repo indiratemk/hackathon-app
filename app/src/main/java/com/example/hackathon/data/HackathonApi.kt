@@ -74,4 +74,9 @@ interface HackathonApi {
     @GET("participants/{id}/hackathons")
     suspend fun getParticipatedHackathons(@Path("id") userId: Int): Response<Result<List<Hackathon>, Unit>>
     //endregion
+
+    //region NOTIFICATIONS
+    @GET("notifications/count")
+    suspend fun getNotificationsCount(): Response<Result<HashMap<String, Int>, Unit>>
+    //endregion
 }

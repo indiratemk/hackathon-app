@@ -41,6 +41,32 @@
                         tools:ignore="contentDescription" />
 
                     <ImageView
+                        android:id="@+id/ivNotification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:padding="4dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:layout_constraintEnd_toStartOf="@+id/ivLogout"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_notifications"
+                        tools:ignore="contentDescription" />
+
+                    <TextView
+                        android:id="@+id/tvNotificationCount"
+                        style="@style/PrimaryTextView12"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/shape_badge"
+                        android:gravity="center"
+                        android:textColor="@color/colorWhite100"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toTopOf="@+id/ivNotification"
+                        app:layout_constraintEnd_toEndOf="@+id/ivNotification"
+                        tools:text="1"/>
+
+                    <ImageView
                         android:id="@+id/ivLogout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
