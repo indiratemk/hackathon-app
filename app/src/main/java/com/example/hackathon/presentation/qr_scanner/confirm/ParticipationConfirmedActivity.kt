@@ -1,4 +1,4 @@
-package com.example.hackathon.presentation.qr_scanner
+package com.example.hackathon.presentation.qr_scanner.confirm
 
 import android.app.Activity
 import android.content.Intent
@@ -35,6 +35,7 @@ class ParticipationConfirmedActivity : BaseActivity() {
         btnToHackathon.setOnClickListener {
             HackathonDetailActivity.startActivity(this,
                 hackathonId!!, Constants.HACKATHON_DETAIL_REQUEST_CODE)
+            finish()
         }
     }
 }

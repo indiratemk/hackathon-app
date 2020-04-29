@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".presentation.qr_scanner.ParticipationConfirmedActivity">
+    tools:context=".presentation.qr_scanner.confirm.ParticipationConfirmedActivity">
 
     <include
         layout="@layout/layout_toolbar"

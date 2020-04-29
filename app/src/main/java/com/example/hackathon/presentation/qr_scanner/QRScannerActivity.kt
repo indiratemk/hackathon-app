@@ -11,6 +11,7 @@ import com.dlazaro66.qrcodereaderview.QRCodeReaderView
 import com.example.hackathon.R
 import com.example.hackathon.data.hackathon.model.QRParams
 import com.example.hackathon.presentation.base.BaseActivity
+import com.example.hackathon.presentation.qr_scanner.confirm.ParticipationConfirmedActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.ui.UIUtil
 import com.google.gson.Gson
