@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llContainer"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp">
+
+    <Button
+        android:id="@+id/btnCreateTeam"
+        style="@style/RoundedPrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="gone"
+        android:text="@string/teams_create_team" />
+
+    <LinearLayout
+        android:id="@+id/llTeamManagement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="8dp"
+        android:background="@drawable/shape_teams_header">
+
+        <TextView
+            android:id="@+id/tvTeamTitle"
+            style="@style/PrimaryBoldTextView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="HackTeam"/>
+
+        <LinearLayout
+            android:id="@+id/llManagementActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnRemoveTeam"
+                style="@style/RoundedErrorButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="0dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="14sp"
+                android:text="@string/teams_remove_team" />
+
+            <Button
+                android:id="@+id/btnParticipantsManagement"
+                style="@style/RoundedPrimaryButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="0dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="14sp"
+                android:layout_marginStart="8dp"
+                android:text="@string/teams_team_management"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLeaveTeam"
+            style="@style/RoundedErrorButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="14sp"
+            android:text="@string/teams_leave_team"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

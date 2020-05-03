@@ -2,6 +2,7 @@ package com.example.hackathon.domain.participants
 
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
+import com.example.hackathon.data.participants.model.Participant
 import com.example.hackathon.util.state.State
 
 interface IParticipantsRepository {
@@ -14,4 +15,6 @@ interface IParticipantsRepository {
                                      userId: Int): State<Result<Boolean, Unit>>
 
     suspend fun getParticipatedHackathons(userId: Int): State<Result<List<Hackathon>, Unit>>
+
+    suspend fun getCurrent(hackathonId: Int): State<Result<Participant, Unit>>
 }

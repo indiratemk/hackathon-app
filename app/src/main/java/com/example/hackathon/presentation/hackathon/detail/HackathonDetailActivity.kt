@@ -13,6 +13,7 @@ import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.hackathon.detail.tags.TagsAdapter
 import com.example.hackathon.presentation.hackathon.participants.ParticipantsActivity
 import com.example.hackathon.presentation.hackathon.registration.HackathonRegistrationActivity
+import com.example.hackathon.presentation.hackathon.teams.TeamsActivity
 import com.example.hackathon.presentation.sign_in.SignInActivity
 import com.example.hackathon.util.Constants
 import com.example.hackathon.util.PreferenceUtils
@@ -173,6 +174,9 @@ class HackathonDetailActivity : BaseActivity() {
 
         clParticipants.setOnClickListener {
             ParticipantsActivity.startActivity(this, hackathonId)
+        }
+        clTeams.setOnClickListener {
+            TeamsActivity.startActivity(this, hackathonId)
         }
     }
 

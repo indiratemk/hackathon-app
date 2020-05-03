@@ -1,5 +1,6 @@
 package com.example.hackathon.data.hackathon.model
 
+import com.example.hackathon.data.auth.model.User
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -12,6 +13,10 @@ data class Team(
     @SerializedName("hid")
     @Expose
     val hackathonId: Int,
+
+    @SerializedName("members")
+    @Expose
+    val members: List<User>?,
 
     @SerializedName("name")
     @Expose

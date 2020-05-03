@@ -7,6 +7,7 @@ import com.example.hackathon.domain.user.UserRepository
 import com.example.hackathon.presentation.hackathon.detail.HackathonDetailViewModel
 import com.example.hackathon.presentation.hackathon.participants.ParticipantsViewModel
 import com.example.hackathon.presentation.hackathon.registration.HackathonRegistrationViewModel
+import com.example.hackathon.presentation.hackathon.teams.TeamsViewModel
 import com.example.hackathon.presentation.hackathons.HackathonsViewModel
 import com.example.hackathon.presentation.logout.LogoutViewModel
 import com.example.hackathon.presentation.profile.ProfileViewModel
@@ -26,4 +27,5 @@ val viewModelModule = module {
     viewModel { HackathonRegistrationViewModel(get() as ParticipantsRepository) }
     viewModel { QRScannerViewModel(get() as ParticipantsRepository) }
     viewModel { ParticipantsViewModel(get() as HackathonRepository, get() as UserRepository) }
+    viewModel { TeamsViewModel(get() as HackathonRepository, get() as ParticipantsRepository) }
 }

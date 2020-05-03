@@ -4,6 +4,7 @@ import com.example.hackathon.data.base.model.Paging
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.HackathonRemoteDataSource
 import com.example.hackathon.data.hackathon.model.Hackathon
+import com.example.hackathon.data.hackathon.model.Team
 import com.example.hackathon.data.participants.model.Participant
 import com.example.hackathon.domain.base.BaseRepository
 import com.example.hackathon.util.state.State
@@ -29,5 +30,9 @@ class HackathonRepository(private val hackathonRemoteDataSource: HackathonRemote
 
     override suspend fun getParticipants(id: Int): State<Result<List<Participant>, Unit>> {
         return handleState { hackathonRemoteDataSource.getParticipants(id) }
+    }
+
+    override suspend fun getTeams(id: Int): State<Result<List<Team>, Unit>> {
+        return handleState { hackathonRemoteDataSource.getTeams(id) }
     }
 }

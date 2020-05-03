@@ -3,6 +3,7 @@ package com.example.hackathon.domain.participants
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.data.participants.ParticipantsRemoteDataSource
+import com.example.hackathon.data.participants.model.Participant
 import com.example.hackathon.domain.base.BaseRepository
 import com.example.hackathon.util.state.State
 
@@ -25,5 +26,9 @@ class ParticipantsRepository(private val participantsRemoteDataSource: Participa
 
     override suspend fun getParticipatedHackathons(userId: Int): State<Result<List<Hackathon>, Unit>> {
         return handleState { participantsRemoteDataSource.getParticipatedHackathons(userId) }
+    }
+
+    override suspend fun getCurrent(hackathonId: Int): State<Result<Participant, Unit>> {
+        return handleState { participantsRemoteDataSource.getCurrent(hackathonId) }
     }
 }

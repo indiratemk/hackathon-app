@@ -4,6 +4,7 @@ import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.data.base.model.Paging
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
+import com.example.hackathon.data.hackathon.model.Team
 import com.example.hackathon.data.participants.model.Participant
 import retrofit2.Response
 import retrofit2.http.*
@@ -56,6 +57,9 @@ interface HackathonApi {
 
     @GET("hackathons/{id}/participants")
     suspend fun getParticipants(@Path("id") id: Int): Response<Result<List<Participant>, Unit>>
+
+    @GET("hackathons/{id}/teams")
+    suspend fun getTeams(@Path("id") id: Int): Response<Result<List<Team>, Unit>>
     //endregion
 
     //region PARTICIPANTS
@@ -73,6 +77,9 @@ interface HackathonApi {
 
     @GET("participants/{id}/hackathons")
     suspend fun getParticipatedHackathons(@Path("id") userId: Int): Response<Result<List<Hackathon>, Unit>>
+
+    @GET("participants/{id}/current")
+    suspend fun getCurrent(@Path("id") hackathonId: Int): Response<Result<Participant, Unit>>
     //endregion
 
     //region NOTIFICATIONS

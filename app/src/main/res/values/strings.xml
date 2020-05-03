@@ -92,4 +92,24 @@
     <string name="participants_identification">Это вы :)</string>
     <string name="participants_invite_to_team">Пригласить в команду</string>
     <string name="participants_no_participants">Список участников пуст</string>
+    <!--endregion-->
+
+    <!--region TEAMS-->
+    <string name="teams_title">Команды</string>
+    <string name="teams_create_team">Создать команду</string>
+    <string name="teams_leave_team">Покинуть команду</string>
+    <string name="teams_remove_team">Удалить команду</string>
+    <string name="teams_team_management">Управление командой</string>
+    <string name="teams_participants">участников</string>
+    <string name="teams_empty_list">Нет команд</string>
+
+    <plurals name="participants_plurals">
+        <item quantity="zero">%1$d участников</item>
+        <item quantity="one">%1$d участник</item>
+        <item quantity="two">%1$d участника</item>
+        <item quantity="few">%1$d участников</item>
+        <item quantity="many">%1$d участников</item>
+        <item quantity="other">%1$d участники</item>
+    </plurals>
+    <!--endregion-->
 </resources>
