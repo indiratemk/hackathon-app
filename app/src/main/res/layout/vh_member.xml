@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<de.hdodenhof.circleimageview.CircleImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ivMember"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
-    android:scaleType="centerCrop" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivMember"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/colorGray300"/>
+
+    <ImageView
+        android:id="@+id/ivEmptyAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:visibility="gone"
+        android:background="@drawable/shape_no_avatar_bg"
+        app:srcCompat="@drawable/ic_camera"
+        tools:ignore="contentDescription" />
+
+</LinearLayout>
