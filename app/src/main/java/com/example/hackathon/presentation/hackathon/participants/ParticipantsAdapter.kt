@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.R
 import com.example.hackathon.data.participants.model.Participant
 
-class ParticipantsAdapter(private val listener: ParticipantListener) :
+class ParticipantsAdapter(private val listener: ParticipantClickListener) :
     RecyclerView.Adapter<ParticipantVH>() {
 
     private var participants: List<Participant> = emptyList()

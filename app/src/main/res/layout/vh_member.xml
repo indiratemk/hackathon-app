@@ -24,5 +24,4 @@
         android:background="@drawable/shape_no_avatar_bg"
         app:srcCompat="@drawable/ic_camera"
         tools:ignore="contentDescription" />
-
 </LinearLayout>

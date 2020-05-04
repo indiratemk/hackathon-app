@@ -7,7 +7,10 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
-    android:padding="4dp"
+    android:paddingStart="8dp"
+    android:paddingTop="4dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="4dp"
     android:background="@drawable/shape_tag_bg"
     android:textColor="@color/colorBlue300"
     tools:text="#hackday" />

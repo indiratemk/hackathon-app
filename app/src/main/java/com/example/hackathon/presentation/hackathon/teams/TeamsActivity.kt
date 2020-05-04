@@ -55,6 +55,7 @@ class TeamsActivity : BaseActivity() {
         })
 
         teamsViewModel.teams.observe(this, Observer { dataState ->
+            onStateChange(dataState)
             dataState.isLoading.let { isLoading ->
                 if (isLoading) {
                     showLoading()

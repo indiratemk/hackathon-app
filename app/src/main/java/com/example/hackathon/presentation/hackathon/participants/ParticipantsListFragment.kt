@@ -8,12 +8,13 @@ import com.example.hackathon.R
 import com.example.hackathon.presentation.base.BaseActivity
 import com.example.hackathon.presentation.base.BaseFragment
 import com.example.hackathon.util.Constants
+import com.example.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.fragment_participants_list.*
 import kotlinx.android.synthetic.main.layout_empty_list.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ParticipantsListFragment : BaseFragment(), ParticipantListener {
+class ParticipantsListFragment : BaseFragment(), ParticipantClickListener {
 
     companion object {
         fun newInstance(id: Int): ParticipantsListFragment {
@@ -71,9 +72,20 @@ class ParticipantsListFragment : BaseFragment(), ParticipantListener {
         participantsViewModel.currentUser.observe(viewLifecycleOwner, Observer { participant ->
             participantsAdapter.setCurrentUser(participant)
         })
+
+        participantsViewModel.notification.observe(viewLifecycleOwner, Observer { dataState ->
+            onStateChange(dataState)
+            dataState.result?.let { result ->
+                UIUtil.showSuccessMessage(requireActivity(), getString(R.string.participants_invite_sent))
+            }
+        })
     }
 
     override fun onParticipantClick(email: String) {
         (requireActivity() as ParticipantsActivity).openParticipantProfile(email)
+    }
+
+    override fun onInviteClick(receiverId: Int, teamId: Int) {
+        participantsViewModel.inviteParticipant(receiverId, teamId)
     }
 }

@@ -92,6 +92,7 @@
     <string name="participants_identification">Это вы :)</string>
     <string name="participants_invite_to_team">Пригласить в команду</string>
     <string name="participants_no_participants">Список участников пуст</string>
+    <string name="participants_invite_sent">Приглашение успешно отправлено</string>
     <!--endregion-->
 
     <!--region TEAMS-->

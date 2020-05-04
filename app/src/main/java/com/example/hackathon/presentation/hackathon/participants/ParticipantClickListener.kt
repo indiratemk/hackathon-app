@@ -1,6 +1,8 @@
 package com.example.hackathon.presentation.hackathon.participants
 
-interface ParticipantListener {
+interface ParticipantClickListener {
 
     fun onParticipantClick(email: String)
+
+    fun onInviteClick(receiverId: Int, teamId: Int)
 }
