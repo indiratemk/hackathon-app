@@ -473,6 +473,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="8dp"
+        android:visibility="gone"
         android:text="@string/hackathon_detail_participate"
         android:elevation="1dp" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

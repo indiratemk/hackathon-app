@@ -76,5 +76,9 @@ data class Hackathon (
 
     @SerializedName("tags")
     @Expose
-    val tags: List<Tag>
+    val tags: List<Tag>,
+
+    @SerializedName("is_enabled")
+    @Expose
+    val isEnabled: Boolean
 )

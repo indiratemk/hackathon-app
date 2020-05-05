@@ -27,6 +27,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mukesh.MarkdownView
 import kotlinx.android.synthetic.main.activity_hackathon_detail.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.util.*
 
 class HackathonDetailActivity : BaseActivity() {
 
@@ -168,6 +169,11 @@ class HackathonDetailActivity : BaseActivity() {
             adapter = tagsAdapter
         }
 
+        val isActive = Calendar.getInstance().time.time < hackathon.startDate.time
+        if (hackathon.isEnabled && isActive) {
+            btnParticipate.visibility = View.VISIBLE
+        }
+
         if (hackathon.description != null) mvDescription.setMarkDownText(hackathon.description) else clDescription.visibility = View.GONE
         if (hackathon.criteria != null) mvCriteria.setMarkDownText(hackathon.criteria) else clCriteria.visibility = View.GONE
         if (hackathon.rules != null) mvRules.setMarkDownText(hackathon.rules) else clRules.visibility = View.GONE
@@ -207,6 +213,5 @@ class HackathonDetailActivity : BaseActivity() {
     private fun setVisibilities(isLoading: Boolean) {
         progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         llContent.visibility = if (isLoading) View.GONE else View.VISIBLE
-        btnParticipate.visibility = if (isLoading) View.GONE else View.VISIBLE
     }
 }
