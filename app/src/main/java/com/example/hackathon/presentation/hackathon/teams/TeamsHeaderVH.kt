@@ -3,7 +3,6 @@ package com.example.hackathon.presentation.hackathon.teams
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.data.participants.model.Participant
-import com.example.hackathon.util.Constants
 import kotlinx.android.synthetic.main.vh_teams_header.view.*
 
 class TeamsHeaderVH(view: View) : RecyclerView.ViewHolder(view) {
@@ -13,17 +12,22 @@ class TeamsHeaderVH(view: View) : RecyclerView.ViewHolder(view) {
     private var tvTeamTitle = view.tvTeamTitle
     private var llManagementActions = view.llManagementActions
     private var btnLeaveTeam = view.btnLeaveTeam
+    private var btnRemoveTeam = view.btnRemoveTeam
+    private var btnParticipantsManagement = view.btnParticipantsManagement
 
-    fun onBind(currentUser: Participant?) {
+    fun onBind(currentUser: Participant?, listener: TeamClickListener) {
         currentUser?.let {
             when {
                 currentUser.teamId == null -> {
+                    btnCreateTeam.setOnClickListener { listener.onCreateClick() }
                     showCreateButton()
                 }
-                currentUser.type == Constants.SEARCHING_FOR_TEAM -> {
+                currentUser.userId != currentUser.team?.ownerId -> {
                     showLeaveButton(currentUser)
                 }
                 else -> {
+                    btnRemoveTeam.setOnClickListener { listener.onRemoveTeamClick(currentUser.teamId) }
+                    btnParticipantsManagement.setOnClickListener { listener.onTeamManagementClick(currentUser.team) }
                     showManagementActions(currentUser)
                 }
             }

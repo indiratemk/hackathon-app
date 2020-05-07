@@ -103,6 +103,8 @@
     <string name="teams_team_management">Управление командой</string>
     <string name="teams_participants">участников</string>
     <string name="teams_empty_list">Нет команд</string>
+    <string name="teams_success_team_remove">Команда успешно удалена</string>
+    <string name="teams_fail_team_remove">Не удалось удалить команду</string>
 
     <plurals name="participants_plurals">
         <item quantity="zero">%1$d участников</item>
@@ -112,5 +114,14 @@
         <item quantity="many">%1$d участников</item>
         <item quantity="other">%1$d участники</item>
     </plurals>
+
+    <string name="dlg_team_create">Создать</string>
+    <string name="dlg_team_cancel">Отмена</string>
+    <string name="dlg_team_title">Создание команды</string>
+    <string name="dlg_team_empty_field">Заполните поле</string>
+    <string name="dlg_team_name">Название команды</string>
+    <string name="dlg_team_management_title">Управление участниками</string>
+    <string name="dlg_team_management_remove">Удалить</string>
+    <string name="dlg_team_management_close">Закрыть</string>
     <!--endregion-->
 </resources>

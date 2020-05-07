@@ -28,5 +28,5 @@ val viewModelModule = module {
     viewModel { HackathonRegistrationViewModel(get() as ParticipantsRepository) }
     viewModel { QRScannerViewModel(get() as ParticipantsRepository) }
     viewModel { ParticipantsViewModel(get() as HackathonRepository, get() as UserRepository, get() as TeamRepository) }
-    viewModel { TeamsViewModel(get() as HackathonRepository, get() as ParticipantsRepository) }
+    viewModel { TeamsViewModel(get() as HackathonRepository, get() as ParticipantsRepository, get() as TeamRepository) }
 }

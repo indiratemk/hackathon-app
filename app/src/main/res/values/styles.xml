@@ -108,6 +108,14 @@
         <item name="android:focusableInTouchMode">true</item>
     </style>
 
+    <style name="InputTextTheme" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorHint">@color/colorGray400</item>
+        <item name="colorAccent">@color/colorIndigo500</item>
+        <item name="colorControlNormal">@color/colorGray400</item>
+        <item name="colorControlActivated">@color/colorIndigo500</item>
+    </style>
+
     <style name="MaterialEditText14" parent="Widget.AppCompat.EditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

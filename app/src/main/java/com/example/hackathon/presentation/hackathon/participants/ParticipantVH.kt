@@ -19,8 +19,8 @@ class ParticipantVH(view: View) : RecyclerView.ViewHolder(view) {
     fun onBind(participant: Participant, currentUser: Participant?, listener: ParticipantClickListener) {
         Glide.with(itemView.context)
             .load(participant.user.avatarUrl)
-            .placeholder(R.drawable.img_hackathon_no_image)
-            .error(R.drawable.img_hackathon_no_image)
+            .placeholder(R.drawable.no_avatar)
+            .error(R.drawable.no_avatar)
             .into(civAvatar)
         if (participant.user.name == null && participant.user.surname == null) {
             tvFullName.text = itemView.resources.getString(R.string.participants_name_undefined)
@@ -32,12 +32,11 @@ class ParticipantVH(view: View) : RecyclerView.ViewHolder(view) {
             )
         }
         tvLogin.text = itemView.resources.getString(R.string.participants_login, participant.user.login)
-
         currentUser?.let { user ->
             tvIdentification.visibility = if (user.userId == participant.userId) View.VISIBLE else View.GONE
             btnInvite.visibility = if (canInvite(participant, user)) View.VISIBLE else View.GONE
             user.teamId?.let { teamId ->
-                btnInvite.setOnClickListener { listener.onInviteClick(user.userId, teamId) }
+                btnInvite.setOnClickListener { listener.onInviteClick(participant.userId, teamId) }
             }
         }
 
@@ -46,6 +45,5 @@ class ParticipantVH(view: View) : RecyclerView.ViewHolder(view) {
 
     private fun canInvite(participant: Participant, currentUser: Participant) = currentUser.teamId != null &&
             participant.teamId == null &&
-            currentUser.type == Constants.WITH_TEAM &&
-            participant.type == Constants.SEARCHING_FOR_TEAM
+            participant.type != Constants.STANDALONE
 }

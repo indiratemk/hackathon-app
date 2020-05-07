@@ -10,8 +10,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/civAvatar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
@@ -21,16 +21,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnRemoveParticipant"
         app:layout_constraintStart_toEndOf="@+id/civAvatar"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tvFullName"
-            style="@style/PrimaryBoldTextView16"
+            style="@style/PrimaryBoldTextView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -44,7 +45,7 @@
 
         <TextView
             android:id="@+id/tvLogin"
-            style="@style/PrimaryTextView14"
+            style="@style/PrimaryTextView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -85,4 +86,18 @@
             app:layout_constraintStart_toEndOf="@+id/civAvatar"
             app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRemoveParticipant"
+        style="@style/RoundedErrorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="@string/dlg_team_management_remove"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

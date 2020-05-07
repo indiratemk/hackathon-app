@@ -174,9 +174,9 @@ class HackathonDetailActivity : BaseActivity() {
             btnParticipate.visibility = View.VISIBLE
         }
 
-        if (hackathon.description != null) mvDescription.setMarkDownText(hackathon.description) else clDescription.visibility = View.GONE
-        if (hackathon.criteria != null) mvCriteria.setMarkDownText(hackathon.criteria) else clCriteria.visibility = View.GONE
-        if (hackathon.rules != null) mvRules.setMarkDownText(hackathon.rules) else clRules.visibility = View.GONE
+        if (hackathon.description != null && !hackathon.description.isEmpty()) mvDescription.setMarkDownText(hackathon.description) else clDescription.visibility = View.GONE
+        if (hackathon.criteria != null && !hackathon.criteria.isEmpty()) mvCriteria.setMarkDownText(hackathon.criteria) else clCriteria.visibility = View.GONE
+        if (hackathon.rules != null && !hackathon.rules.isEmpty()) mvRules.setMarkDownText(hackathon.rules) else clRules.visibility = View.GONE
 
         clParticipants.setOnClickListener {
             ParticipantsActivity.startActivity(this, hackathonId)

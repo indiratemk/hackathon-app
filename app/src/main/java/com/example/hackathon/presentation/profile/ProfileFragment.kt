@@ -141,8 +141,8 @@ class ProfileFragment : BaseFragment(), HackathonSelectionClickListener {
     private fun setUserDetails(user: User) {
         Glide.with(this)
             .load(user.avatarUrl)
-            .placeholder(R.drawable.img_hackathon_no_image)
-            .error(R.drawable.img_hackathon_no_image)
+            .placeholder(R.drawable.no_avatar)
+            .error(R.drawable.no_avatar)
             .into(civAvatar)
         tvFullName.text = getString(R.string.profile_full_name,
             user.name, user.surname)

@@ -7,7 +7,7 @@ import com.example.hackathon.R
 import com.example.hackathon.data.hackathon.model.Team
 import com.example.hackathon.data.participants.model.Participant
 
-class TeamsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TeamsAdapter(private val listener: TeamClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         const val HEADER_TYPE = 0
@@ -38,7 +38,7 @@ class TeamsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (currentUser != null) {
             when (holder) {
-                is TeamsHeaderVH -> holder.onBind(currentUser)
+                is TeamsHeaderVH -> holder.onBind(currentUser, listener)
                 is TeamVH -> holder.onBind(teams[position - 1])
             }
         } else {

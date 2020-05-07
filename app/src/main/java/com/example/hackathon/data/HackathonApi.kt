@@ -93,5 +93,17 @@ interface HackathonApi {
     @POST("teams/invite")
     suspend fun inviteParticipant(@Field("receiver_id") receiverId: Int,
                                   @Field("team_id") teamId: Int): Response<Result<Notification, Unit>>
+
+    @FormUrlEncoded
+    @POST("teams")
+    suspend fun createTeam(@Field("hid") hackathonId: Int,
+                           @Field("name") title: String): Response<Result<Team, Unit>>
+
+    @DELETE("teams/{id}")
+    suspend fun removeTeam(@Path("id") teamId: Int): Response<Result<Boolean, Unit>>
+
+    @DELETE("teams/{team_id}/kick/{user_id}")
+    suspend fun kickUser(@Path("team_id") teamId: Int,
+                         @Path("user_id") userId: Int): Response<Result<Boolean, Unit>>
     //endregion
 }

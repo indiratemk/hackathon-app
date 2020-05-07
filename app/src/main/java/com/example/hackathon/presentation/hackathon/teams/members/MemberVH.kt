@@ -19,8 +19,8 @@ class MemberVH(view: View) : RecyclerView.ViewHolder(view) {
         } else {
             Glide.with(itemView.context)
                 .load(member.avatarUrl)
-                .placeholder(R.drawable.img_hackathon_no_image)
-                .error(R.drawable.img_hackathon_no_image)
+                .placeholder(R.drawable.no_avatar)
+                .error(R.drawable.no_avatar)
                 .into(ivMember)
             ivMember.visibility = View.VISIBLE
             ivEmptyAvatar.visibility = View.GONE

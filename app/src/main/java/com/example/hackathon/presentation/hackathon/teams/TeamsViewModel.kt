@@ -7,15 +7,19 @@ import com.example.hackathon.data.hackathon.model.Team
 import com.example.hackathon.data.participants.model.Participant
 import com.example.hackathon.domain.hackathon.HackathonRepository
 import com.example.hackathon.domain.participants.ParticipantsRepository
+import com.example.hackathon.domain.team.TeamRepository
 import com.example.hackathon.presentation.base.BaseViewModel
 import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 
 class TeamsViewModel(private val hackathonRepository: HackathonRepository,
-                     private val participantsRepository: ParticipantsRepository) : BaseViewModel() {
+                     private val participantsRepository: ParticipantsRepository,
+                     private val teamRepository: TeamRepository) : BaseViewModel() {
 
     private val _teams = MutableLiveData<State<Result<List<Team>, Unit>>>()
     private val _current = MutableLiveData<State<Result<Participant, Unit>>>()
+    private val _newTeam = MutableLiveData<State<Result<Team, Unit>>>()
+    private val _isRemoved = MutableLiveData<State<Result<Boolean, Unit>>>()
 
     val teams: LiveData<State<Result<List<Team>, Unit>>>
         get() = _teams
@@ -23,12 +27,36 @@ class TeamsViewModel(private val hackathonRepository: HackathonRepository,
     val current: LiveData<State<Result<Participant, Unit>>>
         get() = _current
 
-    fun getTeam(hackathonId: Int) {
+    val newTeam: LiveData<State<Result<Team, Unit>>>
+        get() = _newTeam
+
+    val isRemoved: LiveData<State<Result<Boolean, Unit>>>
+        get() = _isRemoved
+
+    fun getTeams(hackathonId: Int) {
         coroutineContext.launch {
             _teams.value = State.Loading(true)
             _current.value = participantsRepository.getCurrent(hackathonId)
             _teams.value = hackathonRepository.getTeams(hackathonId)
             _teams.value = State.Loading(false)
+        }
+    }
+
+    fun createTeam(hackathonId: Int, title: String) {
+        coroutineContext.launch {
+            _newTeam.value = teamRepository.createTeam(hackathonId, title)
+        }
+    }
+
+    fun removeTeam(teamId: Int) {
+        coroutineContext.launch {
+            _isRemoved.value = teamRepository.removeTeam(teamId)
+        }
+    }
+
+    fun kickUser(teamId: Int, userId: Int) {
+        coroutineContext.launch {
+            _isRemoved.value = teamRepository.kickUser(teamId, userId)
         }
     }
 }
