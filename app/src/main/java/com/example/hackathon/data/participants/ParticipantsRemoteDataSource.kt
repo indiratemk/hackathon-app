@@ -29,4 +29,9 @@ class ParticipantsRemoteDataSource(private val hackathonApi: HackathonApi) : Bas
     suspend fun getCurrent(hackathonId: Int): ApiResponse<Result<Participant, Unit>> {
         return getResponse { hackathonApi.getCurrent(hackathonId) }
     }
+
+    suspend fun leaveTeam(hackathonId: Int,
+                          userId: Int): ApiResponse<Result<Boolean, Unit>> {
+        return getResponse { hackathonApi.leaveTeam(hackathonId, userId) }
+    }
 }

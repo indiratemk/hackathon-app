@@ -31,4 +31,8 @@ class ParticipantsRepository(private val participantsRemoteDataSource: Participa
     override suspend fun getCurrent(hackathonId: Int): State<Result<Participant, Unit>> {
         return handleState { participantsRemoteDataSource.getCurrent(hackathonId) }
     }
+
+    override suspend fun leaveTeam(hackathonId: Int, userId: Int): State<Result<Boolean, Unit>> {
+        return handleState { participantsRemoteDataSource.leaveTeam(hackathonId, userId) }
+    }
 }

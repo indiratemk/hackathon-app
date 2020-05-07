@@ -107,6 +107,18 @@ class TeamsActivity : BaseActivity(), TeamClickListener, ParticipantManageClickL
                 }
             }
         })
+
+        teamsViewModel.isLeft.observe(this, Observer { dataState ->
+            onStateChange(dataState)
+            dataState.result?.let { result ->
+                if (result.data) {
+                    UIUtil.showSuccessMessage(this, getString(R.string.teams_success_left_team))
+                    hackathonId?.let {
+                        teamsViewModel.getTeams(it)
+                    }
+                }
+            }
+        })
     }
 
     private fun showLoading() {
@@ -162,5 +174,9 @@ class TeamsActivity : BaseActivity(), TeamClickListener, ParticipantManageClickL
 
     override fun onRemoveClick(teamId: Int, userId: Int) {
         teamsViewModel.kickUser(teamId, userId)
+    }
+
+    override fun onLeaveTeam(userId: Int) {
+        teamsViewModel.leaveTeam(hackathonId!!, userId)
     }
 }

@@ -23,6 +23,7 @@ class TeamsHeaderVH(view: View) : RecyclerView.ViewHolder(view) {
                     showCreateButton()
                 }
                 currentUser.userId != currentUser.team?.ownerId -> {
+                    btnLeaveTeam.setOnClickListener { listener.onLeaveTeam(currentUser.userId) }
                     showLeaveButton(currentUser)
                 }
                 else -> {

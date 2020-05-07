@@ -81,6 +81,10 @@ interface HackathonApi {
 
     @GET("participants/{id}/current")
     suspend fun getCurrent(@Path("id") hackathonId: Int): Response<Result<Participant, Unit>>
+
+    @POST("participants/{hid}/{uid}/leave-team")
+    suspend fun leaveTeam(@Path("hid") hackathonId: Int,
+                          @Path("uid") userId: Int): Response<Result<Boolean, Unit>>
     //endregion
 
     //region NOTIFICATIONS

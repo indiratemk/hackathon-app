@@ -17,4 +17,6 @@ interface IParticipantsRepository {
     suspend fun getParticipatedHackathons(userId: Int): State<Result<List<Hackathon>, Unit>>
 
     suspend fun getCurrent(hackathonId: Int): State<Result<Participant, Unit>>
+
+    suspend fun leaveTeam(hackathonId: Int, userId: Int): State<Result<Boolean, Unit>>
 }

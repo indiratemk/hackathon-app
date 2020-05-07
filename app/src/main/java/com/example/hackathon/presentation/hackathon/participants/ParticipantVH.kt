@@ -44,7 +44,7 @@ class ParticipantVH(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun canInvite(participant: Participant, currentUser: Participant) = currentUser.teamId != null &&
-            participant.team?.ownerId == currentUser.userId &&
+            currentUser.team?.ownerId == currentUser.userId &&
             participant.teamId == null &&
             participant.type != Constants.STANDALONE
 }

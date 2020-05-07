@@ -20,6 +20,7 @@ class TeamsViewModel(private val hackathonRepository: HackathonRepository,
     private val _current = MutableLiveData<State<Result<Participant, Unit>>>()
     private val _newTeam = MutableLiveData<State<Result<Team, Unit>>>()
     private val _isRemoved = MutableLiveData<State<Result<Boolean, Unit>>>()
+    private val _isLeft = MutableLiveData<State<Result<Boolean, Unit>>>()
 
     val teams: LiveData<State<Result<List<Team>, Unit>>>
         get() = _teams
@@ -32,6 +33,9 @@ class TeamsViewModel(private val hackathonRepository: HackathonRepository,
 
     val isRemoved: LiveData<State<Result<Boolean, Unit>>>
         get() = _isRemoved
+
+    val isLeft: LiveData<State<Result<Boolean, Unit>>>
+        get() = _isLeft
 
     fun getTeams(hackathonId: Int) {
         coroutineContext.launch {
@@ -57,6 +61,12 @@ class TeamsViewModel(private val hackathonRepository: HackathonRepository,
     fun kickUser(teamId: Int, userId: Int) {
         coroutineContext.launch {
             _isRemoved.value = teamRepository.kickUser(teamId, userId)
+        }
+    }
+
+    fun leaveTeam(hackathonId: Int, userId: Int) {
+        coroutineContext.launch {
+            _isLeft.value = participantsRepository.leaveTeam(hackathonId, userId)
         }
     }
 }

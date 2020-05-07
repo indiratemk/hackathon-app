@@ -9,4 +9,6 @@ interface TeamClickListener {
     fun onRemoveTeamClick(teamId: Int)
 
     fun onTeamManagementClick(team: Team)
+
+    fun onLeaveTeam(userId: Int)
 }
