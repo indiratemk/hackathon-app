@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.example.hackathon.HackathonApp
 import com.example.hackathon.R
@@ -73,7 +74,17 @@ class ProfileFragment : BaseFragment(), HackathonSelectionClickListener {
             }
         }
         ivBack.setOnClickListener { requireActivity().onBackPressed() }
-        ivLogout.setOnClickListener { logoutViewModel.logout() }
+        ivLogout.setOnClickListener {
+            MaterialDialog(requireContext()).show {
+                message(R.string.profile_logout_message)
+                positiveButton(R.string.profile_logout_yes)
+                positiveButton {
+                    logoutViewModel.logout()
+                }
+                negativeButton(R.string.profile_logout_cancel)
+                negativeButton { dismiss() }
+            }
+        }
         initRV()
     }
 

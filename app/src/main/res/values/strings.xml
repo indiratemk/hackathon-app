@@ -85,6 +85,9 @@
     <string name="profile_participated_hackathons">Принимает участие</string>
     <string name="profile_own_hackathons">Организовывает</string>
     <string name="profile_name_undefined">Имя не указано</string>
+    <string name="profile_logout_message">Вы действительно хотите выйти из аккаунта?</string>
+    <string name="profile_logout_yes">Да</string>
+    <string name="profile_logout_cancel">Отмена</string>
     <!--endregion-->
 
     <!--region PARTICIPANTS-->
