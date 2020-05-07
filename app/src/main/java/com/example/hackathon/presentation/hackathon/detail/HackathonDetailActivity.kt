@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.example.hackathon.R
 import com.example.hackathon.data.hackathon.model.Hackathon
@@ -79,7 +80,15 @@ class HackathonDetailActivity : BaseActivity() {
         btnParticipate.setOnClickListener {
             if (PreferenceUtils.isAuthorized(this)) {
                 if (isParticipate) {
-                    hackathonDetailViewModel.unregister(hackathonId!!)
+                    MaterialDialog(this).show {
+                        message(R.string.hackathon_detail_unregister_text)
+                        positiveButton(R.string.hackathon_detail_unregister_yes)
+                        positiveButton {
+                            hackathonDetailViewModel.unregister(hackathonId!!)
+                        }
+                        negativeButton(R.string.hackathon_detail_unregister_cancel)
+                        negativeButton { dismiss() }
+                    }
                 } else {
                     HackathonRegistrationActivity.startActivity(this, hackathonId!!,
                         Constants.HACKATHON_REGISTRATION_REQUEST_CODE)

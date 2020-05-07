@@ -59,6 +59,9 @@
     <string name="hackathon_detail_participate">Участвовать!</string>
     <string name="hackathon_detail_refuse_participation">Отказаться от участия</string>
     <string name="hackathon_detail_success_unregister">Регистрация успешно отменена</string>
+    <string name="hackathon_detail_unregister_text">Вы действительно хотите отказаться от участия?</string>
+    <string name="hackathon_detail_unregister_yes">Да</string>
+    <string name="hackathon_detail_unregister_cancel">Отмена</string>
     <!--endregion-->
 
     <!--region HACKATHON REGISTRATION-->
@@ -110,7 +113,7 @@
         <item quantity="zero">%1$d участников</item>
         <item quantity="one">%1$d участник</item>
         <item quantity="two">%1$d участника</item>
-        <item quantity="few">%1$d участников</item>
+        <item quantity="few">%1$d участника</item>
         <item quantity="many">%1$d участников</item>
         <item quantity="other">%1$d участники</item>
     </plurals>
