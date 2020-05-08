@@ -111,6 +111,7 @@
     <string name="teams_empty_list">Нет команд</string>
     <string name="teams_success_team_remove">Команда успешно удалена</string>
     <string name="teams_fail_team_remove">Не удалось удалить команду</string>
+    <string name="teams_success_user_kick">Вы успешно удалили пользователя</string>
     <string name="teams_success_left_team">Вы успешно покинули команду</string>
 
     <plurals name="participants_plurals">

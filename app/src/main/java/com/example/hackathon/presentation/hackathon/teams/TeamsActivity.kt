@@ -38,6 +38,7 @@ class TeamsActivity : BaseActivity(), TeamClickListener, ParticipantManageClickL
     private val teamsViewModel: TeamsViewModel by viewModel()
     private var hackathonId: Int? = null
     private val teamsAdapter = TeamsAdapter(this)
+    private lateinit var teamManagementDialog: MaterialDialog
 
 
     override fun layoutId() = R.layout.activity_teams
@@ -50,6 +51,9 @@ class TeamsActivity : BaseActivity(), TeamClickListener, ParticipantManageClickL
     }
 
     private fun initUI() {
+        teamManagementDialog = MaterialDialog(this).apply {
+            customView(R.layout.dlg_team_management)
+        }
         teamsViewModel.getTeams(hackathonId!!)
         initToolbar(toolbar, getString(R.string.teams_title), false)
         rvTeams.apply {
@@ -108,6 +112,19 @@ class TeamsActivity : BaseActivity(), TeamClickListener, ParticipantManageClickL
             }
         })
 
+        teamsViewModel.isKicked.observe(this, Observer { dataState ->
+            onStateChange(dataState)
+            dataState.result?.let { result ->
+                if (result.data) {
+                    hackathonId?.let {
+                        teamsViewModel.getTeams(it)
+                    }
+                    UIUtil.showSuccessMessage(this, getString(R.string.teams_success_user_kick))
+                    teamManagementDialog.dismiss()
+                }
+            }
+        })
+
         teamsViewModel.isLeft.observe(this, Observer { dataState ->
             onStateChange(dataState)
             dataState.result?.let { result ->
@@ -160,8 +177,7 @@ class TeamsActivity : BaseActivity(), TeamClickListener, ParticipantManageClickL
 
     override fun onTeamManagementClick(team: Team) {
         val participantsAdapter = ParticipantsManageAdapter(team.members!!,this, team.id)
-        MaterialDialog(this).show {
-            customView(R.layout.dlg_team_management)
+        teamManagementDialog.apply {
             rvParticipants.apply {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(context)
@@ -169,7 +185,7 @@ class TeamsActivity : BaseActivity(), TeamClickListener, ParticipantManageClickL
             }
             negativeButton(R.string.dlg_team_management_close)
             negativeButton { dismiss() }
-        }
+        }.show()
     }
 
     override fun onRemoveClick(teamId: Int, userId: Int) {
