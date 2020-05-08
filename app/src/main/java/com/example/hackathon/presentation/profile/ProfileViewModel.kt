@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
+import com.example.hackathon.domain.notifications.NotificationsRepository
 import com.example.hackathon.domain.participants.ParticipantsRepository
 import com.example.hackathon.domain.user.UserRepository
 import com.example.hackathon.presentation.base.BaseViewModel
@@ -12,7 +13,8 @@ import com.example.hackathon.util.state.State
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(private val userRepository: UserRepository,
-                       private val participantsRepository: ParticipantsRepository) : BaseViewModel() {
+                       private val participantsRepository: ParticipantsRepository,
+                       private val notificationsRepository: NotificationsRepository) : BaseViewModel() {
 
     private val _user = MutableLiveData<State<Result<User, Unit>>>()
     private val _participatedHackathons = MutableLiveData<State<Result<List<Hackathon>, Unit>>>()
@@ -61,7 +63,7 @@ class ProfileViewModel(private val userRepository: UserRepository,
 
     fun getNotificationsCount() {
         coroutineContext.launch {
-            _notificationsCount.value = userRepository.getNotificationsCount()
+            _notificationsCount.value = notificationsRepository.getNotificationsCount()
         }
     }
 }

@@ -2,7 +2,7 @@ package com.example.hackathon.domain.team
 
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Team
-import com.example.hackathon.data.user.model.Notification
+import com.example.hackathon.data.notifications.model.Notification
 import com.example.hackathon.util.state.State
 
 interface ITeamRepository {

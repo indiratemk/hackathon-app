@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.hackathon.teams.TeamsActivity"
+        <activity
+            android:name=".presentation.notifications.NotificationsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".presentation.hackathon.teams.TeamsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.hackathon.participants.ParticipantsActivity"

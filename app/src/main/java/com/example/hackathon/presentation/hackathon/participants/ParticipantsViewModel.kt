@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.participants.model.Participant
-import com.example.hackathon.data.user.model.Notification
+import com.example.hackathon.data.notifications.model.Notification
 import com.example.hackathon.domain.hackathon.HackathonRepository
 import com.example.hackathon.domain.team.TeamRepository
 import com.example.hackathon.domain.user.UserRepository

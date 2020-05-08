@@ -1,11 +1,11 @@
-package com.example.hackathon.data.user.model
+package com.example.hackathon.data.notifications.model
 
 import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.data.hackathon.model.Team
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class NotificationDetails(
+data class InvitationNotification(
 
     @SerializedName("code")
     @Expose

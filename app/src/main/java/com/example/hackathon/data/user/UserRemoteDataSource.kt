@@ -7,7 +7,7 @@ import com.example.hackathon.util.response.ApiResponse
 import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
 
-class UserRemoteDataStore(private val hackathonApi: HackathonApi) : BaseRemoteDataSource() {
+class UserRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRemoteDataSource() {
 
     suspend fun getCurrentUser(): ApiResponse<Result<User, Unit>> {
         return getResponse { hackathonApi.getCurrentUser() }
@@ -19,9 +19,5 @@ class UserRemoteDataStore(private val hackathonApi: HackathonApi) : BaseRemoteDa
 
     suspend fun getUserByEmail(email: String): ApiResponse<Result<User, Unit>> {
         return getResponse { hackathonApi.getUserByEmail(email) }
-    }
-
-    suspend fun getNotificationsCount(): ApiResponse<Result<HashMap<String, Int>, Unit>> {
-        return getResponse { hackathonApi.getNotificationsCount() }
     }
 }

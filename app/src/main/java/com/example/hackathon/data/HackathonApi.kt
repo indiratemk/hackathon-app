@@ -6,7 +6,7 @@ import com.example.hackathon.data.base.model.Result
 import com.example.hackathon.data.hackathon.model.Hackathon
 import com.example.hackathon.data.hackathon.model.Team
 import com.example.hackathon.data.participants.model.Participant
-import com.example.hackathon.data.user.model.Notification
+import com.example.hackathon.data.notifications.model.Notification
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -90,6 +90,9 @@ interface HackathonApi {
     //region NOTIFICATIONS
     @GET("notifications/count")
     suspend fun getNotificationsCount(): Response<Result<HashMap<String, Int>, Unit>>
+
+    @GET("notifications/current")
+    suspend fun getNotifications(): Response<Result<List<Notification>, Unit>>
     //endregion
 
     //region TEAMS

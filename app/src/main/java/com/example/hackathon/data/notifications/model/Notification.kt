@@ -1,7 +1,8 @@
-package com.example.hackathon.data.user.model
+package com.example.hackathon.data.notifications.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import org.json.JSONObject
 import java.util.*
 
 data class Notification(
@@ -16,7 +17,7 @@ data class Notification(
 
     @SerializedName("details")
     @Expose
-    val details: NotificationDetails,
+    val details: JSONObject,
 
     @SerializedName("is_new")
     @Expose

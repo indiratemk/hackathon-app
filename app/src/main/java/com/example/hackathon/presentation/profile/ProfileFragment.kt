@@ -12,6 +12,7 @@ import com.example.hackathon.data.auth.model.User
 import com.example.hackathon.presentation.base.BaseFragment
 import com.example.hackathon.presentation.hackathon.detail.HackathonDetailActivity
 import com.example.hackathon.presentation.logout.LogoutViewModel
+import com.example.hackathon.presentation.notifications.NotificationsActivity
 import com.example.hackathon.presentation.profile.selection.HackathonSelectionAdapter
 import com.example.hackathon.presentation.profile.selection.HackathonSelectionClickListener
 import com.example.hackathon.util.Constants
@@ -85,6 +86,7 @@ class ProfileFragment : BaseFragment(), HackathonSelectionClickListener {
                 negativeButton { dismiss() }
             }
         }
+        ivNotification.setOnClickListener { NotificationsActivity.startActivity(requireContext()) }
         initRV()
     }
 
