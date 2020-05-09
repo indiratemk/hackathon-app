@@ -49,6 +49,8 @@ class NotificationsAdapter(private val listener: NotificationClickListener) :
 
     override fun getItemCount() = notifications.size
 
+    fun isEmpty() = itemCount == 0
+
     fun setNotifications(notifications: List<Notification>) {
         this.notifications = notifications.toMutableList()
         notifyDataSetChanged()

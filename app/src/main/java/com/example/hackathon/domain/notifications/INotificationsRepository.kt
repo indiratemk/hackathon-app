@@ -11,4 +11,6 @@ interface INotificationsRepository {
     suspend fun getNotifications(): State<Result<List<Notification>, Unit>>
 
     suspend fun removeNotification(id: Int): State<Result<Boolean, Unit>>
+
+    suspend fun sendFeedback(hackathonId: Int, message: String, score: Int): State<Result<Boolean, Unit>>
 }

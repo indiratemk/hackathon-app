@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/PrimaryBoldTextView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Как вам HackDay?" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvRatingFive"
+            style="@style/PrimaryTextView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shape_rating_inactive_bg"
+            tools:text="555" />
+
+        <TextView
+            android:id="@+id/tvRatingFour"
+            style="@style/PrimaryTextView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shape_rating_inactive_bg"
+            tools:text="444" />
+
+        <TextView
+            android:id="@+id/tvRatingThree"
+            style="@style/PrimaryTextView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shape_rating_inactive_bg"
+            tools:text="333" />
+
+
+        <TextView
+            android:id="@+id/tvRatingTwo"
+            style="@style/PrimaryTextView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shape_rating_inactive_bg"
+            tools:text="222" />
+
+
+        <TextView
+            android:id="@+id/tvRatingOne"
+            style="@style/PrimaryTextView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shape_rating_inactive_bg"
+            tools:text="111" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/PrimaryTextView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/notifications_review_comment"/>
+
+    <EditText
+        android:id="@+id/etReview"
+        style="@style/PrimaryTextView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="top|start"
+        android:inputType="textCapSentences|textMultiLine"
+        android:lines="6"
+        android:focusableInTouchMode="true"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
+        android:background="@drawable/shape_comment_bg"
+        android:textCursorDrawable="@drawable/shape_cursor"
+        android:hint="@string/notifications_review_message"
+        android:importantForAutofill="no" />
+</LinearLayout>

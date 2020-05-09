@@ -96,6 +96,12 @@ interface HackathonApi {
 
     @DELETE("notifications/{id}")
     suspend fun removeNotification(@Path("id") id: Int): Response<Result<Boolean, Unit>>
+
+    @FormUrlEncoded
+    @POST("feedback/{id}")
+    suspend fun sendFeedback(@Path("id") hackathonId: Int,
+                             @Field("message") message: String,
+                             @Field("score") score: Int): Response<Result<Boolean, Unit>>
     //endregion
 
     //region TEAMS

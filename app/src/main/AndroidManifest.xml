@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".presentation.notifications.NotificationsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.hackathon.teams.TeamsActivity"
             android:screenOrientation="portrait" />

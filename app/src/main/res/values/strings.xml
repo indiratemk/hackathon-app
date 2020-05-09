@@ -139,5 +139,15 @@
     <string name="notifications_remove">Удалить</string>
     <string name="notifications_invitation_message">&lt;b>%1$s&lt;/b> приглашает вас в свою команду</string>
     <string name="notifications_invitation_accepted">Приглашение успешно принято</string>
+    <string name="notifications_review_message">Поделитесь впечатлениями</string>
+    <string name="notifications_review_feedback">Как прошел</string>
+    <string name="notifications_empty_list">Нет уведомлений</string>
+    <string name="notifications_review_give_feedback">Оставить отзыв</string>
+    <string name="notifications_review_comment">Комментарий (не обязательно)</string>
+    <string name="notifications_review_form_title">Как вам %1$s?</string>
+    <string name="notifications_review_form_send">Отправить</string>
+    <string name="notifications_review_form_cancel">Отмена</string>
+    <string name="notifications_review_form_error">Поставьте оценку</string>
+    <string name="notifications_review_form_success">Отзыв успешно отправлен</string>
     <!--endregion-->
 </resources>

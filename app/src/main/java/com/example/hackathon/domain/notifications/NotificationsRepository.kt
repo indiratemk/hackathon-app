@@ -20,4 +20,8 @@ class NotificationsRepository(private val notificationsRemoteDataSource: Notific
     override suspend fun removeNotification(id: Int): State<Result<Boolean, Unit>> {
         return handleState { notificationsRemoteDataSource.removeNotification(id) }
     }
+
+    override suspend fun sendFeedback(hackathonId: Int, message: String, score: Int): State<Result<Boolean, Unit>> {
+        return handleState { notificationsRemoteDataSource.sendFeedback(hackathonId, message, score) }
+    }
 }

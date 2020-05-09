@@ -6,9 +6,23 @@
     android:orientation="vertical"
     tools:context=".presentation.notifications.NotificationsActivity">
 
+    <include
+        layout="@layout/layout_toolbar" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:theme="@style/BlueCircularProgress"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"/>
+
+    <include
+        layout="@layout/layout_empty_list"
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotifications"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </LinearLayout>

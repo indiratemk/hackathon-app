@@ -17,6 +17,7 @@ class NotificationsViewModel(private val notificationsRepository: NotificationsR
     private val _notifications = MutableLiveData<State<Result<List<Notification>, Unit>>>()
     private val _isRemoved = MutableLiveData<State<Result<Boolean, Unit>>>()
     private val _isAccepted = MutableLiveData<State<Result<Boolean, Unit>>>()
+    private val _isSent = MutableLiveData<State<Result<Boolean, Unit>>>()
 
     val notifications: LiveData<State<Result<List<Notification>, Unit>>>
         get() = _notifications
@@ -27,13 +28,19 @@ class NotificationsViewModel(private val notificationsRepository: NotificationsR
     val isAccepted: LiveData<State<Result<Boolean, Unit>>>
         get() = _isAccepted
 
+    val isSent: LiveData<State<Result<Boolean, Unit>>>
+        get() = _isSent
+
     init {
         getNotifications()
     }
 
     fun getNotifications() {
         coroutineContext.launch {
+            _notifications.value = State.Loading(true)
             _notifications.value = notificationsRepository.getNotifications()
+            _notifications.value = State.Loading(false)
+
         }
     }
 
@@ -48,6 +55,14 @@ class NotificationsViewModel(private val notificationsRepository: NotificationsR
                      teamId: Int) {
         coroutineContext.launch {
             _isAccepted.value = teamRepository.acceptInvite(code, detailsId, teamId)
+        }
+    }
+
+    fun sendFeedback(hackathonId: Int,
+                     message: String,
+                     score: Int) {
+        coroutineContext.launch {
+            _isSent.value = notificationsRepository.sendFeedback(hackathonId, message, score)
         }
     }
 }
