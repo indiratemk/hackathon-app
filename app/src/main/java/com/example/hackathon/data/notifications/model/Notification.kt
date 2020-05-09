@@ -1,8 +1,8 @@
 package com.example.hackathon.data.notifications.model
 
+import com.google.gson.JsonObject
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import org.json.JSONObject
 import java.util.*
 
 data class Notification(
@@ -13,11 +13,11 @@ data class Notification(
 
     @SerializedName("details_id")
     @Expose
-    val derailsId: Int,
+    val detailsId: Int,
 
     @SerializedName("details")
     @Expose
-    val details: JSONObject,
+    val details: JsonObject,
 
     @SerializedName("is_new")
     @Expose
@@ -49,5 +49,7 @@ data class Notification(
 
     @SerializedName("updated_at")
     @Expose
-    val updatedAt: Date
+    val updatedAt: Date,
+
+    var isAccepted: Boolean
 )

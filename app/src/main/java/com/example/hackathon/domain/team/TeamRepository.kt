@@ -25,4 +25,8 @@ class TeamRepository(private val teamRemoteDataSource: TeamRemoteDataSource) : B
     override suspend fun kickUser(teamId: Int, userId: Int): State<Result<Boolean, Unit>> {
         return handleState { teamRemoteDataSource.kickUser(teamId, userId) }
     }
+
+    override suspend fun acceptInvite(code: String, detailsId: Int, teamId: Int): State<Result<Boolean, Unit>> {
+        return handleState { teamRemoteDataSource.acceptInvite(code, detailsId, teamId) }
+    }
 }

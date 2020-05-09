@@ -9,4 +9,6 @@ interface INotificationsRepository {
     suspend fun getNotificationsCount(): State<Result<HashMap<String, Int>, Unit>>
 
     suspend fun getNotifications(): State<Result<List<Notification>, Unit>>
+
+    suspend fun removeNotification(id: Int): State<Result<Boolean, Unit>>
 }

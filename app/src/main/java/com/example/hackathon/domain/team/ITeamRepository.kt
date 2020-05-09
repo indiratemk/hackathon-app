@@ -14,4 +14,6 @@ interface ITeamRepository {
     suspend fun removeTeam(teamId: Int): State<Result<Boolean, Unit>>
 
     suspend fun kickUser(teamId: Int, userId: Int): State<Result<Boolean, Unit>>
+
+    suspend fun acceptInvite(code: String, detailsId: Int, teamId: Int): State<Result<Boolean, Unit>>
 }

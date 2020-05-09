@@ -16,4 +16,8 @@ class NotificationsRemoteDataSource(private val hackathonApi: HackathonApi) :
     suspend fun getNotifications(): ApiResponse<Result<List<Notification>, Unit>> {
         return getResponse { hackathonApi.getNotifications() }
     }
+
+    suspend fun removeNotification(id: Int): ApiResponse<Result<Boolean, Unit>> {
+        return getResponse { hackathonApi.removeNotification(id) }
+    }
 }

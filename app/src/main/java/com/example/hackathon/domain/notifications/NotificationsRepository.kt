@@ -16,4 +16,8 @@ class NotificationsRepository(private val notificationsRemoteDataSource: Notific
     override suspend fun getNotifications(): State<Result<List<Notification>, Unit>> {
         return handleState { notificationsRemoteDataSource.getNotifications() }
     }
+
+    override suspend fun removeNotification(id: Int): State<Result<Boolean, Unit>> {
+        return handleState { notificationsRemoteDataSource.removeNotification(id) }
+    }
 }

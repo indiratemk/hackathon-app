@@ -132,4 +132,12 @@
     <string name="dlg_team_management_remove">Удалить</string>
     <string name="dlg_team_management_close">Закрыть</string>
     <!--endregion-->
+
+    <!--region NOTIFICATIONS-->
+    <string name="notifications_title">Уведомления</string>
+    <string name="notifications_invitation_accept">Принять</string>
+    <string name="notifications_remove">Удалить</string>
+    <string name="notifications_invitation_message">&lt;b>%1$s&lt;/b> приглашает вас в свою команду</string>
+    <string name="notifications_invitation_accepted">Приглашение успешно принято</string>
+    <!--endregion-->
 </resources>

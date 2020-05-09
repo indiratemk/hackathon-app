@@ -28,5 +28,9 @@ class Constants {
         const val SEARCHING_FOR_TEAM = 1
         const val WITH_TEAM = 2
         //endregion
+
+        //region NOTIFICATION STATUS
+        const val ACCEPTED = "accepted"
+        //endregion
     }
 }

@@ -93,6 +93,9 @@ interface HackathonApi {
 
     @GET("notifications/current")
     suspend fun getNotifications(): Response<Result<List<Notification>, Unit>>
+
+    @DELETE("notifications/{id}")
+    suspend fun removeNotification(@Path("id") id: Int): Response<Result<Boolean, Unit>>
     //endregion
 
     //region TEAMS
@@ -112,5 +115,11 @@ interface HackathonApi {
     @DELETE("teams/{team_id}/kick/{user_id}")
     suspend fun kickUser(@Path("team_id") teamId: Int,
                          @Path("user_id") userId: Int): Response<Result<Boolean, Unit>>
+
+    @FormUrlEncoded
+    @POST("teams/accept-invite")
+    suspend fun acceptInvite(@Field("code") code: String,
+                             @Field("details_id") detailsId: Int,
+                             @Field("team_id") teamId: Int): Response<Result<Boolean, Unit>>
     //endregion
 }

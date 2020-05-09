@@ -24,4 +24,8 @@ class TeamRemoteDataSource(private val hackathonApi: HackathonApi) : BaseRemoteD
     suspend fun kickUser(teamId: Int, userId: Int): ApiResponse<Result<Boolean, Unit>> {
         return getResponse { hackathonApi.kickUser(teamId, userId) }
     }
+
+    suspend fun acceptInvite(code: String, detailsId: Int, teamId: Int): ApiResponse<Result<Boolean, Unit>> {
+        return getResponse { hackathonApi.acceptInvite(code, detailsId, teamId) }
+    }
 }
