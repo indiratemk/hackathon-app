@@ -15,6 +15,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentation.about.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".presentation.notifications.NotificationsActivity"
             android:screenOrientation="portrait" />
         <activity

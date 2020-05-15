@@ -32,5 +32,12 @@ class Constants {
         //region NOTIFICATION STATUS
         const val ACCEPTED = "accepted"
         //endregion
+
+        //region LINKS
+        const val ANT_DESIGN_URL = "https://ant.design/"
+        const val FREEPIK_URL = "https://www.flaticon.com/authors/freepik"
+        const val FLATICONS_URL = "https://www.flaticon.com/"
+        const val PIXEL_PERFECT_URL = "https://www.flaticon.com/authors/pixel-perfect"
+        //endregion
     }
 }

@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.hackathon.HackathonApp
 import com.example.hackathon.R
 import com.example.hackathon.data.auth.model.User
+import com.example.hackathon.presentation.about.AboutActivity
 import com.example.hackathon.presentation.base.BaseFragment
 import com.example.hackathon.presentation.hackathon.detail.HackathonDetailActivity
 import com.example.hackathon.presentation.logout.LogoutViewModel
@@ -75,6 +76,7 @@ class ProfileFragment : BaseFragment(), HackathonSelectionClickListener {
             }
         }
         ivBack.setOnClickListener { requireActivity().onBackPressed() }
+        ivAbout.setOnClickListener { AboutActivity.startActivity(requireContext()) }
         ivLogout.setOnClickListener {
             MaterialDialog(requireContext()).show {
                 message(R.string.profile_logout_message)

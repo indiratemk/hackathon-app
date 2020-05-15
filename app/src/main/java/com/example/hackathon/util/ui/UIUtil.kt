@@ -2,14 +2,16 @@ package com.example.hackathon.util.ui
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
+import android.net.Uri
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import com.example.hackathon.R
+
 
 class UIUtil {
 
@@ -52,6 +54,12 @@ class UIUtil {
                 view = View(activity)
             }
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
+        }
+
+        fun openSource(url: String, context: Context) {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            context.startActivity(intent)
         }
     }
 }

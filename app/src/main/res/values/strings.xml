@@ -150,4 +150,19 @@
     <string name="notifications_review_form_error">Поставьте оценку</string>
     <string name="notifications_review_form_success">Отзыв успешно отправлен</string>
     <!--endregion-->
+
+    <!--region ABOUT-->
+    <string name="about_title">О приложении</string>
+    <string name="about_description">HackSpace является важным инструментом и
+        существует из-за отсутствия высококачественного программного обеспечения,
+        которое могло бы координировать и управлять несколькими хакатонами в одном месте,
+        не имея отдельного сайта или приложения, уникального для этого хакатона.</string>
+    <string name="about_icons_made">Иконки сделаны:</string>
+    <string name="about_ant_design_source">Ant Design</string>
+    <string name="about_from_source">из</string>
+    <string name="about_ant_design_site">www.ant.design</string>
+    <string name="about_freepik_source">Freepik</string>
+    <string name="about_flaticon_site">www.flaticon.com</string>
+    <string name="about_pixel_perfect_source">Pixel perfect</string>
+    <!--endregion-->
 </resources>
