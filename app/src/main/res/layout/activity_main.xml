@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".presentation.main.MainActivity">
 
-    <com.example.hackathon.util.ui.NonSwipableViewPager
+    <space.platform.hackathon.util.ui.NonSwipableViewPager
         android:id="@+id/viewPager"
         android:layout_width="0dp"
         android:layout_height="0dp"

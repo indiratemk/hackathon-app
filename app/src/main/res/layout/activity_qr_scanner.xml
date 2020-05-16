@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.hackathon.util.ui.QRCodeReaderView
+    <space.platform.hackathon.util.ui.QRCodeReaderView
         android:id="@+id/qrScannerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
