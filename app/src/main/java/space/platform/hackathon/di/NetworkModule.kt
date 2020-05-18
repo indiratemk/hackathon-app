@@ -15,6 +15,7 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import space.platform.hackathon.data.tasks.TasksRemoteDataSource
 
 val networkModule = module {
     single { provideOkHttpClient(ResponseInterceptor(androidApplication()), RequestInterceptor(androidApplication())) }
@@ -26,6 +27,7 @@ val networkModule = module {
     single { ParticipantsRemoteDataSource(get()) }
     single { TeamRemoteDataSource(get()) }
     single { NotificationsRemoteDataSource(get()) }
+    single { TasksRemoteDataSource(get()) }
 }
 
 fun provideOkHttpClient(responseInterceptor: ResponseInterceptor,

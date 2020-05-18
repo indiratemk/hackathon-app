@@ -9,6 +9,7 @@ import space.platform.hackathon.data.participants.model.Participant
 import space.platform.hackathon.data.notifications.model.Notification
 import retrofit2.Response
 import retrofit2.http.*
+import space.platform.hackathon.data.tasks.Task
 
 interface HackathonApi {
 
@@ -127,5 +128,10 @@ interface HackathonApi {
     suspend fun acceptInvite(@Field("code") code: String,
                              @Field("details_id") detailsId: Int,
                              @Field("team_id") teamId: Int): Response<Result<Boolean, Unit>>
+    //endregion
+
+    //region TASKS
+    @GET("tasks/{id}")
+    suspend fun getTasks(@Path("id") id: Int): Response<Result<List<Task>, Unit>>
     //endregion
 }

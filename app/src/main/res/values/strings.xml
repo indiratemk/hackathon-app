@@ -51,6 +51,7 @@
     <string name="hackathon_detail_end_title">Конец</string>
     <string name="hackathon_detail_location_title">Местоположение</string>
     <string name="hackathon_detail_tag_title">#%s</string>
+    <string name="hackathon_detail_tasks_title">Задания</string>
     <string name="hackathon_detail_participants_title">Участники</string>
     <string name="hackathon_detail_teams_title">Команды</string>
     <string name="hackathon_detail_description">Описание</string>
@@ -164,5 +165,10 @@
     <string name="about_freepik_source">Freepik</string>
     <string name="about_flaticon_site">www.flaticon.com</string>
     <string name="about_pixel_perfect_source">Pixel perfect</string>
+    <!--endregion-->
+
+    <!--region TASKS-->
+    <string name="tasks_title">Задания</string>
+    <string name="tasks_empty_list">Нет заданий</string>
     <!--endregion-->
 </resources>

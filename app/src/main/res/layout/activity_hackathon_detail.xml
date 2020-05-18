@@ -242,6 +242,45 @@
                 <include layout="@layout/layout_divider" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clTasks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:id="@+id/tvTasks"
+                        style="@style/PrimaryBoldTextView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/hackathon_detail_tasks_title"
+                        app:layout_constraintBottom_toTopOf="@+id/viewTasks"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivTasksArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        app:srcCompat="@drawable/ic_arrow_right"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvTasks"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvTasks"
+                        tools:ignore="contentDescription" />
+
+                    <View
+                        android:id="@+id/viewTasks"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorGray300"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTasks" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clParticipants"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -278,9 +317,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvPaticipants"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvPaticipants"
-                        tools:ignore="contentDescription"
-                        tools:layout_editor_absoluteX="230dp"
-                        tools:layout_editor_absoluteY="14dp" />
+                        tools:ignore="contentDescription" />
 
                     <View
                         android:id="@+id/viewParticipants"
@@ -331,9 +368,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tvTeams"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvTeams"
-                        tools:ignore="contentDescription"
-                        tools:layout_editor_absoluteX="230dp"
-                        tools:layout_editor_absoluteY="14dp" />
+                        tools:ignore="contentDescription" />
 
                     <View
                         android:id="@+id/viewTeams"

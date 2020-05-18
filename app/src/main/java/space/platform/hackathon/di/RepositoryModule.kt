@@ -14,6 +14,8 @@ import space.platform.hackathon.domain.participants.ParticipantsRepository
 import space.platform.hackathon.domain.team.TeamRepository
 import space.platform.hackathon.domain.user.UserRepository
 import org.koin.dsl.module
+import space.platform.hackathon.data.tasks.TasksRemoteDataSource
+import space.platform.hackathon.domain.tasks.TasksRepository
 
 val repositoryModule = module {
     single { AuthRepository(get() as AuthRemoteDataSource) }
@@ -22,4 +24,5 @@ val repositoryModule = module {
     single { ParticipantsRepository(get() as ParticipantsRemoteDataSource) }
     single { TeamRepository(get() as TeamRemoteDataSource) }
     single { NotificationsRepository(get() as NotificationsRemoteDataSource) }
+    single { TasksRepository(get() as TasksRemoteDataSource) }
 }

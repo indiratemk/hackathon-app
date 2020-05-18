@@ -1,61 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="space.platform.hackathon">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name="space.platform.hackathon.HackathonApp"
+        android:name=".HackathonApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
         <activity
-            android:name="space.platform.hackathon.presentation.about.AboutActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.notifications.NotificationsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.hackathon.teams.TeamsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.hackathon.participants.ParticipantsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.qr_scanner.confirm.ParticipationConfirmedActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.hackathon.registration.HackathonRegistrationActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.hackathon.detail.HackathonDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.qr_scanner.QRScannerActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.sign_in.SignInActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.sign_up.SignUpActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="space.platform.hackathon.presentation.main.MainActivity"
+            android:name=".presentation.main.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https"
-                    android:host="hackathon-platform.space"/>
+
+                <data
+                    android:host="hackathon-platform.space"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.tasks.TasksActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.about.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.notifications.NotificationsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.hackathon.teams.TeamsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.hackathon.participants.ParticipantsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.qr_scanner.confirm.ParticipationConfirmedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.hackathon.registration.HackathonRegistrationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.hackathon.detail.HackathonDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.qr_scanner.QRScannerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.sign_in.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.sign_up.SignUpActivity"
+            android:screenOrientation="portrait" />
     </application>
-
 </manifest>

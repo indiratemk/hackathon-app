@@ -28,6 +28,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mukesh.MarkdownView
 import kotlinx.android.synthetic.main.activity_hackathon_detail.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import space.platform.hackathon.presentation.tasks.TasksActivity
 import java.util.*
 
 class HackathonDetailActivity : BaseActivity() {
@@ -192,6 +193,9 @@ class HackathonDetailActivity : BaseActivity() {
         }
         clTeams.setOnClickListener {
             TeamsActivity.startActivity(this, hackathonId)
+        }
+        clTasks.setOnClickListener {
+            TasksActivity.startActivity(this, hackathonId)
         }
     }
 

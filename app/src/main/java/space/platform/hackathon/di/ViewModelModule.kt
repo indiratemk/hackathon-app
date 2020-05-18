@@ -19,6 +19,8 @@ import space.platform.hackathon.presentation.sign_in.SignInViewModel
 import space.platform.hackathon.presentation.sign_up.SignUpViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import space.platform.hackathon.domain.tasks.TasksRepository
+import space.platform.hackathon.presentation.tasks.TasksViewModel
 
 val viewModelModule = module {
     viewModel { SignUpViewModel(get() as AuthRepository) }
@@ -32,4 +34,5 @@ val viewModelModule = module {
     viewModel { ParticipantsViewModel(get() as HackathonRepository, get() as UserRepository, get() as TeamRepository) }
     viewModel { TeamsViewModel(get() as HackathonRepository, get() as ParticipantsRepository, get() as TeamRepository) }
     viewModel { NotificationsViewModel(get() as NotificationsRepository, get() as TeamRepository) }
+    viewModel { TasksViewModel(get() as TasksRepository) }
 }
