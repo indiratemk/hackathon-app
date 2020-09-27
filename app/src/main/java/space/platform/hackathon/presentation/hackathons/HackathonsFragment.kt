@@ -3,6 +3,7 @@ package space.platform.hackathon.presentation.hackathons
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
@@ -18,6 +19,7 @@ import space.platform.hackathon.util.ui.UIUtil
 import kotlinx.android.synthetic.main.fragment_hackathons.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import space.platform.hackathon.presentation.about.AboutActivity
 
 class HackathonsFragment : BaseFragment(), HackathonListener {
 
@@ -61,6 +63,15 @@ class HackathonsFragment : BaseFragment(), HackathonListener {
                 return true
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.actionAbout) {
+            AboutActivity.startActivity(requireContext())
+            return true
+        } else {
+            return super.onOptionsItemSelected(item)
+        }
     }
 
     private fun initUI() {

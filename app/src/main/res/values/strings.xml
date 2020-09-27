@@ -43,6 +43,7 @@
     <!--region HACKATHONS-->
     <string name="hackathons_title">HackSpace</string>
     <string name="hackathons_search">Поиск</string>
+    <string name="hackathons_about">О приложении</string>
     <string name="vh_hackathon_date">%1$s - %2$s</string>
     <!--endregion-->
 
@@ -165,6 +166,7 @@
     <string name="about_freepik_source">Freepik</string>
     <string name="about_flaticon_site">www.flaticon.com</string>
     <string name="about_pixel_perfect_source">Pixel perfect</string>
+    <string name="about_leave_review">Оставить отзыв</string>
     <!--endregion-->
 
     <!--region TASKS-->
